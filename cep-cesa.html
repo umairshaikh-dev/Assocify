@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" data-dept="csesa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSESA — Computer Science & Engineering Students Association | NKOCET</title>
+  <meta name="description" content="Computer Science & Engineering Students Association (CSESA) at NK Orchid College of Engineering & Technology.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="AssociationHub Home">
+        <div class="brand-logo-frame">
+          <img src="nkocet logo.png.webp" alt="NKOCET Logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:800;color:#080A0F;\'>NK</span>'">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Association<span>Hub</span></span>
+          <span class="brand-subtitle">CSESA Portal</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          
+          <!-- Quick Department Dropdown -->
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+              <span>Switch Dept</span>
+              <span class="nav-dropdown-chevron">▼</span>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="cep-cesa.html" class="nav-dropdown-link"><span class="dept-pill-dot csesa"></span>CSESA — Computer Science</a></li>
+              <li><a href="cep-mesa.html" class="nav-dropdown-link"><span class="dept-pill-dot mesa"></span>MESA — Mechanical Engg</a></li>
+              <li><a href="esa.html" class="nav-dropdown-link"><span class="dept-pill-dot eesa"></span>EESA — Electrical Engg</a></li>
+              <li><a href="civil.html" class="nav-dropdown-link"><span class="dept-pill-dot cesa"></span>CESA — Civil Engineering</a></li>
+              <li><a href="entc.html" class="nav-dropdown-link"><span class="dept-pill-dot aexs"></span>AEXS — Electronics & Telecom</a></li>
+              <li><a href="aids.html" class="nav-dropdown-link"><span class="dept-pill-dot aiesa"></span>AIESA — AI & Data Science</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#activities" class="nav-link">Activities</a></li>
+          <li><a href="#events" class="nav-link">Events</a></li>
+          <li><a href="#committee" class="nav-link">Committee</a></li>
+          <li><a href="cep-about us.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-action">
+        <button type="button" class="btn-secondary" onclick="openSpotlightSearch()" style="padding: 0.45rem 0.85rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;" title="Spotlight Quick Search (Ctrl + K)">
+          <span>🔍</span>
+          <span style="font-size: 0.72rem; background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; font-family: var(--font-mono);">Ctrl K</span>
+        </button>
+        <a href="verify.html" class="btn-secondary" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; border-color: rgba(25, 214, 140, 0.4); color: #19D68C; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span>📱 Verify</span>
+        </a>
+
+        <button type="button" class="btn-nav-accent" onclick="openMembershipModal('CSESA')">
+          <span>Join CSESA</span>
+          <span>📝</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="mobile-drawer" aria-label="Mobile Navigation">
+    <div>
+      <div class="brand-text" style="margin-bottom: 2rem;">
+        <span class="brand-title" style="font-size: 1.4rem;">CSESA<span>Hub</span></span>
+        <span class="brand-subtitle">Computer Science & Engineering</span>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link">About CSESA</a></li>
+        <li><a href="#activities" class="mobile-nav-link">Activities & Labs</a></li>
+        <li><a href="#events" class="mobile-nav-link">Events</a></li>
+        <li><a href="#committee" class="mobile-nav-link">Committee</a></li>
+        <li><a href="cep-about us.html" class="mobile-nav-link">👥 About Project Team</a></li>
+        <li style="padding: 0.5rem 0; font-size: 0.75rem; text-transform: uppercase; color: var(--accent-csesa); letter-spacing: 0.05em; font-weight: 700;">Switch Department:</li>
+        <li><a href="cep-mesa.html" class="mobile-nav-link">⚙️ MESA (Mechanical)</a></li>
+        <li><a href="esa.html" class="mobile-nav-link">⚡ EESA (Electrical)</a></li>
+        <li><a href="civil.html" class="mobile-nav-link">🏗️ CESA (Civil)</a></li>
+        <li><a href="entc.html" class="mobile-nav-link">📡 AEXS (ENTC)</a></li>
+        <li><a href="aids.html" class="mobile-nav-link">🧠 AIESA (AI & DS)</a></li>
+        <li style="margin-top: 0.75rem;"><button class="btn-primary" style="width: 100%; justify-content: center;" onclick="openMembershipModal('CSESA')"><span>Join CSESA</span><span>📝</span></button></li>
+      </ul>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+      © 2026 CSESA • NKOCET
+    </div>
+  </aside>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Unique Department Hero (Cyber Blue / Terminal Concept) -->
+  <section class="dept-hero">
+    <div class="container dept-hero-grid">
+      <div class="dept-hero-content">
+        <div class="dept-eyebrow">
+          <span class="dot"></span>
+          <span>Department of Computer Science & Engineering</span>
+        </div>
+
+        <h1 class="dept-hero-title">
+          CSESA — COMPUTER SCIENCE & ENGINEERING
+        </h1>
+
+        <p class="dept-hero-desc">
+          Empowering future software architects, cybersecurity researchers, and algorithmic thinkers through peer-driven coding culture, open-source innovation, and continuous skill refinement.
+        </p>
+
+        <div class="dept-meta-bar">
+          <div class="dept-meta-item">
+            <span>Faculty Coordinator:</span>
+            <strong>Prof. P.D. Jawalkar</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Student Chapter:</span>
+            <strong>CSESA (Est. NKOCET)</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Focus:</span>
+            <strong>Systems, AI/ML & Web</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department Geometric Motif Visual -->
+      <div class="dept-hero-visual" aria-hidden="true">
+        <div class="dept-visual-circle" style="border-color: var(--accent-csesa); box-shadow: 0 0 35px var(--glow-csesa);">
+          <div style="width: 130px; height: 130px; border-radius: 50%; border: 1px solid rgba(22, 135, 255, 0.4); display: flex; align-items: center; justify-content: center; background: rgba(22, 135, 255, 0.05);">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-csesa);">&lt;/DEV&gt;</span>
+          </div>
+        </div>
+        <div class="dept-visual-icon">💻</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Association Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Overview</span>
+        </div>
+        <h2 class="section-title">About the Association</h2>
+        <p class="section-subtitle">
+          The Computer Science & Engineering Students Association (CSESA) at NKOCET is a student-led collective of programmers, developers, and technology researchers. We provide a collaborative launchpad for students to transition theoretical algorithms into production software.
+        </p>
+      </div>
+
+      <!-- Objectives Grid -->
+      <div id="objectives" class="objectives-grid">
+        <div class="objective-card">
+          <h3>🎓 Skill Development</h3>
+          <p>Organize comprehensive hands-on workshops and masterclasses covering full-stack web architectures, distributed systems, cloud infrastructure, and modern algorithms.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🏆 Competitive Coding</h3>
+          <p>Prepare students for national and global coding contests, algorithmic hackathons, and technical interview benchmarks through regular problem-solving rounds.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🤝 Collaborative Engineering</h3>
+          <p>Foster team-oriented engineering habits through open-source software contributions, pair programming circles, and peer code critiques.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🚀 Innovation & Prototyping</h3>
+          <p>Encourage building tangible software products for campus utility, project exhibitions, and incubation competitions across technical universities.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🌐 Industry Bridging</h3>
+          <p>Connect students with software alumni and senior industry architects through guest lectures, mock code reviews, and career roadmap sessions.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>📚 Knowledge Sharing</h3>
+          <p>Build an active knowledge-sharing repository of technical notes, roadmaps, and documented architecture blueprints for incoming junior batches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regular Activities Section -->
+  <section class="section" id="activities" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Ongoing Schedule</span>
+        </div>
+        <h2 class="section-title">Regular Activities & Practice</h2>
+        <p class="section-subtitle">
+          Weekly programming drills and technical exchange sessions designed to keep members sharp and industry-ready.
+        </p>
+      </div>
+
+      <div class="objectives-grid">
+        <div class="objective-card" style="border-left-color: var(--accent-csesa);">
+          <h3>Weekly Coding Sessions</h3>
+          <p>Weekly algorithmic meetups analyzing Data Structures, Dynamic Programming, and Graph Algorithms on competitive platforms.</p>
+        </div>
+
+        <div class="objective-card" style="border-left-color: var(--accent-csesa);">
+          <h3>Tech Talks & Lightning Demos</h3>
+          <p>Bi-weekly student and faculty seminars discussing emerging frontiers: containerization, microservices, and decentralized networks.</p>
+        </div>
+
+        <div class="objective-card" style="border-left-color: var(--accent-csesa);">
+          <h3>Project Showcase & Feedback</h3>
+          <p>Quarterly review stages where student builders present functional web and mobile applications for peer feedback and optimization.</p>
+        </div>
+
+        <div class="objective-card" style="border-left-color: var(--accent-csesa);">
+          <h3>Peer Code Review Circles</h3>
+          <p>Structured sessions critiquing clean code, test coverage, and documentation formatting to inculcate production-grade standards.</p>
+        </div>
+
+        <div class="objective-card" style="border-left-color: var(--accent-csesa);">
+          <h3>Hackathon Preparation Bootcamps</h3>
+          <p>Simulated 24-hour sprint challenges training students on rapid wireframing, API deployment, and pitch presentations.</p>
+        </div>
+
+        <div class="objective-card" style="border-left-color: var(--accent-csesa);">
+          <h3>Open Source Study Circles</h3>
+          <p>Mentored exploration of Git workflows, issue triage, and PR contributions to established community repositories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="section" id="events">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Calendar</span>
+        </div>
+        <h2 class="section-title">CSESA Events & Symposia</h2>
+        <p class="section-subtitle">
+          Confirmed past event records and upcoming flagship programming marathons.
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <!-- Event 1: CodeFest -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-upcoming">Upcoming Announcement</span>
+            <h3 class="event-title">CodeFest Technical Marathon</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>DATE TO BE ANNOUNCED</span>
+            </div>
+            <p class="event-details">
+              48-hour multi-track coding marathon spanning algorithmic speed solving, web application engineering, and machine intelligence.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Venue: Main Auditorium</span>
+              <span class="event-tag">Prize Pool: ₹50,000</span>
+              <span class="event-tag">Teams: 2-4 Members</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-csesa);">Session 2026</span>
+            <button class="btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;" onclick="showInteractiveModal('CodeFest 2026', 'Official registration links will go live upon coordinator announcement. Check department board for team confirmations.')">Register Interest</button>
+          </div>
+        </article>
+
+        <!-- Event 2: Python Workshop Series (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">Python Intensive Workshop Series</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>November 25–27 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Three-day hands-on boot camp introducing data processing primitives, automated scraping, API synthesis, and algorithmic scripting.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Duration: 3 Days</span>
+              <span class="event-tag">Format: Hands-on Lab</span>
+              <span class="event-tag">Free for CSESA Members</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-csesa);">Lab Block C</span>
+          </div>
+        </article>
+
+        <!-- Event 3: AI in Modern World (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">Tech Talk: AI in Modern World</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 5 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Industry keynote dissecting neural network applications, industrial predictive modeling, and ethical considerations in modern machine learning.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Speaker: Industry Specialist</span>
+              <span class="event-tag">Audience: All Batches</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-csesa);">Seminar Hall</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committee Section (Truthful, non-fabricated) -->
+  <section class="section" id="committee" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Governance</span>
+        </div>
+        <h2 class="section-title">Association Committee</h2>
+        <p class="section-subtitle">
+          Under the guidance of departmental faculty, student coordinators manage annual calendars, workshops, and inter-collegiate events.
+        </p>
+      </div>
+
+      <div class="committee-grid">
+        <div class="committee-card">
+          <div class="committee-avatar">PJ</div>
+          <h3 class="committee-name">Prof. P.D. Jawalkar</h3>
+          <div class="committee-role">Faculty Coordinator</div>
+          <p class="committee-note">Department of Computer Science & Engineering</p>
+        </div>
+
+        <div class="committee-card">
+          <div class="committee-avatar" style="border-style: dashed; color: var(--color-text-muted);">26</div>
+          <h3 class="committee-name">Student Executive Council</h3>
+          <div class="committee-role">Session 2026 Nominations</div>
+          <p class="committee-note">Annual student coordinator elections and department interviews are conducted each academic semester.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join CTA Section -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <span class="section-badge" style="margin-bottom: 1.5rem;">
+          <span class="dot"></span>
+          <span>Participation</span>
+        </span>
+        <h2>Become a CSESA Member</h2>
+        <p>
+          Membership gives students priority access to departmental coding servers, workshop registrations, peer mentorship groups, and hackathon teams.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary" onclick="openMembershipModal('CSESA')">
+            <span>APPLY FOR CSESA MEMBERSHIP</span>
+            <span>📝</span>
+          </button>
+          <a href="index.html#associations" class="btn-secondary">
+            <span>EXPLORE OTHER ASSOCIATIONS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Modal & Back to Top -->
+  <div id="interactive-modal-overlay" class="interactive-modal-overlay" role="dialog" aria-modal="true">
+    <div class="interactive-modal">
+      <h3 id="modal-title">Notification</h3>
+      <p id="modal-desc">Details</p>
+      <button id="modal-close-btn" class="interactive-modal-close">Close</button>
+    </div>
+  </div>
+  <button id="back-to-top" class="btn-back-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 1.4rem;">CSESA<span>Hub</span></span>
+            <span class="brand-subtitle">Computer Science & Engineering • NKOCET</span>
+          </div>
+          <p>Official student association for Computer Science & Engineering students at N.K. Orchid College of Engineering & Technology, Solapur.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Portal Home</a></li>
+            <li><a href="#about">About CSESA</a></li>
+            <li><a href="#objectives">Core Objectives</a></li>
+            <li><a href="#events">Flagship Events</a></li>
+            <li><a href="cep-about us.html">Project Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Associations</h4>
+          <ul class="footer-links">
+            <li><a href="cep-mesa.html">MESA (Mechanical)</a></li>
+            <li><a href="esa.html">EESA (Electrical)</a></li>
+            <li><a href="civil.html">CESA (Civil)</a></li>
+            <li><a href="entc.html">AEXS (Electronics & Telecom)</a></li>
+            <li><a href="aids.html">AIESA (AI & Data Science)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Department Office</h4>
+          <p style="font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            Department of Computer Science & Engineering<br>
+            NKOCET Campus, Tale-Hipparaga, Solapur.
+          </p>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-csesa);">Innovate • Code • Transform</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 CSESA — NK Orchid College of Engineering & Technology. All rights reserved.</div>
+        <div style="font-family: var(--font-mono); font-size: 0.8rem;">AssociationHub Digital Portal</div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Functional Membership Registration Modal & Acknowledgment Pass -->
+  <div id="membership-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="membership-title">
+    <div class="membership-modal">
+      <button class="membership-modal-close" aria-label="Close modal">✕</button>
+
+      <div id="membership-form-wrap">
+        <span class="quiz-badge" style="margin-bottom: 0.75rem;">Official Membership Intake 2026</span>
+        <h2 id="membership-title" class="membership-modal-title">Join a Department Club</h2>
+        <p class="membership-modal-subtitle">
+          Submit your details to register interest in NKOCET departmental associations. Your inquiry will be registered and an official membership pass generated instantly.
+        </p>
+
+        <!-- Quick Digi-Pass Retrieval -->
+        <div style="background: rgba(255, 184, 0, 0.08); border: 1px solid rgba(255, 184, 0, 0.3); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; margin-bottom: 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-gold);">🔍 Already Joined?</span>
+            <span style="font-size: 0.76rem; color: var(--color-text-secondary); margin-left: 0.3rem;">Retrieve your saved Digi-Pass & QR:</span>
+          </div>
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex: 1; min-width: 220px; justify-content: flex-end;">
+            <input type="text" id="quick-pass-lookup" placeholder="Enter PRN / Roll (e.g. C-62)" style="padding: 0.32rem 0.6rem; font-size: 0.78rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; width: 150px;">
+            <button type="button" class="btn-secondary" onclick="lookupStudentPass()" style="padding: 0.32rem 0.75rem; font-size: 0.78rem; white-space: nowrap;">
+              <span>View Pass 🎫</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="membership-form">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-name" class="form-label">Full Name *</label>
+              <input type="text" id="member-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="member-roll" class="form-label">Roll No / PRN *</label>
+              <input type="text" id="member-roll" class="form-input" placeholder="e.g. C-62 or EN2024..." required>
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>
+          <!-- Official Student Gmail -->
+          <div class="form-group" style="background: rgba(13, 18, 32, 0.45); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 1rem;">
+            <label for="member-email" class="form-label">Official Student Gmail *</label>
+            <input type="email" id="member-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
+          </div>
+
+<div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>

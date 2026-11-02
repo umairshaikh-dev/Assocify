@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — AssociationHub | NKOCET</title>
+  <meta name="description" content="Meet the team behind AssociationHub at NK Orchid College of Engineering & Technology, Solapur.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="AssociationHub Home">
+        <div class="brand-logo-frame">
+          <img src="nkocet logo.png.webp" alt="NKOCET Logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:800;color:#080A0F;\'>NK</span>'">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Association<span>Hub</span></span>
+          <span class="brand-subtitle">NKOCET Solapur</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+
+          <!-- Quick Association Dropdown -->
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+              <span>Associations</span>
+              <span class="nav-dropdown-chevron">▼</span>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="cep-cesa.html" class="nav-dropdown-link"><span class="dept-pill-dot csesa"></span>CSESA — Computer Science</a></li>
+              <li><a href="cep-mesa.html" class="nav-dropdown-link"><span class="dept-pill-dot mesa"></span>MESA — Mechanical Engg</a></li>
+              <li><a href="esa.html" class="nav-dropdown-link"><span class="dept-pill-dot eesa"></span>EESA — Electrical Engg</a></li>
+              <li><a href="civil.html" class="nav-dropdown-link"><span class="dept-pill-dot cesa"></span>CESA — Civil Engineering</a></li>
+              <li><a href="entc.html" class="nav-dropdown-link"><span class="dept-pill-dot aexs"></span>AEXS — Electronics & Telecom</a></li>
+              <li><a href="aids.html" class="nav-dropdown-link"><span class="dept-pill-dot aiesa"></span>AIESA — AI & Data Science</a></li>
+            </ul>
+          </li>
+
+          <li><a href="index.html#events" class="nav-link">Events</a></li>
+          <li><a href="index.html#certificates" class="nav-link">Certificates</a></li>
+          <li><a href="verify.html" class="nav-link" style="color: #19D68C; font-weight: 600;">📱 Verify Pass</a></li>
+          <li><a href="index.html#gallery" class="nav-link">Showcase</a></li>
+          <li><a href="index.html#faq" class="nav-link">FAQs</a></li>
+          <li><a href="cep-about us.html" class="nav-link active">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-action">
+        <button type="button" class="btn-secondary" onclick="openSpotlightSearch()" style="padding: 0.45rem 0.85rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;" title="Spotlight Quick Search (Ctrl + K)">
+          <span>🔍</span>
+          <span style="font-size: 0.72rem; background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; font-family: var(--font-mono);">Ctrl K</span>
+        </button>
+        <a href="verify.html" class="btn-secondary" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; border-color: rgba(25, 214, 140, 0.4); color: #19D68C; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span>📱 Verify</span>
+        </a>
+
+        <a href="index.html" class="btn-nav-accent">
+          <span>← Back to Home</span>
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="mobile-drawer" aria-label="Mobile Navigation">
+    <div>
+      <div class="brand-text" style="margin-bottom: 2rem;">
+        <span class="brand-title" style="font-size: 1.4rem;">Association<span>Hub</span></span>
+        <span class="brand-subtitle">Student Portal • NKOCET</span>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li style="padding: 0.5rem 0; font-size: 0.75rem; text-transform: uppercase; color: var(--brand-gold); letter-spacing: 0.05em; font-weight: 700;">Department Chapters:</li>
+        <li><a href="cep-cesa.html" class="mobile-nav-link">💻 CSESA (Computer Science)</a></li>
+        <li><a href="cep-mesa.html" class="mobile-nav-link">⚙️ MESA (Mechanical)</a></li>
+        <li><a href="esa.html" class="mobile-nav-link">⚡ EESA (Electrical)</a></li>
+        <li><a href="civil.html" class="mobile-nav-link">🏗️ CESA (Civil)</a></li>
+        <li><a href="entc.html" class="mobile-nav-link">📡 AEXS (Electronics & Telecom)</a></li>
+        <li><a href="aids.html" class="mobile-nav-link">🧠 AIESA (AI & Data Science)</a></li>
+        <li style="border-top: 1px solid var(--color-border-subtle); margin-top: 0.5rem; padding-top: 0.5rem;"><a href="index.html#events" class="mobile-nav-link">📅 Events</a></li>
+        <li><a href="index.html#gallery" class="mobile-nav-link">🏛️ Showcase</a></li>
+        <li><a href="index.html#faq" class="mobile-nav-link">❓ Freshers FAQ</a></li>
+        <li><a href="cep-about us.html" class="mobile-nav-link active">👥 About Us & Team</a></li>
+      </ul>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+      © 2026 NKOCET • 2nd Year B.Tech CEP
+    </div>
+  </aside>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-cinema" style="min-height: 55vh; padding: 9rem 0 3.5rem;">
+    <div class="container hero-content">
+      <div class="hero-college-badge">
+        <span class="dot" style="width:7px; height:7px; border-radius:50%; background:var(--brand-gold); display:inline-block; box-shadow:0 0 8px var(--brand-gold);"></span>
+        <span>College Engagement Project • 2nd Year B.Tech</span>
+      </div>
+
+      <h1 class="hero-title" style="margin-bottom: 1.25rem;">
+        ABOUT <span class="highlight">ASSOCIATIONHUB</span>
+      </h1>
+
+      <p class="hero-desc" style="margin-bottom: 0;">
+        AssociationHub is a Student Association and Club Awareness Portal designed to make it easier for students to discover department associations, understand their activities, and explore opportunities to participate in campus life.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="section" style="padding-top: 1rem;">
+    <div class="container">
+      <div class="mv-grid">
+        <div class="mv-card">
+          <div class="mv-icon">🎯</div>
+          <h3>Our Mission</h3>
+          <p>
+            Help students discover their department associations and access reliable information about campus activities.
+          </p>
+        </div>
+
+        <div class="mv-card" style="border-top-color: var(--accent-csesa);">
+          <div class="mv-icon">🔭</div>
+          <h3>Our Vision</h3>
+          <p>
+            Create a connected campus community where students can discover opportunities, share ideas, and participate in meaningful experiences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Members Section -->
+  <section class="section" style="background: rgba(13, 18, 32, 0.5); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Project Contributors</span>
+        </div>
+        <h2 class="section-title">Our Project Team</h2>
+        <p class="section-subtitle">
+          The 2nd-year engineering students from NK Orchid College of Engineering & Technology who designed and developed AssociationHub.<br>
+          <span style="display:inline-block; margin-top:0.4rem; font-size:0.85rem; color:var(--brand-gold); font-family:var(--font-mono); font-weight:600;">[ Click any photo to preview full-size profile ]</span>
+        </p>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- Member 1: Affan Choudhari -->
+        <article class="team-card" style="--card-accent: var(--accent-csesa);">
+          <div class="team-avatar" data-full-photo="team-affan.jpg" data-caption="<div style='font-size:1.35rem;font-weight:800;color:#FFF;margin-bottom:0.25rem;'>Affan Choudhari</div><div style='display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.35rem;'><span class='card-badge' style='background:rgba(22,135,255,0.15);color:var(--accent-csesa);border:1px solid var(--accent-csesa);font-size:0.75rem;padding:0.18rem 0.6rem;'>Team Leader &amp; Developer</span><span style='font-family:var(--font-mono);font-size:0.85rem;color:var(--brand-gold);'>Roll No. C-62</span></div><div style='font-size:0.85rem;color:var(--color-text-secondary);'>Computer Science &amp; Engineering &bull; SY B.Tech</div><div style='font-size:0.8rem;color:var(--color-text-muted);margin-top:0.3rem;font-family:var(--font-mono);'>Team Leader &amp; Full Stack Architecture</div>" title="Click to view full photo in 3D" style="border-color: var(--accent-csesa); color: var(--accent-csesa); background: var(--subtle-csesa); position: relative; overflow: hidden;">
+            <img src="team-affan.jpg" alt="Affan Choudhari" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 2;" onerror="this.style.display='none';">
+            <span style="position: relative; z-index: 1;">AC</span>
+          </div>
+          <div class="team-info">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h3 class="team-name" style="margin-bottom: 0;">Affan Choudhari</h3>
+              <span class="card-badge" style="background: rgba(22, 135, 255, 0.15); color: var(--accent-csesa); border: 1px solid var(--accent-csesa); font-size: 0.72rem; padding: 0.15rem 0.5rem;">Team Leader & Developer</span>
+            </div>
+            <span class="team-roll">Roll No. C-62</span>
+            <span class="team-dept">Computer Science & Engineering • SY B.Tech</span>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.35rem; font-family: var(--font-mono);">Team Leader & Full Stack Architecture</span>
+          </div>
+          <span class="team-card-view-badge">✨ 3D View →</span>
+        </article>
+
+        <!-- Member 2: Suyash Gote -->
+        <article class="team-card" style="--card-accent: var(--accent-mesa);">
+          <div class="team-avatar" data-full-photo="team-suyash.jpg" data-caption="<div style='font-size:1.35rem;font-weight:800;color:#FFF;margin-bottom:0.25rem;'>Suyash Gote</div><div style='display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.35rem;'><span class='card-badge' style='background:rgba(255,138,36,0.15);color:var(--accent-mesa);border:1px solid var(--accent-mesa);font-size:0.75rem;padding:0.18rem 0.6rem;'>Data Analytics</span><span style='font-family:var(--font-mono);font-size:0.85rem;color:var(--brand-gold);'>Roll No. C-64</span></div><div style='font-size:0.85rem;color:var(--color-text-secondary);'>Computer Science &amp; Engineering &bull; SY B.Tech</div><div style='font-size:0.8rem;color:var(--color-text-muted);margin-top:0.3rem;font-family:var(--font-mono);'>Data Analytics &amp; Visual Metrics</div>" title="Click to view full photo in 3D" style="border-color: var(--accent-mesa); color: var(--accent-mesa); background: var(--subtle-mesa); position: relative; overflow: hidden;">
+            <img src="team-suyash.jpg" alt="Suyash Gote" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 2;" onerror="this.style.display='none';">
+            <span style="position: relative; z-index: 1;">SG</span>
+          </div>
+          <div class="team-info">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h3 class="team-name" style="margin-bottom: 0;">Suyash Gote</h3>
+              <span class="card-badge" style="background: rgba(255, 138, 36, 0.15); color: var(--accent-mesa); border: 1px solid var(--accent-mesa); font-size: 0.72rem; padding: 0.15rem 0.5rem;">Data Analytics</span>
+            </div>
+            <span class="team-roll">Roll No. C-64</span>
+            <span class="team-dept">Computer Science & Engineering • SY B.Tech</span>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.35rem; font-family: var(--font-mono);">Data Analytics & Visual Metrics</span>
+          </div>
+          <span class="team-card-view-badge">✨ 3D View →</span>
+        </article>
+
+        <!-- Member 3: Umair Shaikh -->
+        <article class="team-card" style="--card-accent: var(--accent-eesa);">
+          <div class="team-avatar" data-full-photo="team-umair.jpg" data-caption="<div style='font-size:1.35rem;font-weight:800;color:#FFF;margin-bottom:0.25rem;'>Umair Shaikh</div><div style='display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.35rem;'><span class='card-badge' style='background:rgba(25,214,140,0.15);color:var(--accent-eesa);border:1px solid var(--accent-eesa);font-size:0.75rem;padding:0.18rem 0.6rem;'>Developer &amp; Technical</span><span style='font-family:var(--font-mono);font-size:0.85rem;color:var(--brand-gold);'>Roll No. C-54</span></div><div style='font-size:0.85rem;color:var(--color-text-secondary);'>Computer Science &amp; Engineering &bull; SY B.Tech</div><div style='font-size:0.8rem;color:var(--color-text-muted);margin-top:0.3rem;font-family:var(--font-mono);'>Full Stack Development &amp; Technical Implementation</div>" title="Click to view full photo in 3D" style="border-color: var(--accent-eesa); color: var(--accent-eesa); background: var(--subtle-eesa); position: relative; overflow: hidden;">
+            <img src="team-umair.jpg" alt="Umair Shaikh" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 2;" onerror="this.style.display='none';">
+            <span style="position: relative; z-index: 1;">US</span>
+          </div>
+          <div class="team-info">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h3 class="team-name" style="margin-bottom: 0;">Umair Shaikh</h3>
+              <span class="card-badge" style="background: rgba(25, 214, 140, 0.15); color: var(--accent-eesa); border: 1px solid var(--accent-eesa); font-size: 0.72rem; padding: 0.15rem 0.5rem;">Developer & Technical</span>
+            </div>
+            <span class="team-roll">Roll No. C-54</span>
+            <span class="team-dept">Computer Science & Engineering • SY B.Tech</span>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.35rem; font-family: var(--font-mono);">Full Stack Development & Technical Implementation</span>
+          </div>
+          <span class="team-card-view-badge">✨ 3D View →</span>
+        </article>
+
+        <!-- Member 4: Moin Shaikh -->
+        <article class="team-card" style="--card-accent: var(--accent-cesa);">
+          <div class="team-avatar" data-full-photo="team-moin-original.jpg" data-caption="<div style='font-size:1.35rem;font-weight:800;color:#FFF;margin-bottom:0.25rem;'>Moin Shaikh</div><div style='display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.35rem;'><span class='card-badge' style='background:rgba(168,85,247,0.15);color:var(--accent-cesa);border:1px solid var(--accent-cesa);font-size:0.75rem;padding:0.18rem 0.6rem;'>Researcher</span><span style='font-family:var(--font-mono);font-size:0.85rem;color:var(--brand-gold);'>Roll No. C-67</span></div><div style='font-size:0.85rem;color:var(--color-text-secondary);'>Computer Science &amp; Engineering &bull; SY B.Tech</div><div style='font-size:0.8rem;color:var(--color-text-muted);margin-top:0.3rem;font-family:var(--font-mono);'>Department Data Research &amp; Systems Analysis</div>" title="Click to view full photo in 3D" style="border-color: var(--accent-cesa); color: var(--accent-cesa); background: var(--subtle-cesa); position: relative; overflow: hidden;">
+            <img src="team-moin.jpg" alt="Moin Shaikh" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 2;" onerror="this.style.display='none';">
+            <span style="position: relative; z-index: 1;">MS</span>
+          </div>
+          <div class="team-info">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h3 class="team-name" style="margin-bottom: 0;">Moin Shaikh</h3>
+              <span class="card-badge" style="background: rgba(168, 85, 247, 0.15); color: var(--accent-cesa); border: 1px solid var(--accent-cesa); font-size: 0.72rem; padding: 0.15rem 0.5rem;">Researcher</span>
+            </div>
+            <span class="team-roll">Roll No. C-67</span>
+            <span class="team-dept">Computer Science & Engineering • SY B.Tech</span>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.35rem; font-family: var(--font-mono);">Department Data Research & Systems Analysis</span>
+          </div>
+          <span class="team-card-view-badge">✨ 3D View →</span>
+        </article>
+
+        <!-- Member 5: Sushil Habib -->
+        <article class="team-card" style="--card-accent: var(--accent-aexs);">
+          <div class="team-avatar" data-full-photo="team-sushil.jpg" data-caption="<div style='font-size:1.35rem;font-weight:800;color:#FFF;margin-bottom:0.25rem;'>Sushil Habib</div><div style='display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.35rem;'><span class='card-badge' style='background:rgba(255,65,108,0.15);color:var(--accent-aexs);border:1px solid var(--accent-aexs);font-size:0.75rem;padding:0.18rem 0.6rem;'>Data Analytics</span><span style='font-family:var(--font-mono);font-size:0.85rem;color:var(--brand-gold);'>Roll No. C-58</span></div><div style='font-size:0.85rem;color:var(--color-text-secondary);'>Computer Science &amp; Engineering &bull; SY B.Tech</div><div style='font-size:0.8rem;color:var(--color-text-muted);margin-top:0.3rem;font-family:var(--font-mono);'>Data Analytics &amp; Quality Verification</div>" title="Click to view full photo in 3D" style="border-color: var(--accent-aexs); color: var(--accent-aexs); background: var(--subtle-aexs); position: relative; overflow: hidden;">
+            <img src="team-sushil.jpg" alt="Sushil Habib" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 2;" onerror="this.style.display='none';">
+            <span style="position: relative; z-index: 1;">SH</span>
+          </div>
+          <div class="team-info">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h3 class="team-name" style="margin-bottom: 0;">Sushil Habib</h3>
+              <span class="card-badge" style="background: rgba(255, 65, 108, 0.15); color: var(--accent-aexs); border: 1px solid var(--accent-aexs); font-size: 0.72rem; padding: 0.15rem 0.5rem;">Data Analytics</span>
+            </div>
+            <span class="team-roll">Roll No. C-58</span>
+            <span class="team-dept">Computer Science & Engineering • SY B.Tech</span>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.35rem; font-family: var(--font-mono);">Data Analytics & Quality Verification</span>
+          </div>
+          <span class="team-card-view-badge">✨ 3D View →</span>
+        </article>
+
+        <!-- Member 6: Siddeshwar Nagansure -->
+        <article class="team-card" style="--card-accent: var(--accent-aiesa);">
+          <div class="team-avatar" data-full-photo="team-siddeshwar.jpg" data-caption="<div style='font-size:1.35rem;font-weight:800;color:#FFF;margin-bottom:0.25rem;'>Siddeshwar Nagansure</div><div style='display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.35rem;'><span class='card-badge' style='background:rgba(0,217,232,0.15);color:var(--accent-aiesa);border:1px solid var(--accent-aiesa);font-size:0.75rem;padding:0.18rem 0.6rem;'>Researcher</span><span style='font-family:var(--font-mono);font-size:0.85rem;color:var(--brand-gold);'>Roll No. C-61</span></div><div style='font-size:0.85rem;color:var(--color-text-secondary);'>Computer Science &amp; Engineering &bull; SY B.Tech</div><div style='font-size:0.8rem;color:var(--color-text-muted);margin-top:0.3rem;font-family:var(--font-mono);'>Academic Research &amp; Documentation</div>" title="Click to view full photo in 3D" style="border-color: var(--accent-aiesa); color: var(--accent-aiesa); background: var(--subtle-aiesa); position: relative; overflow: hidden;">
+            <img src="team-siddeshwar.jpg" alt="Siddeshwar Nagansure" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 2;" onerror="this.style.display='none';">
+            <span style="position: relative; z-index: 1;">SN</span>
+          </div>
+          <div class="team-info">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h3 class="team-name" style="margin-bottom: 0;">Siddeshwar Nagansure</h3>
+              <span class="card-badge" style="background: rgba(0, 217, 232, 0.15); color: var(--accent-aiesa); border: 1px solid var(--accent-aiesa); font-size: 0.72rem; padding: 0.15rem 0.5rem;">Researcher</span>
+            </div>
+            <span class="team-roll">Roll No. C-61</span>
+            <span class="team-dept">Computer Science & Engineering • SY B.Tech</span>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.35rem; font-family: var(--font-mono);">Academic Research & Documentation</span>
+          </div>
+          <span class="team-card-view-badge">✨ 3D View →</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Background Info -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <span class="section-badge" style="margin-bottom: 1.5rem;">
+          <span class="dot"></span>
+          <span>Academic Background</span>
+        </span>
+        <h2>About the CEP Initiative</h2>
+        <p>
+          This website was conceptualized as a College Engagement Project (CEP) for 2nd Year, 3rd Semester B.Tech students. The core objective is to spread active awareness about collegiate department associations among incoming freshers, fostering greater participation in hackathons, seminars, and clubs right from day one.
+        </p>
+        <div class="cta-buttons">
+          <a href="index.html#associations" class="btn-primary">
+            <span>EXPLORE DEPARTMENTS</span>
+            <span>→</span>
+          </a>
+          <a href="index.html" class="btn-secondary">
+            <span>RETURN TO PORTAL</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="btn-back-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 1.4rem;">Association<span>Hub</span></span>
+            <span class="brand-subtitle">NKOCET Solapur • 2026 Portal</span>
+          </div>
+          <p>
+            An official student engagement and club awareness initiative for N.K. Orchid College of Engineering & Technology, Solapur. Empowering engineers through collaborative excellence.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Associations</h4>
+          <ul class="footer-links">
+            <li><a href="cep-cesa.html">CSESA (Computer Science)</a></li>
+            <li><a href="cep-mesa.html">MESA (Mechanical)</a></li>
+            <li><a href="esa.html">EESA (Electrical)</a></li>
+            <li><a href="civil.html">CESA (Civil)</a></li>
+            <li><a href="entc.html">AEXS (Electronics & Telecom)</a></li>
+            <li><a href="aids.html">AIESA (AI & Data Science)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#associations">Associations Directory</a></li>
+            <li><a href="index.html#events">Events Schedule</a></li>
+            <li><a href="index.html#gallery">Campus Showcase</a></li>
+            <li><a href="index.html#faq">Freshers FAQ</a></li>
+            <li><a href="cep-about us.html">About Project & Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Institution</h4>
+          <p style="font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            Nagesh Karajgi Orchid College of Engineering & Technology<br>
+            Tale-Hipparaga, Solapur, Maharashtra, India.
+          </p>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--brand-gold);">Approved by AICTE • Affiliated to DBATU</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 AssociationHub — N.K. Orchid College of Engineering & Technology. All rights reserved.
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.8rem;">
+          2nd Year B.Tech • 3rd Semester CEP Initiative
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Functional Membership Registration Modal & Acknowledgment Pass -->
+  <div id="membership-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="membership-title">
+    <div class="membership-modal">
+      <button class="membership-modal-close" aria-label="Close modal">✕</button>
+
+      <div id="membership-form-wrap">
+        <span class="quiz-badge" style="margin-bottom: 0.75rem;">Official Membership Intake 2026</span>
+        <h2 id="membership-title" class="membership-modal-title">Join a Department Club</h2>
+        <p class="membership-modal-subtitle">
+          Submit your details to register interest in NKOCET departmental associations. Your inquiry will be registered and an official membership pass generated instantly.
+        </p>
+
+        <!-- Quick Digi-Pass Retrieval -->
+        <div style="background: rgba(255, 184, 0, 0.08); border: 1px solid rgba(255, 184, 0, 0.3); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; margin-bottom: 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-gold);">🔍 Already Joined?</span>
+            <span style="font-size: 0.76rem; color: var(--color-text-secondary); margin-left: 0.3rem;">Retrieve your saved Digi-Pass & QR:</span>
+          </div>
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex: 1; min-width: 220px; justify-content: flex-end;">
+            <input type="text" id="quick-pass-lookup" placeholder="Enter PRN / Roll (e.g. C-62)" style="padding: 0.32rem 0.6rem; font-size: 0.78rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; width: 150px;">
+            <button type="button" class="btn-secondary" onclick="lookupStudentPass()" style="padding: 0.32rem 0.75rem; font-size: 0.78rem; white-space: nowrap;">
+              <span>View Pass 🎫</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="membership-form">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-name" class="form-label">Full Name *</label>
+              <input type="text" id="member-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="member-roll" class="form-label">Roll No / PRN *</label>
+              <input type="text" id="member-roll" class="form-input" placeholder="e.g. C-62 or EN2024..." required>
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Photo Preview with 3D/4D Interactive Tilt -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Team Photo Preview">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#10094;</button>
+
+      <div class="lightbox-3d-hint">
+        <span class="hint-pulse"></span>
+        <span>✨ 3D / 4D INTERACTIVE VIEW • MOVE CURSOR TO TILT &amp; SHIFT HOLOGRAPHIC LIGHT</span>
+      </div>
+
+      <div class="lightbox-3d-stage">
+        <div class="lightbox-3d-card" id="lightbox-3d-card">
+          <div class="lightbox-hologram-badge"><span>ASSOCIATIONHUB 3D</span></div>
+          <img src="" alt="Team Photo Preview" class="lightbox-img" id="lightbox-img">
+          <div class="lightbox-glare" id="lightbox-glare"></div>
+          <div class="lightbox-depth-border"></div>
+        </div>
+      </div>
+
+      <button class="lightbox-nav lightbox-next" aria-label="Next image">&#10095;</button>
+
+      <div class="lightbox-toolbar">
+        <button id="lightbox-orbit-toggle" class="lightbox-tool-btn active" title="Toggle Auto 3D Float">
+          <span class="tool-icon">🌀</span>
+          <span class="tool-text">Auto 3D Float: ON</span>
+        </button>
+        <button id="lightbox-zoom-toggle" class="lightbox-tool-btn" title="Toggle Max Size">
+          <span class="tool-icon">🔍</span>
+          <span class="tool-text">Full Scale</span>
+        </button>
+      </div>
+
+      <div class="lightbox-caption-text"></div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>
+          <!-- Official Student Gmail -->
+          <div class="form-group" style="background: rgba(13, 18, 32, 0.45); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 1rem;">
+            <label for="member-email" class="form-label">Official Student Gmail *</label>
+            <input type="email" id="member-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
+          </div>
+
+<div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Photo Preview with 3D/4D Interactive Tilt -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Team Photo Preview">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#10094;</button>
+
+      <div class="lightbox-3d-hint">
+        <span class="hint-pulse"></span>
+        <span>✨ 3D / 4D INTERACTIVE VIEW • MOVE CURSOR TO TILT &amp; SHIFT HOLOGRAPHIC LIGHT</span>
+      </div>
+
+      <div class="lightbox-3d-stage">
+        <div class="lightbox-3d-card" id="lightbox-3d-card">
+          <div class="lightbox-hologram-badge"><span>ASSOCIATIONHUB 3D</span></div>
+          <img src="" alt="Team Photo Preview" class="lightbox-img" id="lightbox-img">
+          <div class="lightbox-glare" id="lightbox-glare"></div>
+          <div class="lightbox-depth-border"></div>
+        </div>
+      </div>
+
+      <button class="lightbox-nav lightbox-next" aria-label="Next image">&#10095;</button>
+
+      <div class="lightbox-toolbar">
+        <button id="lightbox-orbit-toggle" class="lightbox-tool-btn active" title="Toggle Auto 3D Float">
+          <span class="tool-icon">🌀</span>
+          <span class="tool-text">Auto 3D Float: ON</span>
+        </button>
+        <button id="lightbox-zoom-toggle" class="lightbox-tool-btn" title="Toggle Max Size">
+          <span class="tool-icon">🔍</span>
+          <span class="tool-text">Full Scale</span>
+        </button>
+      </div>
+
+      <div class="lightbox-caption-text"></div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>

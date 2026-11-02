@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Pass Verification — AssociationHub | NKOCET</title>
+  <meta name="description" content="Public QR Gate Verification for NK Orchid College of Engineering & Technology (NKOCET) Student Associations.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css.css">
+
+  <style>
+    body.verify-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #080A0F !important;
+      background-color: #080A0F !important;
+      color: #F4F6FA !important;
+    }
+    .verify-container {
+      max-width: 760px;
+      margin: 3rem auto 5rem;
+      padding: 0 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+    .verify-card {
+      background: #151923 !important;
+      background-color: #151923 !important;
+      border: 1px solid #293142 !important;
+      border-radius: var(--radius-lg, 16px);
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+      color: #F4F6FA !important;
+    }
+    .verify-search-box {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .status-valid {
+      background: rgba(25, 214, 140, 0.15);
+      color: #19D68C;
+      border: 1px solid #19D68C;
+      box-shadow: 0 0 15px rgba(25, 214, 140, 0.3);
+    }
+    .status-invalid {
+      background: rgba(255, 65, 108, 0.15);
+      color: #FF416C;
+      border: 1px solid #FF416C;
+      box-shadow: 0 0 15px rgba(255, 65, 108, 0.3);
+    }
+    .status-loading {
+      background: rgba(22, 135, 255, 0.15);
+      color: #1687FF;
+      border: 1px solid #1687FF;
+    }
+    .pass-details-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    .pass-details-table td {
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+      font-size: 0.95rem;
+    }
+    .pass-details-table td:first-child {
+      color: var(--color-text-muted);
+      width: 40%;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+    .pass-details-table td:last-child {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+    .seal-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed var(--color-border-subtle);
+    }
+    .qr-preview {
+      width: 110px;
+      height: 110px;
+      background: #FFFFFF;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--brand-gold);
+      flex-shrink: 0;
+    }
+    .qr-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body class="verify-page">
+
+  <!-- Header -->
+  <header class="site-header" style="position: sticky; top: 0; background: rgba(8, 10, 15, 0.95); z-index: 100;">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="AssociationHub Home">
+        <div class="brand-logo-frame">
+          <img src="nkocet logo.png.webp" alt="NKOCET Logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:800;color:#080A0F;\'>NK</span>'">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Association<span>Hub</span></span>
+          <span class="brand-subtitle">Gate Check-In Portal</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">← Return to Portal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="verify-container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span class="quiz-badge" style="margin-bottom: 0.5rem;">Digital Access Control</span>
+      <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Membership Pass Verification</h1>
+      <p style="color: var(--color-text-secondary); max-width: 580px; margin: 0 auto;">
+        Real-time cryptographic check-in for NKOCET departmental association events, workshops, and lab access.
+      </p>
+    </div>
+
+    <!-- Interactive Camera & Image QR Scanner Gateway -->
+    <div style="background: rgba(13, 18, 32, 0.7); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; text-align: center;">
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; align-items: center;">
+        <button type="button" id="btn-toggle-camera" class="btn-primary" onclick="toggleCameraScanner()" style="padding: 0.65rem 1.4rem; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span id="camera-btn-icon">📷</span>
+          <span id="camera-btn-text">Live Camera Scanner</span>
+        </button>
+        <label class="btn-secondary" style="padding: 0.65rem 1.4rem; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; margin: 0;">
+          <span>📁 Upload QR Image</span>
+          <input type="file" id="qr-file-input" accept="image/*" style="display: none;" onchange="handleQrImageUpload(event)">
+        </label>
+      </div>
+
+      <!-- Live Video Viewfinder Container -->
+      <div id="camera-viewfinder-wrap" style="display: none; position: relative; max-width: 360px; margin: 1.25rem auto 0 auto; border-radius: var(--radius-md); overflow: hidden; border: 2px solid var(--brand-gold); box-shadow: 0 0 25px rgba(229, 169, 60, 0.25);">
+        <video id="camera-video" playsinline autoplay muted style="width: 100%; display: block; background: #000;"></video>
+        <canvas id="qr-canvas" style="display: none;"></canvas>
+        <div style="position: absolute; inset: 0; pointer-events: none; border: 2px dashed rgba(229, 169, 60, 0.7); margin: 30px; border-radius: 8px;"></div>
+        <div id="camera-status-overlay" style="position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font-size: 0.75rem; color: #fff; background: rgba(0,0,0,0.65); padding: 4px;">
+          Position student's QR pass inside the frame
+        </div>
+      </div>
+      <div id="qr-scanner-alert" style="display: none; font-size: 0.82rem; margin-top: 0.75rem; padding: 0.5rem; border-radius: var(--radius-sm);"></div>
+    </div>
+
+    <!-- Manual Search Box -->
+    <div class="verify-search-box">
+      <input type="text" id="manual-pass-input" class="form-input" placeholder="Enter Pass ID (e.g. NKOCET-2026-CSESA-A1B2C3)..." style="font-family: var(--font-mono); font-size: 1rem;">
+      <button id="manual-verify-btn" class="btn-primary" style="padding: 0.75rem 1.75rem;">
+        <span>VERIFY PASS</span>
+        <span>🔍</span>
+      </button>
+    </div>
+
+    <!-- Quick Demo Pass Pills -->
+    <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+      <span style="font-size: 0.8rem; color: var(--color-text-muted); align-self: center; margin-right: 0.25rem;">Quick Verified Passes:</span>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CSESA-7EB769')">Affan (CSESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CSESA-A2B4C6')">Suyash (CSESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-AIESA-D3E5F7')">Umair (AIESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-MESA-B8C9D0')">Moin (MESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-EESA-F1G2H3')">Sushil (EESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CESA-K4L5M6')">Siddeshwar (CESA)</button>
+    </div>
+
+    <!-- Verification Card Output -->
+    <div id="verify-output" class="verify-card">
+      <div id="verify-initial-state" style="text-align: center; padding: 2rem 0;">
+        <span style="font-size: 3rem;">📱</span>
+        <h3 style="margin-top: 1rem;">Scan a QR Pass or Enter Pass ID</h3>
+        <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+          Point your device camera at the QR code on a student's digital pass to verify active membership.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" style="margin-top: auto;">
+    <div class="container" style="text-align: center; font-size: 0.85rem; color: var(--color-text-muted);">
+      &copy; 2026 AssociationHub — N.K. Orchid College of Engineering & Technology, Solapur.
+    </div>
+  </footer>
+
+  <script src="api-config.js"></script>
+  <script>
+    const outputContainer = document.getElementById('verify-output');
+    const inputField = document.getElementById('manual-pass-input');
+    const verifyBtn = document.getElementById('manual-verify-btn');
+
+    // High-Tech Web Audio Synthetic Cues (Zero External Asset Dependencies)
+    let audioMuted = false;
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playTone(freq, duration, type = 'sine', delay = 0) {
+      if (audioMuted) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime + delay);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + delay + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + delay);
+        osc.stop(ctx.currentTime + delay + duration);
+      } catch (e) {}
+    }
+
+    function playScanSuccess() {
+      playTone(880, 0.12, 'sine', 0);
+      playTone(1320, 0.18, 'sine', 0.1);
+    }
+
+    function playScanAlert() {
+      playTone(260, 0.25, 'triangle', 0);
+      playTone(220, 0.35, 'triangle', 0.18);
+    }
+
+    function playCheckinCelebration() {
+      playTone(659, 0.10, 'sine', 0);
+      playTone(880, 0.12, 'sine', 0.08);
+      playTone(1318, 0.22, 'sine', 0.16);
+    }
+
+    function extractPassIdFromRaw(raw) {
+      if (!raw) return { passId: '', sig: null };
+      raw = raw.trim();
+      if (raw.includes('pass_id=')) {
+        try {
+          const u = new URL(raw, window.location.origin);
+          const pid = u.searchParams.get('pass_id');
+          const sig = u.searchParams.get('sig');
+          if (pid) return { passId: pid, sig: sig };
+        } catch (e) {
+          const match = raw.match(/pass_id=([a-zA-Z0-9_\-]+)/);
+          if (match) return { passId: match[1], sig: null };
+        }
+      }
+      return { passId: raw, sig: null };
+    }
+
+    let activeScannerStream = null;
+    let scanningInterval = null;
+
+    async function toggleCameraScanner() {
+      const viewfinder = document.getElementById('camera-viewfinder-wrap');
+      const video = document.getElementById('camera-video');
+      const btnText = document.getElementById('camera-btn-text');
+      const btnIcon = document.getElementById('camera-btn-icon');
+      const alertEl = document.getElementById('qr-scanner-alert');
+
+      if (activeScannerStream) {
+        activeScannerStream.getTracks().forEach(t => t.stop());
+        activeScannerStream = null;
+        if (scanningInterval) clearInterval(scanningInterval);
+        viewfinder.style.display = 'none';
+        btnText.textContent = 'Live Camera Scanner';
+        btnIcon.textContent = '📷';
+        if (alertEl) alertEl.style.display = 'none';
+        return;
+      }
+
+      if (!navigator.mediaDevices || typeof navigator.mediaDevices.getUserMedia !== 'function') {
+        if (alertEl) {
+          alertEl.style.display = 'block';
+          alertEl.style.background = 'rgba(255, 65, 108, 0.15)';
+          alertEl.style.color = '#ff5252';
+          alertEl.textContent = 'Camera API not supported or disabled in this browser. Please use the Upload QR Image button or enter Pass ID.';
+        }
+        return;
+      }
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: 'environment' }, width: { ideal: 640 } }
+        });
+        activeScannerStream = stream;
+        video.srcObject = stream;
+        viewfinder.style.display = 'block';
+        btnText.textContent = 'Stop Camera Scanner';
+        btnIcon.textContent = '⏹️';
+        if (alertEl) alertEl.style.display = 'none';
+
+        if ('BarcodeDetector' in window) {
+          const detector = new BarcodeDetector({ formats: ['qr_code'] });
+          scanningInterval = setInterval(async () => {
+            if (!activeScannerStream) return;
+            try {
+              const barcodes = await detector.detect(video);
+              if (barcodes.length > 0) {
+                const rawVal = barcodes[0].rawValue;
+                const parsed = extractPassIdFromRaw(rawVal);
+                if (parsed.passId) {
+                  toggleCameraScanner();
+                  verifyPass(parsed.passId, parsed.sig);
+                }
+              }
+            } catch (e) {}
+          }, 250);
+        } else {
+          const overlay = document.getElementById('camera-status-overlay');
+          if (overlay) {
+            overlay.textContent = 'Camera active. Point at QR code or use Upload QR Image for instant auto-decode.';
+          }
+        }
+      } catch (err) {
+        if (alertEl) {
+          alertEl.style.display = 'block';
+          alertEl.style.background = 'rgba(255, 65, 108, 0.15)';
+          alertEl.style.color = '#ff5252';
+          alertEl.textContent = 'Camera Permission Denied: ' + err.message + '. You can upload a QR screenshot below.';
+        }
+      }
+    }
+
+    async function handleQrImageUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const alertEl = document.getElementById('qr-scanner-alert');
+
+      try {
+        const img = new Image();
+        img.onload = async () => {
+          if ('BarcodeDetector' in window) {
+            try {
+              const detector = new BarcodeDetector({ formats: ['qr_code'] });
+              const barcodes = await detector.detect(img);
+              if (barcodes.length > 0) {
+                const parsed = extractPassIdFromRaw(barcodes[0].rawValue);
+                if (parsed.passId) {
+                  if (alertEl) {
+                    alertEl.style.display = 'block';
+                    alertEl.style.background = 'rgba(25, 214, 140, 0.15)';
+                    alertEl.style.color = '#19D68C';
+                    alertEl.textContent = `✓ Decoded Pass: ${parsed.passId}`;
+                  }
+                  verifyPass(parsed.passId, parsed.sig);
+                  return;
+                }
+              }
+            } catch (e) {}
+          }
+
+          const nameMatch = file.name.match(/NKOCET-2026-[A-Z]+-[A-F0-9]+/i);
+          if (nameMatch) {
+            verifyPass(nameMatch[0].toUpperCase());
+          } else {
+            if (alertEl) {
+              alertEl.style.display = 'block';
+              alertEl.style.background = 'rgba(229, 169, 60, 0.15)';
+              alertEl.style.color = 'var(--brand-gold)';
+              alertEl.textContent = 'Image received. If QR is not auto-detected, please enter the Pass ID from the image into the box below.';
+            }
+          }
+        };
+        img.src = URL.createObjectURL(file);
+      } catch (err) {
+        if (alertEl) {
+          alertEl.style.display = 'block';
+          alertEl.style.background = 'rgba(255, 65, 108, 0.15)';
+          alertEl.style.color = '#ff5252';
+          alertEl.textContent = 'Error reading image file: ' + err.message;
+        }
+      }
+    }
+
+    async function verifyPass(passId, passedSig = null) {
+      if (!passId || !passId.trim()) return;
+      passId = passId.trim();
+      inputField.value = passId;
+
+      outputContainer.innerHTML = `
+        <div style="text-align: center; padding: 3rem 0;">
+          <div class="status-badge status-loading">
+            <span>⏳</span>
+            <span>Querying Cryptographic SQLite Ledger...</span>
+          </div>
+          <p style="color: var(--color-text-muted); font-family: var(--font-mono); font-size: 0.9rem;">Pass ID: ${passId}</p>
+        </div>
+      `;
+
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const sig = passedSig || params.get('sig') || '';
+        const url = `/api/memberships/verify/${encodeURIComponent(passId)}${sig ? `?sig=${encodeURIComponent(sig)}` : ''}`;
+        const response = await apiFetch(url);
+        const data = await response.json();
+
+        if (response.ok && data.valid) {
+          playScanSuccess();
+          const m = data.member;
+          const safeName = (m.name || '').replace(/'/g, "\\'");
+          const sigBadge = data.signature_verified 
+            ? `<span style="font-size:0.75rem; background:rgba(25,214,140,0.15); color:#19D68C; border:1px solid rgba(25,214,140,0.4); padding:0.25rem 0.65rem; border-radius:4px; font-family:var(--font-mono);">✓ HMAC-SHA256 SIGNED: ${data.crypto_signature || 'VERIFIED'}</span>`
+            : `<span style="font-size:0.75rem; background:rgba(255,65,108,0.15); color:#FF416C; border:1px solid #FF416C; padding:0.25rem 0.65rem; border-radius:4px;">⚠️ TAMPERED SIGNATURE</span>`;
+
+          outputContainer.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+              <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                <div class="status-badge status-valid">
+                  <span>✓</span>
+                  <span>OFFICIAL ACTIVE MEMBER</span>
+                </div>
+                ${sigBadge}
+              </div>
+              <span style="font-family: var(--font-mono); font-size: 0.85rem; background: rgba(229,169,60,0.15); color: var(--brand-gold); padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); font-weight: 700;">
+                ${m.pass_id}
+              </span>
+            </div>
+
+            <h2 style="font-size: 1.8rem; margin: 0.75rem 0 0.25rem 0; color: #FFFFFF;">${m.name}</h2>
+            <p style="color: var(--brand-gold); font-weight: 700; margin-bottom: 1.5rem;">
+              ${m.association} • ${m.dept}
+            </p>
+
+            <table class="pass-details-table">
+              <tr>
+                <td>Roll Number / PRN</td>
+                <td>${m.roll_no}</td>
+              </tr>
+              <tr>
+                <td>Academic Standing</td>
+                <td>${m.year}</td>
+              </tr>
+              <tr>
+                <td>Target Association</td>
+                <td>${m.association}</td>
+              </tr>
+              <tr>
+                <td>Specialization / Interest</td>
+                <td>${m.interest || 'General Technical Participation'}</td>
+              </tr>
+              <tr>
+                <td>Registration Timestamp</td>
+                <td>${m.created_at}</td>
+              </tr>
+              <tr>
+                <td>Gate Security Status</td>
+                <td style="color: #19D68C; font-weight: 700;">Authorized for Campus Events & Labs</td>
+              </tr>
+            </table>
+
+            <!-- Real-Time Gate Check-In & Attendance Section -->
+            <div style="background: rgba(25, 214, 140, 0.08); border: 1px solid rgba(25, 214, 140, 0.3); border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+                <span style="font-weight: 700; color: #19D68C; font-size: 0.95rem;">⚡ Real-Time Gate Check-In & Attendance</span>
+                <select id="checkpoint-select" style="background: #080A0F; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.2); padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.85rem;">
+                  <option value="Central Campus Main Gate">Central Campus Main Gate</option>
+                  <option value="Computer Science Lab 3 / Coding Arena">Computer Science Lab 3</option>
+                  <option value="Mechanical FabLab & Workshop">Mechanical FabLab</option>
+                  <option value="National Symposium & Hackathon Hall">National Symposium Hall</option>
+                  <option value="Electrical Machines & Smart Grid Lab">Electrical Machines Lab</option>
+                  <option value="Civil Concrete & CAD Studio">Civil CAD Studio</option>
+                </select>
+              </div>
+              <button type="button" class="btn-primary" id="btn-record-checkin" onclick="recordGateAttendance('${m.pass_id}')" style="width: 100%; justify-content: center; padding: 0.75rem; background: linear-gradient(135deg, #19D68C, #0E9F6E); border-color: #19D68C;">
+                <span>CONFIRM STUDENT ENTRY & LOG ATTENDANCE</span>
+                <span>🎟️</span>
+              </button>
+              <div id="checkin-feedback" style="display: none; margin-top: 0.75rem; padding: 0.65rem; border-radius: 6px; font-size: 0.88rem; text-align: center;"></div>
+            </div>
+
+            <div class="seal-wrap">
+              <div class="qr-preview">
+                <img src="${m.qr_code_base64}" alt="QR Verification">
+              </div>
+              <div>
+                <div style="font-weight: 700; color: #FFFFFF; font-size: 0.95rem;">Cryptographically Signed Gate Record</div>
+                <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 0.25rem; line-height: 1.5;">
+                  Matches official SQLite ledger of NK Orchid College of Engineering & Technology (NKOCET, Solapur). Tamper-evident HMAC signature verified.
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+              <button class="btn-primary" onclick="window.print()" style="padding: 0.65rem 1.5rem;">
+                <span>PRINT GATE RECEIPT</span>
+                <span>🖨️</span>
+              </button>
+              <button type="button" class="btn-danger" onclick="openRevokeModal('${m.pass_id}', '${safeName}')" style="padding: 0.65rem 1.25rem;">
+                <span>REVOKE / DELETE PASS</span>
+                <span>🔒</span>
+              </button>
+              <a href="index.html" class="btn-secondary" style="padding: 0.65rem 1.5rem;">
+                <span>RETURN TO PORTAL</span>
+              </a>
+            </div>
+          `;
+        } else if (data.status === 'SUSPENDED') {
+          playScanAlert();
+          const m = data.member || {};
+          outputContainer.innerHTML = `
+            <div class="status-badge" style="background: rgba(229,169,60,0.15); color: #E5A93C; border: 1px solid rgba(229,169,60,0.3);">
+              <span>⚠️</span>
+              <span>MEMBERSHIP TEMPORARILY SUSPENDED</span>
+            </div>
+            <h2 style="font-size: 1.6rem; color: #E5A93C; margin: 0.5rem 0;">Access Denied at Gate</h2>
+            <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+              The membership pass for <strong>${m.name || 'Student'}</strong> (Roll: ${m.roll_no || passId}) is currently <strong>SUSPENDED</strong> by college administration.
+            </p>
+            <div style="background: rgba(229, 169, 60, 0.08); border-left: 3px solid #E5A93C; padding: 1rem; font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
+              ⚠️ Gate Security Alert: Do not admit student until cleared by Department Association Faculty Coordinator or HOD office.
+            </div>
+            <button class="btn-secondary" onclick="inputField.focus();" style="padding: 0.65rem 1.5rem;">
+              <span>CHECK ANOTHER PASS</span>
+            </button>
+          `;
+        } else {
+          playScanAlert();
+          outputContainer.innerHTML = `
+            <div class="status-badge status-invalid">
+              <span>✕</span>
+              <span>INVALID / FORGED PASS</span>
+            </div>
+            <h2 style="font-size: 1.6rem; color: #FF416C; margin: 0.5rem 0;">Verification Failed</h2>
+            <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+              The Pass ID <strong>${passId}</strong> was not found in the official NKOCET AssociationHub registry.
+            </p>
+            <div style="background: rgba(255, 65, 108, 0.08); border-left: 3px solid #FF416C; padding: 1rem; font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
+              ⚠️ Possible causes: The ID was entered incorrectly, the student has not completed registration, or this is an unauthorized pass.
+            </div>
+            <button class="btn-secondary" onclick="inputField.focus();" style="padding: 0.65rem 1.5rem;">
+              <span>TRY ANOTHER PASS ID</span>
+            </button>
+          `;
+        }
+      } catch (err) {
+        playScanAlert();
+        outputContainer.innerHTML = `
+          <div class="status-badge status-invalid">
+            <span>⚠️</span>
+            <span>CONNECTION ERROR</span>
+          </div>
+          <p style="color: var(--color-text-secondary); margin-top: 1rem;">
+            Unable to connect to the AssociationHub backend server. Please verify server connectivity.
+          </p>
+        `;
+      }
+    }
+
+    async function recordGateAttendance(passId) {
+      const select = document.getElementById('checkpoint-select');
+      const checkpoint = select ? select.value : 'Central Campus Main Gate';
+      const feedback = document.getElementById('checkin-feedback');
+      const btn = document.getElementById('btn-record-checkin');
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span>Logging Attendance...</span><span>⏳</span>`;
+      }
+
+      try {
+        const resp = await apiFetch('/api/gate/check-in', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pass_id: passId, checkpoint: checkpoint })
+        });
+        const data = await resp.json();
+
+        if (resp.ok && data.success) {
+          playCheckinCelebration();
+          if (feedback) {
+            feedback.style.display = 'block';
+            feedback.style.background = 'rgba(25, 214, 140, 0.15)';
+            feedback.style.border = '1px solid #19D68C';
+            feedback.style.color = '#19D68C';
+            feedback.innerHTML = `✓ <strong>ENTRY LOGGED:</strong> ${data.message} at ${data.checkpoint} (${data.timestamp})`;
+          }
+          if (btn) {
+            btn.innerHTML = `<span>✓ ENTRY RECORDED IN LEDGER</span><span>🎟️</span>`;
+            setTimeout(() => {
+              btn.disabled = false;
+              btn.innerHTML = `<span>CONFIRM ANOTHER ENTRY AT GATE</span><span>🎟️</span>`;
+            }, 3000);
+          }
+        } else {
+          playScanAlert();
+          if (feedback) {
+            feedback.style.display = 'block';
+            feedback.style.background = 'rgba(255, 65, 108, 0.15)';
+            feedback.style.border = '1px solid #FF416C';
+            feedback.style.color = '#FF416C';
+            feedback.innerHTML = `⚠️ ${data.detail || 'Failed to record entry'}`;
+          }
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = `<span>RETRY ENTRY RECORDING</span><span>🔄</span>`;
+          }
+        }
+      } catch (err) {
+        playScanAlert();
+        if (feedback) {
+          feedback.style.display = 'block';
+          feedback.style.background = 'rgba(255, 65, 108, 0.15)';
+          feedback.style.border = '1px solid #FF416C';
+          feedback.style.color = '#FF416C';
+          feedback.innerHTML = `⚠️ Connection error: ${err.message}`;
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `<span>RETRY ENTRY RECORDING</span><span>🔄</span>`;
+        }
+      }
+    }
+
+    
+    let _pendingRevokePassId = '';
+    let _pendingRevokeStudentName = '';
+
+    function escapeHtml(str) {
+      return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    window.openRevokeModal = function(passId, studentName) {
+      _pendingRevokePassId = passId || '';
+      _pendingRevokeStudentName = studentName || '';
+      const modal = document.getElementById('revoke-modal-overlay');
+      const desc = document.getElementById('revoke-modal-desc');
+      const pinInput = document.getElementById('revoke-admin-pin');
+      const errEl = document.getElementById('revoke-error-msg');
+      const confirmBtn = document.getElementById('btn-confirm-revoke');
+
+      if (confirmBtn) {
+        confirmBtn.disabled = false;
+        confirmBtn.innerHTML = `<span>PERMANENTLY REVOKE</span>`;
+      }
+      if (desc) {
+        desc.innerHTML = `Are you sure you want to permanently revoke and delete the official membership pass for <strong>${escapeHtml(studentName)}</strong>?<br><br><span style="font-family: monospace; color: var(--brand-gold);">Pass ID: ${passId}</span><br><br><span style="color: #ff5252; font-size: 0.8rem;">⚠️ This will immediately purge the record from the SQLite database (associationhub.db) and mark the account restricted.</span>`;
+      }
+      if (errEl) errEl.style.display = 'none';
+      if (pinInput) {
+        pinInput.value = sessionStorage.getItem('orchid_admin_pin') || '';
+      }
+      if (modal) modal.style.display = 'flex';
+      setTimeout(() => { if (pinInput) pinInput.focus(); }, 100);
+    };
+
+    window.closeRevokeModal = function() {
+      const modal = document.getElementById('revoke-modal-overlay');
+      if (modal) modal.style.display = 'none';
+      _pendingRevokePassId = '';
+      _pendingRevokeStudentName = '';
+    };
+
+    window.executeRevokePass = async function() {
+      const passId = _pendingRevokePassId;
+      const studentName = _pendingRevokeStudentName;
+      const pinInput = document.getElementById('revoke-admin-pin');
+      const errEl = document.getElementById('revoke-error-msg');
+      const confirmBtn = document.getElementById('btn-confirm-revoke');
+      const pin = (pinInput ? pinInput.value : '').trim();
+
+      if (!pin) {
+        if (errEl) {
+          errEl.style.display = 'block';
+          errEl.textContent = 'Please enter the administrator PIN configured on the backend.';
+        }
+        if (pinInput) pinInput.focus();
+        return;
+      }
+
+      if (confirmBtn) {
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = `<span>Revoking Pass... ⏳</span>`;
+      }
+
+      try {
+        const resp = await apiFetch(`/api/memberships/${encodeURIComponent(passId)}`, {
+          method: 'DELETE',
+          headers: {
+            'X-Admin-Key': pin,
+            'X-Admin-Pin': pin
+          }
+        });
+        const res = await resp.json();
+
+        if (resp.ok && res.success) {
+          sessionStorage.setItem('orchid_admin_pin', pin);
+          closeRevokeModal();
+
+          try {
+            let passList = JSON.parse(localStorage.getItem('orchid_saved_passes') || '[]');
+            passList = passList.filter(p => p.pass_id !== passId);
+            localStorage.setItem('orchid_saved_passes', JSON.stringify(passList));
+          } catch(e) {}
+
+          alert(`✓ SUCCESS: Pass for ${studentName} (${passId}) has been permanently revoked and removed from SQLite database.`);
+          verifyPass(passId);
+        } else {
+          if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = `<span>PERMANENTLY REVOKE</span>`;
+          }
+          if (errEl) {
+            errEl.style.display = 'block';
+            errEl.textContent = res.detail || 'Authorization failed: Invalid Administrator PIN.';
+          }
+        }
+      } catch (err) {
+        if (confirmBtn) {
+          confirmBtn.disabled = false;
+          confirmBtn.innerHTML = `<span>PERMANENTLY REVOKE</span>`;
+        }
+        if (errEl) {
+          errEl.style.display = 'block';
+          errEl.textContent = 'Failed to connect to backend server: ' + err.message;
+        }
+      }
+    };
+
+    window.revokePass = function(passId, studentName) {
+      window.openRevokeModal(passId, studentName);
+    };
+
+
+    verifyBtn.addEventListener('click', () => {
+      verifyPass(inputField.value);
+    });
+
+    inputField.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') verifyPass(inputField.value);
+    });
+
+    // Auto verify if pass_id query parameter exists
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const passId = params.get('pass_id');
+      const sig = params.get('sig');
+      if (passId) {
+        verifyPass(passId, sig);
+      }
+    });
+  </script>
+
+  <!-- Interactive Administrator Revoke & Delete Modal Dialog -->
+  <div id="revoke-modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 99999; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+    <div style="background: #111726; border: 1px solid rgba(255, 65, 108, 0.4); border-radius: 16px; padding: 2rem; max-width: 460px; width: 90%; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 65, 108, 0.2); animation: fadeIn 0.25s ease;">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 65, 108, 0.15); border: 1px solid #FF416C; color: #FF416C; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">🔒</div>
+        <h3 style="color: #FF416C; margin: 0; font-size: 1.25rem; font-weight: 700;">Revoke &amp; Delete Pass</h3>
+      </div>
+      <div id="revoke-modal-desc" style="font-size: 0.86rem; color: #cbd5e1; margin-bottom: 1.25rem; line-height: 1.55;"></div>
+      
+      <div style="margin-bottom: 1.25rem;">
+        <label for="revoke-admin-pin" style="display: block; font-size: 0.76rem; color: var(--brand-gold); margin-bottom: 0.4rem; font-weight: 700; letter-spacing: 0.05em;">MASTER ADMINISTRATOR PIN *</label>
+        <input type="password" id="revoke-admin-pin" placeholder="Enter the configured administrator PIN" style="width: 100%; padding: 0.7rem 0.9rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.6); color: #FFFFFF; font-family: monospace; font-size: 1.05rem; letter-spacing: 0.1em;" autocomplete="current-password">
+        <div id="revoke-error-msg" style="display: none; color: #ff5252; font-size: 0.8rem; margin-top: 0.45rem; font-weight: 600;"></div>
+      </div>
+      
+      <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+        <button type="button" class="btn-secondary" onclick="closeRevokeModal()" style="padding: 0.55rem 1.15rem; font-size: 0.85rem;">Cancel</button>
+        <button type="button" class="btn-danger" id="btn-confirm-revoke" onclick="executeRevokePass()" style="padding: 0.55rem 1.35rem; font-size: 0.85rem; font-weight: 700; background: #FF416C; border-color: #FF416C;">
+          <span>PERMANENTLY REVOKE</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

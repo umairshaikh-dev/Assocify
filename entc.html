@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" data-dept="aexs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEXS — Electronics & Telecommunication Engineering Association | NKOCET</title>
+  <meta name="description" content="Electronics and Telecommunication Engineering Association (AEXS) at NK Orchid College of Engineering & Technology.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="AssociationHub Home">
+        <div class="brand-logo-frame">
+          <img src="nkocet logo.png.webp" alt="NKOCET Logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:800;color:#080A0F;\'>NK</span>'">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Association<span>Hub</span></span>
+          <span class="brand-subtitle">AEXS Portal</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          
+          <!-- Quick Department Dropdown -->
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+              <span>Switch Dept</span>
+              <span class="nav-dropdown-chevron">▼</span>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="cep-cesa.html" class="nav-dropdown-link"><span class="dept-pill-dot csesa"></span>CSESA — Computer Science</a></li>
+              <li><a href="cep-mesa.html" class="nav-dropdown-link"><span class="dept-pill-dot mesa"></span>MESA — Mechanical Engg</a></li>
+              <li><a href="esa.html" class="nav-dropdown-link"><span class="dept-pill-dot eesa"></span>EESA — Electrical Engg</a></li>
+              <li><a href="civil.html" class="nav-dropdown-link"><span class="dept-pill-dot cesa"></span>CESA — Civil Engineering</a></li>
+              <li><a href="entc.html" class="nav-dropdown-link"><span class="dept-pill-dot aexs"></span>AEXS — Electronics & Telecom</a></li>
+              <li><a href="aids.html" class="nav-dropdown-link"><span class="dept-pill-dot aiesa"></span>AIESA — AI & Data Science</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#labs" class="nav-link">Laboratories</a></li>
+          <li><a href="#events" class="nav-link">Events</a></li>
+          <li><a href="#committee" class="nav-link">Committee</a></li>
+          <li><a href="cep-about us.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-action">
+        <button type="button" class="btn-secondary" onclick="openSpotlightSearch()" style="padding: 0.45rem 0.85rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;" title="Spotlight Quick Search (Ctrl + K)">
+          <span>🔍</span>
+          <span style="font-size: 0.72rem; background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; font-family: var(--font-mono);">Ctrl K</span>
+        </button>
+        <a href="verify.html" class="btn-secondary" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; border-color: rgba(25, 214, 140, 0.4); color: #19D68C; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span>📱 Verify</span>
+        </a>
+
+        <button type="button" class="btn-nav-accent" onclick="openMembershipModal('AEXS')">
+          <span>Join AEXS</span>
+          <span>📝</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="mobile-drawer" aria-label="Mobile Navigation">
+    <div>
+      <div class="brand-text" style="margin-bottom: 2rem;">
+        <span class="brand-title" style="font-size: 1.4rem;">AEXS<span>Hub</span></span>
+        <span class="brand-subtitle">Electronics & Telecommunication</span>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link">About AEXS</a></li>
+        <li><a href="#labs" class="mobile-nav-link">Laboratories</a></li>
+        <li><a href="#events" class="mobile-nav-link">Events</a></li>
+        <li><a href="#committee" class="mobile-nav-link">Committee</a></li>
+        <li><a href="cep-about us.html" class="mobile-nav-link">👥 About Project Team</a></li>
+        <li style="padding: 0.5rem 0; font-size: 0.75rem; text-transform: uppercase; color: var(--accent-aexs); letter-spacing: 0.05em; font-weight: 700;">Switch Department:</li>
+        <li><a href="cep-cesa.html" class="mobile-nav-link">💻 CSESA (Computer Science)</a></li>
+        <li><a href="cep-mesa.html" class="mobile-nav-link">⚙️ MESA (Mechanical)</a></li>
+        <li><a href="esa.html" class="mobile-nav-link">⚡ EESA (Electrical)</a></li>
+        <li><a href="civil.html" class="mobile-nav-link">🏗️ CESA (Civil)</a></li>
+        <li><a href="aids.html" class="mobile-nav-link">🧠 AIESA (AI & DS)</a></li>
+        <li style="margin-top: 0.75rem;"><button class="btn-primary" style="width: 100%; justify-content: center;" onclick="openMembershipModal('AEXS')"><span>Join AEXS</span><span>📝</span></button></li>
+      </ul>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+      © 2026 AEXS • NKOCET
+    </div>
+  </aside>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Unique Department Hero (Signal Crimson / RF Wave Concept) -->
+  <section class="dept-hero">
+    <div class="container dept-hero-grid">
+      <div class="dept-hero-content">
+        <div class="dept-eyebrow">
+          <span class="dot"></span>
+          <span>Department of Electronics & Telecommunication</span>
+        </div>
+
+        <h1 class="dept-hero-title">
+          AEXS — ELECTRONICS & TELECOMMUNICATION ASSOCIATION
+        </h1>
+
+        <p class="dept-hero-desc">
+          Connecting devices across physical and wireless frontiers through RF microwave engineering, 5G signal propagation, FPGA hardware design, and Internet of Things (IoT) sensor meshes.
+        </p>
+
+        <div class="dept-meta-bar">
+          <div class="dept-meta-item">
+            <span>Faculty In-Charge:</span>
+            <strong>Dr. P. D. Bahirgonde (HOD)</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Student Chapter:</span>
+            <strong>AEXS (Est. NKOCET)</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Infrastructure:</span>
+            <strong>06 Specialized Hardware Labs</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department Wave / Signal Motif Visual -->
+      <div class="dept-hero-visual" aria-hidden="true">
+        <div class="dept-visual-circle" style="border-color: var(--accent-aexs); box-shadow: 0 0 35px var(--glow-aexs);">
+          <div style="width: 130px; height: 130px; border-radius: 50%; border: 1px dashed rgba(255, 65, 108, 0.4); display: flex; align-items: center; justify-content: center; background: rgba(255, 65, 108, 0.05);">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-aexs);">~RF_5G~</span>
+          </div>
+        </div>
+        <div class="dept-visual-icon">📡</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Association Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Overview</span>
+        </div>
+        <h2 class="section-title">About the Association</h2>
+        <p class="section-subtitle">
+          The Electronics & Telecommunication Engineering Association (AEXS) at NKOCET is a dynamic community exploring signal transmission, embedded microcontroller circuits, and VLSI microchip architecture. We connect students with the communication networks powering the modern connected planet.
+        </p>
+      </div>
+
+      <!-- Objectives Grid -->
+      <div id="objectives" class="objectives-grid">
+        <div class="objective-card">
+          <h3>📡 Next-Gen Telecom & 5G</h3>
+          <p>Master wireless microwave links, mobile cellular architecture, optical fiber wavelength multiplexing, and satellite link budgets.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🤖 Embedded Microcontrollers & RTOS</h3>
+          <p>Develop hands-on competence with ARM Cortex, ESP32, FreeRTOS task scheduling, device drivers, and low-power sensor integration.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>📊 Digital Signal Processing (DSP)</h3>
+          <p>Analyze spectral transforms, digital FIR/IIR filter topologies, acoustic beamforming, and image compression algorithms.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🔌 VLSI & Microelectronics</h3>
+          <p>Design and simulate digital CMOS layouts, FPGA hardware description (VHDL/Verilog), ASIC synthesis, and static timing constraints.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🌐 IoT & Sensor Networks</h3>
+          <p>Build end-to-end telemetry solutions leveraging MQTT, CoAP protocols, LoRaWAN long-range gateways, and real-time cloud data dashboards.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🎓 Emerging RF Communications</h3>
+          <p>Investigate cognitive radio spectrum sensing, software-defined radio (SDR) platforms, and intelligent antenna beamforming.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Department Laboratories Section (Verified 6 Labs) -->
+  <section class="section" id="labs" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Infrastructure</span>
+        </div>
+        <h2 class="section-title">Specialized E&TC Laboratories</h2>
+        <p class="section-subtitle">
+          High-frequency testing instruments, embedded prototyping stations, and RF transmission testbenches.
+        </p>
+      </div>
+
+      <div class="labs-grid">
+        <!-- Lab 1 -->
+        <div class="lab-card">
+          <div class="lab-icon">🔌</div>
+          <h3>Analog Circuit & Instrumentation Lab</h3>
+          <ul>
+            <li>High-Bandwidth Digital Storage Oscilloscopes</li>
+            <li>Low-Distortion Function & Waveform Synthesizers</li>
+            <li>Operational Amplifier Active Filter Benches</li>
+            <li>BJT & MOSFET Small-Signal Analysis Stations</li>
+            <li>Precision Dual-Tracking Regulated Power Supplies</li>
+          </ul>
+        </div>
+
+        <!-- Lab 2 -->
+        <div class="lab-card">
+          <div class="lab-icon">💻</div>
+          <h3>Digital Design & VLSI Systems Lab</h3>
+          <ul>
+            <li>Xilinx Spartan & Artix-7 FPGA Development Kits</li>
+            <li>ModelSim & Vivado HDL Simulation Suites</li>
+            <li>Combinational & Sequential Logic Trainer Racks</li>
+            <li>VHDL and Verilog Synthesis Toolchains</li>
+            <li>Semiconductor Digital IC Tester Benches</li>
+          </ul>
+        </div>
+
+        <!-- Lab 3 -->
+        <div class="lab-card">
+          <div class="lab-icon">🤖</div>
+          <h3>Microcontroller & Embedded Systems Lab</h3>
+          <ul>
+            <li>ARM Cortex-M Embedded Prototyping Workstations</li>
+            <li>ESP32 Dual-Core Wi-Fi & Bluetooth Modules</li>
+            <li>Raspberry Pi Embedded Linux Single-Board Units</li>
+            <li>I2C, SPI & CAN Bus Logic Protocol Analyzers</li>
+            <li>Industrial Sensor & Actuator Interface Modules</li>
+          </ul>
+        </div>
+
+        <!-- Lab 4 -->
+        <div class="lab-card">
+          <div class="lab-icon">📡</div>
+          <h3>RF, Microwave & Fiber Optic Lab</h3>
+          <ul>
+            <li>X-Band Microwave Klystron & Gunn Diode Testbenches</li>
+            <li>Fiber Optic Laser Source & OTDR Power Meters</li>
+            <li>Digital Pulse (PAM, PWM, PCM) Modulation Units</li>
+            <li>Yagi-Uda, Dipole & Microstrip Patch Antenna Benches</li>
+            <li>Spectrum Analyzers & RF Power Meters</li>
+          </ul>
+        </div>
+
+        <!-- Lab 5 -->
+        <div class="lab-card">
+          <div class="lab-icon">📊</div>
+          <h3>Digital Signal Processing (DSP) Lab</h3>
+          <ul>
+            <li>Texas Instruments TMS320C67x DSP Starter Kits</li>
+            <li>MATLAB Signal Processing & Filter Design Toolboxes</li>
+            <li>Real-Time Audio Equalizer & Vocoder Testbeds</li>
+            <li>Computer Vision & Edge Detection Algorithm Units</li>
+            <li>Fast Fourier Transform (FFT) Real-Time Processors</li>
+          </ul>
+        </div>
+
+        <!-- Lab 6 -->
+        <div class="lab-card">
+          <div class="lab-icon">🌐</div>
+          <h3>IoT & Smart Wireless Networks Lab</h3>
+          <ul>
+            <li>LoRaWAN 868MHz Long-Range Gateway Node Network</li>
+            <li>Zigbee Wireless Mesh Sensor Transceiver Modules</li>
+            <li>Cloud MQTT Broker & Dashboard Telemetry Displays</li>
+            <li>Environmental Air Quality & Ultrasonic Sensor Racks</li>
+            <li>Battery-Free Energy Harvesting Transducer Kits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="section" id="events">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Events & Workshops</span>
+        </div>
+        <h2 class="section-title">AEXS Event Calendar</h2>
+        <p class="section-subtitle">
+          Flagship wireless technical symposia and embedded hardware workshops.
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <!-- Event 1: TechWave -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-upcoming">Upcoming Announcement</span>
+            <h3 class="event-title">TechWave Flagship Symposium</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>DATE TO BE ANNOUNCED</span>
+            </div>
+            <p class="event-details">
+              Annual E&TC technical festival featuring analog breadboard circuit design showdowns, PCB layout competitions, autonomous line-following robotics, and IoT hardware expos.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Venue: E&TC Labs</span>
+              <span class="event-tag">Prize Pool: ₹65,000</span>
+              <span class="event-tag">8+ Competitions</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-aexs);">Session 2026</span>
+            <button class="btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;" onclick="showInteractiveModal('TechWave 2026', 'Official competition dates and hardware specifications will be declared by AEXS faculty advisors.')">Register Interest</button>
+          </div>
+        </article>
+
+        <!-- Event 2: Embedded Systems (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">Embedded Systems & IoT Intensive</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 12–14 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Three-day practical workshop building cloud-connected sensor nodes with ESP32 microcontrollers, MQTT messaging brokers, and mobile app dashboards.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Duration: 3 Days</span>
+              <span class="event-tag">Format: Hardware Lab</span>
+              <span class="event-tag">Build IoT Device</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-aexs);">E&TC Micro Lab</span>
+          </div>
+        </article>
+
+        <!-- Event 3: Network Operations Center (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">Telecom Operations Center Study Tour</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 22 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Field inspection of telecom switching facility observing cellular Base Station Subsystems (BSS), Mobile Switching Centers (MSC), and optical distribution racks.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Site: Mobile Network Center</span>
+              <span class="event-tag">Transport: Provided</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-aexs);">Network Visit</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committee Section (Truthful, non-fabricated) -->
+  <section class="section" id="committee" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Governance</span>
+        </div>
+        <h2 class="section-title">Association Committee</h2>
+        <p class="section-subtitle">
+          Guided by E&TC departmental faculty and student technical coordinators.
+        </p>
+      </div>
+
+      <div class="committee-grid">
+        <div class="committee-card">
+          <div class="committee-avatar" style="border-color: var(--accent-aexs); color: var(--accent-aexs); background: var(--subtle-aexs);">PB</div>
+          <h3 class="committee-name">Dr. P. D. Bahirgonde</h3>
+          <div class="committee-role">Head of Department & Professor</div>
+          <p class="committee-note">Department of Electronics & Telecommunication, NKOCET</p>
+        </div>
+
+        <div class="committee-card">
+          <div class="committee-avatar" style="border-style: dashed; color: var(--color-text-muted);">26</div>
+          <h3 class="committee-name">AEXS Student Council</h3>
+          <div class="committee-role">Session 2026 Nominations</div>
+          <p class="committee-note">Student coordinators managing robotics challenges, PCB design workshops, and telecom seminars are elected annually.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership CTA Box -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box" style="border-color: var(--accent-aexs); box-shadow: 0 0 35px var(--glow-aexs);">
+        <span class="section-badge" style="border-color: var(--accent-aexs); color: var(--accent-aexs); background: var(--subtle-aexs); margin-bottom: 1.5rem;">
+          <span class="dot" style="background: var(--accent-aexs); box-shadow: 0 0 8px var(--accent-aexs);"></span>
+          <span>Connect With AEXS</span>
+        </span>
+        <h2>Plug Into the Wireless Network</h2>
+        <p>
+          Become an AEXS member to access oscilloscope workstations, FPGA development kits, robotics workshops, and regional telecom tours.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary" style="background: var(--accent-aexs); border-color: var(--accent-aexs); box-shadow: 0 0 25px var(--glow-aexs);" onclick="openMembershipModal('AEXS')">
+            <span>APPLY FOR AEXS MEMBERSHIP</span>
+            <span>📝</span>
+          </button>
+          <a href="index.html#associations" class="btn-secondary">
+            <span>EXPLORE OTHER ASSOCIATIONS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Modal & Back to Top -->
+  <div id="interactive-modal-overlay" class="interactive-modal-overlay" role="dialog" aria-modal="true">
+    <div class="interactive-modal">
+      <h3 id="modal-title">Notification</h3>
+      <p id="modal-desc">Details</p>
+      <button id="modal-close-btn" class="interactive-modal-close">Close</button>
+    </div>
+  </div>
+  <button id="back-to-top" class="btn-back-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 1.4rem;">AEXS<span>Hub</span></span>
+            <span class="brand-subtitle">Electronics & Telecommunication • NKOCET</span>
+          </div>
+          <p>Official student association for Electronics & Telecommunication Engineering students at N.K. Orchid College of Engineering & Technology, Solapur.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Portal Home</a></li>
+            <li><a href="#about">About AEXS</a></li>
+            <li><a href="#labs">Laboratories</a></li>
+            <li><a href="#events">Symposium & Events</a></li>
+            <li><a href="cep-about us.html">Project Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Associations</h4>
+          <ul class="footer-links">
+            <li><a href="cep-cesa.html">CSESA (Computer Science)</a></li>
+            <li><a href="cep-mesa.html">MESA (Mechanical)</a></li>
+            <li><a href="esa.html">EESA (Electrical)</a></li>
+            <li><a href="civil.html">CESA (Civil)</a></li>
+            <li><a href="aids.html">AIESA (AI & Data Science)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Department Office</h4>
+          <p style="font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            Department of Electronics & Telecommunication<br>
+            NKOCET Campus, Tale-Hipparaga, Solapur.
+          </p>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-aexs);">Connect • Innovate • Transmit</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AEXS — NK Orchid College of Engineering & Technology. All rights reserved.</div>
+        <div style="font-family: var(--font-mono); font-size: 0.8rem;">AssociationHub Digital Portal</div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Functional Membership Registration Modal & Acknowledgment Pass -->
+  <div id="membership-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="membership-title">
+    <div class="membership-modal">
+      <button class="membership-modal-close" aria-label="Close modal">✕</button>
+
+      <div id="membership-form-wrap">
+        <span class="quiz-badge" style="margin-bottom: 0.75rem;">Official Membership Intake 2026</span>
+        <h2 id="membership-title" class="membership-modal-title">Join a Department Club</h2>
+        <p class="membership-modal-subtitle">
+          Submit your details to register interest in NKOCET departmental associations. Your inquiry will be registered and an official membership pass generated instantly.
+        </p>
+
+        <!-- Quick Digi-Pass Retrieval -->
+        <div style="background: rgba(255, 184, 0, 0.08); border: 1px solid rgba(255, 184, 0, 0.3); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; margin-bottom: 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-gold);">🔍 Already Joined?</span>
+            <span style="font-size: 0.76rem; color: var(--color-text-secondary); margin-left: 0.3rem;">Retrieve your saved Digi-Pass & QR:</span>
+          </div>
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex: 1; min-width: 220px; justify-content: flex-end;">
+            <input type="text" id="quick-pass-lookup" placeholder="Enter PRN / Roll (e.g. C-62)" style="padding: 0.32rem 0.6rem; font-size: 0.78rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; width: 150px;">
+            <button type="button" class="btn-secondary" onclick="lookupStudentPass()" style="padding: 0.32rem 0.75rem; font-size: 0.78rem; white-space: nowrap;">
+              <span>View Pass 🎫</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="membership-form">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-name" class="form-label">Full Name *</label>
+              <input type="text" id="member-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="member-roll" class="form-label">Roll No / PRN *</label>
+              <input type="text" id="member-roll" class="form-input" placeholder="e.g. C-62 or EN2024..." required>
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>
+          <!-- Official Student Gmail -->
+          <div class="form-group" style="background: rgba(13, 18, 32, 0.45); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 1rem;">
+            <label for="member-email" class="form-label">Official Student Gmail *</label>
+            <input type="email" id="member-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
+          </div>
+
+<div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>

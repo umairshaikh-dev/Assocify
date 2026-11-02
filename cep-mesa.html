@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" data-dept="mesa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MESA — Mechanical Engineering Students Association | NKOCET</title>
+  <meta name="description" content="Mechanical Engineering Students Association (MESA) at NK Orchid College of Engineering & Technology.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="AssociationHub Home">
+        <div class="brand-logo-frame">
+          <img src="nkocet logo.png.webp" alt="NKOCET Logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:800;color:#080A0F;\'>NK</span>'">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Association<span>Hub</span></span>
+          <span class="brand-subtitle">MESA Portal</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          
+          <!-- Quick Department Dropdown -->
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+              <span>Switch Dept</span>
+              <span class="nav-dropdown-chevron">▼</span>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="cep-cesa.html" class="nav-dropdown-link"><span class="dept-pill-dot csesa"></span>CSESA — Computer Science</a></li>
+              <li><a href="cep-mesa.html" class="nav-dropdown-link"><span class="dept-pill-dot mesa"></span>MESA — Mechanical Engg</a></li>
+              <li><a href="esa.html" class="nav-dropdown-link"><span class="dept-pill-dot eesa"></span>EESA — Electrical Engg</a></li>
+              <li><a href="civil.html" class="nav-dropdown-link"><span class="dept-pill-dot cesa"></span>CESA — Civil Engineering</a></li>
+              <li><a href="entc.html" class="nav-dropdown-link"><span class="dept-pill-dot aexs"></span>AEXS — Electronics & Telecom</a></li>
+              <li><a href="aids.html" class="nav-dropdown-link"><span class="dept-pill-dot aiesa"></span>AIESA — AI & Data Science</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#labs" class="nav-link">Laboratories</a></li>
+          <li><a href="#events" class="nav-link">Events</a></li>
+          <li><a href="#committee" class="nav-link">Committee</a></li>
+          <li><a href="cep-about us.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-action">
+        <button type="button" class="btn-secondary" onclick="openSpotlightSearch()" style="padding: 0.45rem 0.85rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;" title="Spotlight Quick Search (Ctrl + K)">
+          <span>🔍</span>
+          <span style="font-size: 0.72rem; background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; font-family: var(--font-mono);">Ctrl K</span>
+        </button>
+        <a href="verify.html" class="btn-secondary" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; border-color: rgba(25, 214, 140, 0.4); color: #19D68C; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span>📱 Verify</span>
+        </a>
+
+        <button type="button" class="btn-nav-accent" onclick="openMembershipModal('MESA')">
+          <span>Join MESA</span>
+          <span>📝</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="mobile-drawer" aria-label="Mobile Navigation">
+    <div>
+      <div class="brand-text" style="margin-bottom: 2rem;">
+        <span class="brand-title" style="font-size: 1.4rem;">MESA<span>Hub</span></span>
+        <span class="brand-subtitle">Mechanical Engineering</span>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link">About MESA</a></li>
+        <li><a href="#labs" class="mobile-nav-link">Laboratories</a></li>
+        <li><a href="#events" class="mobile-nav-link">Events</a></li>
+        <li><a href="#committee" class="mobile-nav-link">Committee</a></li>
+        <li><a href="cep-about us.html" class="mobile-nav-link">👥 About Project Team</a></li>
+        <li style="padding: 0.5rem 0; font-size: 0.75rem; text-transform: uppercase; color: var(--accent-mesa); letter-spacing: 0.05em; font-weight: 700;">Switch Department:</li>
+        <li><a href="cep-cesa.html" class="mobile-nav-link">💻 CSESA (Computer Science)</a></li>
+        <li><a href="esa.html" class="mobile-nav-link">⚡ EESA (Electrical)</a></li>
+        <li><a href="civil.html" class="mobile-nav-link">🏗️ CESA (Civil)</a></li>
+        <li><a href="entc.html" class="mobile-nav-link">📡 AEXS (ENTC)</a></li>
+        <li><a href="aids.html" class="mobile-nav-link">🧠 AIESA (AI & DS)</a></li>
+        <li style="margin-top: 0.75rem;"><button class="btn-primary" style="width: 100%; justify-content: center;" onclick="openMembershipModal('MESA')"><span>Join MESA</span><span>📝</span></button></li>
+      </ul>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+      © 2026 MESA • NKOCET
+    </div>
+  </aside>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Unique Department Hero (Industrial Orange / Gear Concept) -->
+  <section class="dept-hero">
+    <div class="container dept-hero-grid">
+      <div class="dept-hero-content">
+        <div class="dept-eyebrow">
+          <span class="dot"></span>
+          <span>Department of Mechanical Engineering</span>
+        </div>
+
+        <h1 class="dept-hero-title">
+          MESA — MECHANICAL ENGINEERING STUDENTS ASSOCIATION
+        </h1>
+
+        <p class="dept-hero-desc">
+          Driving technical power through precision design, advanced CNC manufacturing, robotics automation, and national competitive vehicle development including BAJA and SUPRA SAE.
+        </p>
+
+        <div class="dept-meta-bar">
+          <div class="dept-meta-item">
+            <span>Faculty In-Charge:</span>
+            <strong>Prof. S. S. Kale (HOD)</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Student Chapter:</span>
+            <strong>MESA (Est. NKOCET)</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Infrastructure:</span>
+            <strong>06 Specialized Research Labs</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department Gear / Blueprint Motif Visual -->
+      <div class="dept-hero-visual" aria-hidden="true">
+        <div class="dept-visual-circle" style="border-color: var(--accent-mesa); box-shadow: 0 0 35px var(--glow-mesa);">
+          <div style="width: 130px; height: 130px; border-radius: 50%; border: 1px dashed rgba(255, 138, 36, 0.4); display: flex; align-items: center; justify-content: center; background: rgba(255, 138, 36, 0.05);">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-mesa);">[CAD/CAM]</span>
+          </div>
+        </div>
+        <div class="dept-visual-icon">⚙️</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Association Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Overview</span>
+        </div>
+        <h2 class="section-title">About the Association</h2>
+        <p class="section-subtitle">
+          The Mechanical Engineering Association at NKOCET bridges foundational physics with high-performance manufacturing. From hands-on metal fabrication to computational finite element analysis (FEA), MESA equips engineers for the industrial frontier.
+        </p>
+      </div>
+
+      <!-- Objectives Grid -->
+      <div id="objectives" class="objectives-grid">
+        <div class="objective-card">
+          <h3>🔧 Technical Excellence</h3>
+          <p>Enhance practical engineering execution through intensive hands-on workshops on CAD/CAM modeling, 5-axis CNC machining, advanced welding, and metallurgy.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🏭 Industrial Exposure</h3>
+          <p>Organize guided industrial visits to automobile assembly plants, heavy forging lines, and thermal power generation hubs for real-world manufacturing insight.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🚗 Competitive Vehicle Design</h3>
+          <p>Support interdisciplinary student teams engineering off-road all-terrain BAJA buggies, formula student go-karts, and electric drive powertrains.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🎯 National Competition Mentorship</h3>
+          <p>Prepare student cohorts for BAJA SAE, SUPRA SAE, E-BAJA, and national technical paper presentation stages with senior faculty guidance.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🌱 Sustainable Engineering</h3>
+          <p>Promote energy-efficient design, eco-conscious material selection, waste-heat recovery mechanisms, and alternative renewable fuels.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>📐 Precision CAD/CAE Modeling</h3>
+          <p>Foster design thinking through 3D parametric modeling contests, structural stress simulations, and aerodynamic wind tunnel studies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Department Laboratories Section (Verified 6 Labs) -->
+  <section class="section" id="labs" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Infrastructure</span>
+        </div>
+        <h2 class="section-title">Specialized Research Laboratories</h2>
+        <p class="section-subtitle">
+          State-of-the-art testing rigs and computational environments supporting both academic curriculum and association projects.
+        </p>
+      </div>
+
+      <div class="labs-grid">
+        <!-- Lab 1 -->
+        <div class="lab-card">
+          <div class="lab-icon">🔬</div>
+          <h3>Manufacturing & Fabrication Lab</h3>
+          <ul>
+            <li>Industrial CNC Milling & Turning Centers</li>
+            <li>Heavy Precision Engine Lathes & Shapers</li>
+            <li>TIG / MIG / Arc Welding Workstations</li>
+            <li>Sheet Metal Bending & Shearing Units</li>
+            <li>Foundry, Sand Casting & Forging Hearth</li>
+          </ul>
+        </div>
+
+        <!-- Lab 2 -->
+        <div class="lab-card">
+          <div class="lab-icon">💻</div>
+          <h3>CAD / CAM / CAE Center</h3>
+          <ul>
+            <li>Dassault Systèmes SolidWorks Workstations</li>
+            <li>Autodesk AutoCAD Mechanical Drafting</li>
+            <li>CATIA Parametric Surfacing Suites</li>
+            <li>ANSYS Mechanical & CFD Simulation Engines</li>
+            <li>CAM Toolpath Generation Modules</li>
+          </ul>
+        </div>
+
+        <!-- Lab 3 -->
+        <div class="lab-card">
+          <div class="lab-icon">🔥</div>
+          <h3>Thermal & IC Engines Lab</h3>
+          <ul>
+            <li>Computerized Multi-Cylinder Engine Test Rigs</li>
+            <li>Vapor Compression Refrigeration Testbeds</li>
+            <li>Shell & Tube Heat Exchanger Calorimeters</li>
+            <li>Industrial Boiler & Steam Flow Cut-Sections</li>
+            <li>Air Conditioning & Psychrometric Setup</li>
+          </ul>
+        </div>
+
+        <!-- Lab 4 -->
+        <div class="lab-card">
+          <div class="lab-icon">💧</div>
+          <h3>Fluid Mechanics & Machinery Lab</h3>
+          <ul>
+            <li>Subsonic Aerodynamic Wind Tunnel System</li>
+            <li>Pelton Wheel & Francis Turbine Test Setups</li>
+            <li>Centrifugal & Reciprocating Pump Dynamometers</li>
+            <li>Venturi & Orifice Flow Measurement Calibration</li>
+            <li>Hydraulic Press & Actuator Circuits</li>
+          </ul>
+        </div>
+
+        <!-- Lab 5 -->
+        <div class="lab-card">
+          <div class="lab-icon">📏</div>
+          <h3>Metrology & Quality Inspection Lab</h3>
+          <ul>
+            <li>Coordinate Measuring Machine (CMM)</li>
+            <li>Optical Profile Projector & Toolmaker's Scope</li>
+            <li>Electronic Surface Roughness Testers</li>
+            <li>Rockwell & Brinell Hardness Testing Systems</li>
+            <li>High-Precision Micrometer & Gauge Sets</li>
+          </ul>
+        </div>
+
+        <!-- Lab 6 -->
+        <div class="lab-card">
+          <div class="lab-icon">🤖</div>
+          <h3>Robotics & Automation Lab</h3>
+          <ul>
+            <li>Articulated Industrial Robotic Manipulators</li>
+            <li>Industrial PLC Controllers & Ladder Logic</li>
+            <li>Electro-Pneumatic & Hydraulic Automation Benches</li>
+            <li>Mechatronics Microcontroller Sensor Kits</li>
+            <li>Automated Material Handling Simulators</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="section" id="events">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Events & Workshops</span>
+        </div>
+        <h2 class="section-title">MESA Event Calendar</h2>
+        <p class="section-subtitle">
+          Hands-on CAD modeling intensives, industrial exposure tours, and annual technical symposia.
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <!-- Event 1: MechFest -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-upcoming">Upcoming Announcement</span>
+            <h3 class="event-title">MechFest Flagship Symposium</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>DATE TO BE ANNOUNCED</span>
+            </div>
+            <p class="event-details">
+              Annual mechanical engineering festival featuring 3D CAD modeling challenges, mechanical assembly time trials, and technical project exhibitions.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Venue: Mechanical Workshop</span>
+              <span class="event-tag">Prize Pool: ₹75,000</span>
+              <span class="event-tag">8+ Technical Events</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-mesa);">Session 2026</span>
+            <button class="btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;" onclick="showInteractiveModal('MechFest 2026', 'Official competition guidelines and registration schedules will be published upon departmental notification.')">Register Interest</button>
+          </div>
+        </article>
+
+        <!-- Event 2: CAD Workshop (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">AutoCAD & SolidWorks Workshop</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 10–12 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Comprehensive 3-day practical training on parametric drafting, tolerance allocation, complex solid assembly constraints, and engineering drawings.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Duration: 3 Days (18 Hours)</span>
+              <span class="event-tag">Venue: CAD/CAM Center</span>
+              <span class="event-tag">Hands-on Software</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-mesa);">Block B Lab</span>
+          </div>
+        </article>
+
+        <!-- Event 3: Industrial Visit (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">Industrial Plant Exposure Visit</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 18 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Site visit to prominent regional automobile manufacturing facility to inspect high-speed stamping presses, robotic welding cells, and line inspection.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Host: MESA & Industry Liason</span>
+              <span class="event-tag">Transport: College Transport</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-mesa);">Field Visit</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committee Section (Truthful, non-fabricated) -->
+  <section class="section" id="committee" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Governance</span>
+        </div>
+        <h2 class="section-title">Association Committee</h2>
+        <p class="section-subtitle">
+          Coordinated through departmental faculty and student leads representing design, manufacturing, and event operations.
+        </p>
+      </div>
+
+      <div class="committee-grid">
+        <div class="committee-card">
+          <div class="committee-avatar" style="border-color: var(--accent-mesa); color: var(--accent-mesa); background: var(--subtle-mesa);">SK</div>
+          <h3 class="committee-name">Prof. S. S. Kale</h3>
+          <div class="committee-role">Head of Department & Faculty In-Charge</div>
+          <p class="committee-note">Department of Mechanical Engineering, Block B</p>
+        </div>
+
+        <div class="committee-card">
+          <div class="committee-avatar" style="border-style: dashed; color: var(--color-text-muted);">26</div>
+          <h3 class="committee-name">MESA Student Council</h3>
+          <div class="committee-role">Session 2026 Nominations</div>
+          <p class="committee-note">Student leadership roles including President, Technical Coordinator, and Workshop Managers are renewed each academic cycle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership CTA Box -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box" style="border-color: var(--accent-mesa); box-shadow: 0 0 35px var(--glow-mesa);">
+        <span class="section-badge" style="border-color: var(--accent-mesa); color: var(--accent-mesa); background: var(--subtle-mesa); margin-bottom: 1.5rem;">
+          <span class="dot" style="background: var(--accent-mesa); box-shadow: 0 0 8px var(--accent-mesa);"></span>
+          <span>Join the Mechanical Family</span>
+        </span>
+        <h2>Ready to Engineer the Future?</h2>
+        <p>
+          Gain priority access to machine shop reservations, advanced CAD licenses, BAJA SAE project teams, and exclusive industrial manufacturing tours.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary" style="background: var(--accent-mesa); border-color: var(--accent-mesa); box-shadow: 0 0 25px var(--glow-mesa);" onclick="openMembershipModal('MESA')">
+            <span>APPLY FOR MESA MEMBERSHIP</span>
+            <span>📝</span>
+          </button>
+          <a href="index.html#associations" class="btn-secondary">
+            <span>EXPLORE OTHER ASSOCIATIONS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Modal & Back to Top -->
+  <div id="interactive-modal-overlay" class="interactive-modal-overlay" role="dialog" aria-modal="true">
+    <div class="interactive-modal">
+      <h3 id="modal-title">Notification</h3>
+      <p id="modal-desc">Details</p>
+      <button id="modal-close-btn" class="interactive-modal-close">Close</button>
+    </div>
+  </div>
+  <button id="back-to-top" class="btn-back-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 1.4rem;">MESA<span>Hub</span></span>
+            <span class="brand-subtitle">Mechanical Engineering • NKOCET</span>
+          </div>
+          <p>Official student association for Mechanical Engineering students at N.K. Orchid College of Engineering & Technology, Solapur.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Portal Home</a></li>
+            <li><a href="#about">About MESA</a></li>
+            <li><a href="#labs">Laboratories</a></li>
+            <li><a href="#events">Symposium & Events</a></li>
+            <li><a href="cep-about us.html">Project Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Associations</h4>
+          <ul class="footer-links">
+            <li><a href="cep-cesa.html">CSESA (Computer Science)</a></li>
+            <li><a href="esa.html">EESA (Electrical)</a></li>
+            <li><a href="civil.html">CESA (Civil)</a></li>
+            <li><a href="entc.html">AEXS (Electronics & Telecom)</a></li>
+            <li><a href="aids.html">AIESA (AI & Data Science)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Department Office</h4>
+          <p style="font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            Department of Mechanical Engineering<br>
+            Block B, NKOCET Campus, Solapur.
+          </p>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-mesa);">Design • Build • Innovate</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MESA — NK Orchid College of Engineering & Technology. All rights reserved.</div>
+        <div style="font-family: var(--font-mono); font-size: 0.8rem;">AssociationHub Digital Portal</div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Functional Membership Registration Modal & Acknowledgment Pass -->
+  <div id="membership-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="membership-title">
+    <div class="membership-modal">
+      <button class="membership-modal-close" aria-label="Close modal">✕</button>
+
+      <div id="membership-form-wrap">
+        <span class="quiz-badge" style="margin-bottom: 0.75rem;">Official Membership Intake 2026</span>
+        <h2 id="membership-title" class="membership-modal-title">Join a Department Club</h2>
+        <p class="membership-modal-subtitle">
+          Submit your details to register interest in NKOCET departmental associations. Your inquiry will be registered and an official membership pass generated instantly.
+        </p>
+
+        <!-- Quick Digi-Pass Retrieval -->
+        <div style="background: rgba(255, 184, 0, 0.08); border: 1px solid rgba(255, 184, 0, 0.3); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; margin-bottom: 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-gold);">🔍 Already Joined?</span>
+            <span style="font-size: 0.76rem; color: var(--color-text-secondary); margin-left: 0.3rem;">Retrieve your saved Digi-Pass & QR:</span>
+          </div>
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex: 1; min-width: 220px; justify-content: flex-end;">
+            <input type="text" id="quick-pass-lookup" placeholder="Enter PRN / Roll (e.g. C-62)" style="padding: 0.32rem 0.6rem; font-size: 0.78rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; width: 150px;">
+            <button type="button" class="btn-secondary" onclick="lookupStudentPass()" style="padding: 0.32rem 0.75rem; font-size: 0.78rem; white-space: nowrap;">
+              <span>View Pass 🎫</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="membership-form">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-name" class="form-label">Full Name *</label>
+              <input type="text" id="member-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="member-roll" class="form-label">Roll No / PRN *</label>
+              <input type="text" id="member-roll" class="form-input" placeholder="e.g. C-62 or EN2024..." required>
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>
+          <!-- Official Student Gmail -->
+          <div class="form-group" style="background: rgba(13, 18, 32, 0.45); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 1rem;">
+            <label for="member-email" class="form-label">Official Student Gmail *</label>
+            <input type="email" id="member-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
+          </div>
+
+<div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>

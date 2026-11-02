@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" data-dept="cesa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CESA — Civil Engineering Students Association | NKOCET</title>
+  <meta name="description" content="Civil Engineering Students Association (CESA) at NK Orchid College of Engineering & Technology.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="AssociationHub Home">
+        <div class="brand-logo-frame">
+          <img src="nkocet logo.png.webp" alt="NKOCET Logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:800;color:#080A0F;\'>NK</span>'">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Association<span>Hub</span></span>
+          <span class="brand-subtitle">CESA Portal</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          
+          <!-- Quick Department Dropdown -->
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+              <span>Switch Dept</span>
+              <span class="nav-dropdown-chevron">▼</span>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="cep-cesa.html" class="nav-dropdown-link"><span class="dept-pill-dot csesa"></span>CSESA — Computer Science</a></li>
+              <li><a href="cep-mesa.html" class="nav-dropdown-link"><span class="dept-pill-dot mesa"></span>MESA — Mechanical Engg</a></li>
+              <li><a href="esa.html" class="nav-dropdown-link"><span class="dept-pill-dot eesa"></span>EESA — Electrical Engg</a></li>
+              <li><a href="civil.html" class="nav-dropdown-link"><span class="dept-pill-dot cesa"></span>CESA — Civil Engineering</a></li>
+              <li><a href="entc.html" class="nav-dropdown-link"><span class="dept-pill-dot aexs"></span>AEXS — Electronics & Telecom</a></li>
+              <li><a href="aids.html" class="nav-dropdown-link"><span class="dept-pill-dot aiesa"></span>AIESA — AI & Data Science</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#labs" class="nav-link">Laboratories</a></li>
+          <li><a href="#events" class="nav-link">Events</a></li>
+          <li><a href="#committee" class="nav-link">Committee</a></li>
+          <li><a href="cep-about us.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-action">
+        <button type="button" class="btn-secondary" onclick="openSpotlightSearch()" style="padding: 0.45rem 0.85rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;" title="Spotlight Quick Search (Ctrl + K)">
+          <span>🔍</span>
+          <span style="font-size: 0.72rem; background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; font-family: var(--font-mono);">Ctrl K</span>
+        </button>
+        <a href="verify.html" class="btn-secondary" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; border-color: rgba(25, 214, 140, 0.4); color: #19D68C; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span>📱 Verify</span>
+        </a>
+
+        <button type="button" class="btn-nav-accent" onclick="openMembershipModal('CESA')">
+          <span>Join CESA</span>
+          <span>📝</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="mobile-drawer" aria-label="Mobile Navigation">
+    <div>
+      <div class="brand-text" style="margin-bottom: 2rem;">
+        <span class="brand-title" style="font-size: 1.4rem;">CESA<span>Hub</span></span>
+        <span class="brand-subtitle">Civil Engineering</span>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link">About CESA</a></li>
+        <li><a href="#labs" class="mobile-nav-link">Laboratories</a></li>
+        <li><a href="#events" class="mobile-nav-link">Events</a></li>
+        <li><a href="#committee" class="mobile-nav-link">Committee</a></li>
+        <li><a href="cep-about us.html" class="mobile-nav-link">👥 About Project Team</a></li>
+        <li style="padding: 0.5rem 0; font-size: 0.75rem; text-transform: uppercase; color: var(--accent-cesa); letter-spacing: 0.05em; font-weight: 700;">Switch Department:</li>
+        <li><a href="cep-cesa.html" class="mobile-nav-link">💻 CSESA (Computer Science)</a></li>
+        <li><a href="cep-mesa.html" class="mobile-nav-link">⚙️ MESA (Mechanical)</a></li>
+        <li><a href="esa.html" class="mobile-nav-link">⚡ EESA (Electrical)</a></li>
+        <li><a href="entc.html" class="mobile-nav-link">📡 AEXS (ENTC)</a></li>
+        <li><a href="aids.html" class="mobile-nav-link">🧠 AIESA (AI & DS)</a></li>
+        <li style="margin-top: 0.75rem;"><button class="btn-primary" style="width: 100%; justify-content: center;" onclick="openMembershipModal('CESA')"><span>Join CESA</span><span>📝</span></button></li>
+      </ul>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+      © 2026 CESA • NKOCET
+    </div>
+  </aside>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Unique Department Hero (Architectural Violet / Blueprint Concept) -->
+  <section class="dept-hero">
+    <div class="container dept-hero-grid">
+      <div class="dept-hero-content">
+        <div class="dept-eyebrow">
+          <span class="dot"></span>
+          <span>Department of Civil Engineering</span>
+        </div>
+
+        <h1 class="dept-hero-title">
+          CESA — CIVIL ENGINEERING STUDENTS ASSOCIATION
+        </h1>
+
+        <p class="dept-hero-desc">
+          Building tomorrow's resilient infrastructure through computational structural design, sustainable green construction, Building Information Modeling (BIM), and smart urban development.
+        </p>
+
+        <div class="dept-meta-bar">
+          <div class="dept-meta-item">
+            <span>Faculty In-Charge:</span>
+            <strong>Dr. S. S. Jahagirdar (HOD)</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Student Chapter:</span>
+            <strong>CESA (Est. NKOCET)</strong>
+          </div>
+          <div class="dept-meta-item">
+            <span>Infrastructure:</span>
+            <strong>06 Specialized Testing Labs</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department Architectural Wireframe Motif Visual -->
+      <div class="dept-hero-visual" aria-hidden="true">
+        <div class="dept-visual-circle" style="border-color: var(--accent-cesa); box-shadow: 0 0 35px var(--glow-cesa);">
+          <div style="width: 130px; height: 130px; border-radius: 50%; border: 1px dashed rgba(168, 85, 247, 0.4); display: flex; align-items: center; justify-content: center; background: rgba(168, 85, 247, 0.05);">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cesa);">[BIM_3D]</span>
+          </div>
+        </div>
+        <div class="dept-visual-icon">🏗️</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Association Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Overview</span>
+        </div>
+        <h2 class="section-title">About the Association</h2>
+        <p class="section-subtitle">
+          The Civil Engineering Association at NKOCET shapes future planners and master builders. From structural earthquake resilience to eco-certified LEED materials and intelligent GIS survey mapping, CESA integrates classroom analytical principles with on-site engineering reality.
+        </p>
+      </div>
+
+      <!-- Objectives Grid -->
+      <div id="objectives" class="objectives-grid">
+        <div class="objective-card">
+          <h3>🏢 Structural Analysis & Design</h3>
+          <p>Master finite structural modeling, reinforced concrete design (RCC), steel frames, seismic damping, and high-performance concrete technology.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🌍 Sustainable Green Building</h3>
+          <p>Promote LEED-compliant green building design, low-carbon geopolymer cements, fly ash utilization, and passive climatic architecture.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🚧 Construction Project Management</h3>
+          <p>Master project scheduling with Primavera and MS Project, cost estimation, quantity surveying, and contractor safety protocols.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>💧 Water Resources & Hydraulics</h3>
+          <p>Analyze river catchment basins, automated canal networks, rainwater harvesting, sewage water treatment plants (STP), and flood mitigation.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🛣️ Transportation & Highway Systems</h3>
+          <p>Design flexible and rigid road pavements, intersection traffic signaling, soil stabilization, and modern mass transit alignment.</p>
+        </div>
+
+        <div class="objective-card">
+          <h3>🏙️ Smart Urban Planning & BIM</h3>
+          <p>Implement Building Information Modeling (BIM) workflows, digital twin facility management, and geospatial (GIS) zoning overlays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Department Laboratories Section (Verified 6 Labs) -->
+  <section class="section" id="labs" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Infrastructure</span>
+        </div>
+        <h2 class="section-title">Specialized Civil Laboratories</h2>
+        <p class="section-subtitle">
+          Material testing apparatus, soil mechanics testing cells, and advanced CAD/BIM computational survey labs.
+        </p>
+      </div>
+
+      <div class="labs-grid">
+        <!-- Lab 1 -->
+        <div class="lab-card">
+          <div class="lab-icon">🔬</div>
+          <h3>Material Testing & NDT Lab</h3>
+          <ul>
+            <li>2000 kN Digital Compression Testing Machine (CTM)</li>
+            <li>Universal Tensile Testing Machine (UTM) for Rebar</li>
+            <li>Ultrasonic Pulse Velocity & Rebound Hammer (NDT)</li>
+            <li>Cement Consistency, Setting Time & Soundness Rigs</li>
+            <li>Aggregate Impact, Abrasion & Crushing Benches</li>
+          </ul>
+        </div>
+
+        <!-- Lab 2 -->
+        <div class="lab-card">
+          <div class="lab-icon">🏗️</div>
+          <h3>Structural Engineering Lab</h3>
+          <ul>
+            <li>Heavy Reaction Loading Test Frame</li>
+            <li>Two-Hinged & Three-Hinged Arch Apparatus</li>
+            <li>Deflection of Curved Bars & Column Buckling Rigs</li>
+            <li>Redundant Pin-Jointed Truss Load Cells</li>
+            <li>Electronic LVDT Crack & Deflection Gauges</li>
+          </ul>
+        </div>
+
+        <!-- Lab 3 -->
+        <div class="lab-card">
+          <div class="lab-icon">💧</div>
+          <h3>Fluid Mechanics & Hydraulics Lab</h3>
+          <ul>
+            <li>Tilting Open-Channel Hydraulic Flume with Wave Maker</li>
+            <li>Venturimeter, Orifice & Notch Calibration Benches</li>
+            <li>Reynolds Number & Friction Factor Pipe Networks</li>
+            <li>Centrifugal, Reciprocating & Jet Pump Testbeds</li>
+            <li>Pelton Wheel & Francis Turbine Operational Rigs</li>
+          </ul>
+        </div>
+
+        <!-- Lab 4 -->
+        <div class="lab-card">
+          <div class="lab-icon">🌱</div>
+          <h3>Geotechnical Engineering Lab</h3>
+          <ul>
+            <li>Motorized Direct Shear Testing Machine</li>
+            <li>Triaxial Cell with Pore Pressure Transducers</li>
+            <li>Standard & Modified Proctor Compaction Units</li>
+            <li>Fixed-Ring Soil Consolidation Oedometer Benches</li>
+            <li>Constant & Falling Head Soil Permeameters</li>
+          </ul>
+        </div>
+
+        <!-- Lab 5 -->
+        <div class="lab-card">
+          <div class="lab-icon">🛣️</div>
+          <h3>Transportation & Pavement Lab</h3>
+          <ul>
+            <li>Automatic Marshall Stability Asphalt Tester</li>
+            <li>Bitumen Ductility, Softening Point & Penetrometer</li>
+            <li>Los Angeles Aggregate Abrasion Testing Drum</li>
+            <li>Benkelman Beam Deflection Apparatus for Roads</li>
+            <li>Electronic Radar Speed & Traffic Survey Sensor</li>
+          </ul>
+        </div>
+
+        <!-- Lab 6 -->
+        <div class="lab-card">
+          <div class="lab-icon">💻</div>
+          <h3>CAD, BIM & Surveying Technology</h3>
+          <ul>
+            <li>Autodesk Revit 3D Building Information Modeling</li>
+            <li>Bentley STAAD.Pro Structural Analysis Software</li>
+            <li>Autodesk AutoCAD Civil Architectural Suites</li>
+            <li>Electronic Total Stations with Optical Prisms</li>
+            <li>Precision Digital Auto-Levels & Theodolites</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="section" id="events">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Events & Workshops</span>
+        </div>
+        <h2 class="section-title">CESA Event Calendar</h2>
+        <p class="section-subtitle">
+          Flagship infrastructure symposium archives and upcoming BIM modeling challenges.
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <!-- Event 1: CivilCon -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-upcoming">Upcoming Announcement</span>
+            <h3 class="event-title">CivilCon Infrastructure Fest</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>DATE TO BE ANNOUNCED</span>
+            </div>
+            <p class="event-details">
+              Annual civil engineering symposium featuring bridge weight-bearing showdowns, architectural Revit modeling, concrete mix design, and technical quiz bowl.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Venue: Civil Department</span>
+              <span class="event-tag">Prize Pool: ₹70,000</span>
+              <span class="event-tag">7+ Competitions</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cesa);">Session 2026</span>
+            <button class="btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;" onclick="showInteractiveModal('CivilCon 2026', 'Official competition dates and structural rulebooks will be published by CESA coordinators upon semester inauguration.')">Register Interest</button>
+          </div>
+        </article>
+
+        <!-- Event 2: AutoCAD & Revit (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">AutoCAD & Revit BIM Workshop</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 8–10 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Three-day hands-on BIM training covering 2D floor plans, 3D structural elevation rendering, Revit families, and multi-story clash detection.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Duration: 3 Days</span>
+              <span class="event-tag">Venue: CAD Survey Lab</span>
+              <span class="event-tag">BIM Certified</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cesa);">Civil CAD Lab</span>
+          </div>
+        </article>
+
+        <!-- Event 3: High-Rise Site Visit (Historical) -->
+        <article class="event-card">
+          <div>
+            <span class="event-status-badge status-past">Historical Event</span>
+            <h3 class="event-title">High-Rise Construction Site Tour</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 20 (Verified Archive)</span>
+            </div>
+            <p class="event-details">
+              Field inspection of high-rise commercial development witnessing raft foundation reinforcement, ready-mix concrete pumping, and safety scaffolding.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Site: Ongoing High-Rise Project</span>
+              <span class="event-tag">Transport: Provided</span>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Completed Archive</span>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cesa);">Field Inspection</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committee Section (Truthful, non-fabricated) -->
+  <section class="section" id="committee" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Governance</span>
+        </div>
+        <h2 class="section-title">Association Committee</h2>
+        <p class="section-subtitle">
+          Guided by civil engineering faculty and student event coordinators.
+        </p>
+      </div>
+
+      <div class="committee-grid">
+        <div class="committee-card">
+          <div class="committee-avatar" style="border-color: var(--accent-cesa); color: var(--accent-cesa); background: var(--subtle-cesa);">SJ</div>
+          <h3 class="committee-name">Dr. S. S. Jahagirdar</h3>
+          <div class="committee-role">Head of Department & Dean R&D</div>
+          <p class="committee-note">Department of Civil Engineering, NKOCET</p>
+        </div>
+
+        <div class="committee-card">
+          <div class="committee-avatar" style="border-style: dashed; color: var(--color-text-muted);">26</div>
+          <h3 class="committee-name">CESA Student Executive Council</h3>
+          <div class="committee-role">Session 2026 Nominations</div>
+          <p class="committee-note">Student coordinators representing structural design, BIM modeling, and site survey teams are appointed each academic cycle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership CTA Box -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box" style="border-color: var(--accent-cesa); box-shadow: 0 0 35px var(--glow-cesa);">
+        <span class="section-badge" style="border-color: var(--accent-cesa); color: var(--accent-cesa); background: var(--subtle-cesa); margin-bottom: 1.5rem;">
+          <span class="dot" style="background: var(--accent-cesa); box-shadow: 0 0 8px var(--accent-cesa);"></span>
+          <span>Join Civil Engineering</span>
+        </span>
+        <h2>Build the Foundations of Tomorrow</h2>
+        <p>
+          Become a CESA member to participate in hands-on Total Station survey bootcamps, bridge load competitions, and field tours of mega infrastructure.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary" style="background: var(--accent-cesa); border-color: var(--accent-cesa); box-shadow: 0 0 25px var(--glow-cesa);" onclick="openMembershipModal('CESA')">
+            <span>APPLY FOR CESA MEMBERSHIP</span>
+            <span>📝</span>
+          </button>
+          <a href="index.html#associations" class="btn-secondary">
+            <span>EXPLORE OTHER ASSOCIATIONS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Modal & Back to Top -->
+  <div id="interactive-modal-overlay" class="interactive-modal-overlay" role="dialog" aria-modal="true">
+    <div class="interactive-modal">
+      <h3 id="modal-title">Notification</h3>
+      <p id="modal-desc">Details</p>
+      <button id="modal-close-btn" class="interactive-modal-close">Close</button>
+    </div>
+  </div>
+  <button id="back-to-top" class="btn-back-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 1.4rem;">CESA<span>Hub</span></span>
+            <span class="brand-subtitle">Civil Engineering • NKOCET</span>
+          </div>
+          <p>Official student association for Civil Engineering students at N.K. Orchid College of Engineering & Technology, Solapur.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Portal Home</a></li>
+            <li><a href="#about">About CESA</a></li>
+            <li><a href="#labs">Laboratories</a></li>
+            <li><a href="#events">Symposium & Events</a></li>
+            <li><a href="cep-about us.html">Project Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Associations</h4>
+          <ul class="footer-links">
+            <li><a href="cep-cesa.html">CSESA (Computer Science)</a></li>
+            <li><a href="cep-mesa.html">MESA (Mechanical)</a></li>
+            <li><a href="esa.html">EESA (Electrical)</a></li>
+            <li><a href="entc.html">AEXS (Electronics & Telecom)</a></li>
+            <li><a href="aids.html">AIESA (AI & Data Science)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Department Office</h4>
+          <p style="font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            Department of Civil Engineering<br>
+            NKOCET Campus, Tale-Hipparaga, Solapur.
+          </p>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cesa);">Plan • Design • Construct</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 CESA — NK Orchid College of Engineering & Technology. All rights reserved.</div>
+        <div style="font-family: var(--font-mono); font-size: 0.8rem;">AssociationHub Digital Portal</div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Functional Membership Registration Modal & Acknowledgment Pass -->
+  <div id="membership-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="membership-title">
+    <div class="membership-modal">
+      <button class="membership-modal-close" aria-label="Close modal">✕</button>
+
+      <div id="membership-form-wrap">
+        <span class="quiz-badge" style="margin-bottom: 0.75rem;">Official Membership Intake 2026</span>
+        <h2 id="membership-title" class="membership-modal-title">Join a Department Club</h2>
+        <p class="membership-modal-subtitle">
+          Submit your details to register interest in NKOCET departmental associations. Your inquiry will be registered and an official membership pass generated instantly.
+        </p>
+
+        <!-- Quick Digi-Pass Retrieval -->
+        <div style="background: rgba(255, 184, 0, 0.08); border: 1px solid rgba(255, 184, 0, 0.3); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; margin-bottom: 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-gold);">🔍 Already Joined?</span>
+            <span style="font-size: 0.76rem; color: var(--color-text-secondary); margin-left: 0.3rem;">Retrieve your saved Digi-Pass & QR:</span>
+          </div>
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex: 1; min-width: 220px; justify-content: flex-end;">
+            <input type="text" id="quick-pass-lookup" placeholder="Enter PRN / Roll (e.g. C-62)" style="padding: 0.32rem 0.6rem; font-size: 0.78rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; width: 150px;">
+            <button type="button" class="btn-secondary" onclick="lookupStudentPass()" style="padding: 0.32rem 0.75rem; font-size: 0.78rem; white-space: nowrap;">
+              <span>View Pass 🎫</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="membership-form">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-name" class="form-label">Full Name *</label>
+              <input type="text" id="member-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="member-roll" class="form-label">Roll No / PRN *</label>
+              <input type="text" id="member-roll" class="form-input" placeholder="e.g. C-62 or EN2024..." required>
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>
+          <!-- Official Student Gmail -->
+          <div class="form-group" style="background: rgba(13, 18, 32, 0.45); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 1rem;">
+            <label for="member-email" class="form-label">Official Student Gmail *</label>
+            <input type="email" id="member-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
+          </div>
+
+<div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+      <div id="spotlight-results" class="spotlight-results"></div>
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+
+</body>
+</html>

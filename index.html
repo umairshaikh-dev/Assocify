@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AssociationHub — NK Orchid College of Engineering & Technology</title>
+  <meta name="description" content="AssociationHub is the unified digital portal for student associations at NK Orchid College of Engineering & Technology (NKOCET).">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+  <!-- Live Campus Announcement Ribbon -->
+  <aside class="announcement-banner" aria-label="Campus Notice">
+    <div class="container announcement-content">
+      <span class="announcement-tag">📢 Campus Notice</span>
+      <span class="announcement-text">Academic Session 2026 Student Association Membership & Council Registrations Open for All Batches.</span>
+      <button type="button" class="announcement-btn" onclick="openMembershipModal()">Apply Now →</button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       1. NAVIGATION BAR
+       ========================================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="AssociationHub Home">
+        <div class="brand-logo-frame">
+          <img src="nkocet logo.png.webp" alt="NKOCET Logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:800;color:#080A0F;\'>NK</span>'">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Association<span>Hub</span></span>
+          <span class="brand-subtitle">NKOCET Solapur</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          
+          <!-- Quick Association Dropdown -->
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+              <span>Associations</span>
+              <span class="nav-dropdown-chevron">▼</span>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="cep-cesa.html" class="nav-dropdown-link"><span class="dept-pill-dot csesa"></span>CSESA — Computer Science</a></li>
+              <li><a href="cep-mesa.html" class="nav-dropdown-link"><span class="dept-pill-dot mesa"></span>MESA — Mechanical Engg</a></li>
+              <li><a href="esa.html" class="nav-dropdown-link"><span class="dept-pill-dot eesa"></span>EESA — Electrical Engg</a></li>
+              <li><a href="civil.html" class="nav-dropdown-link"><span class="dept-pill-dot cesa"></span>CESA — Civil Engineering</a></li>
+              <li><a href="entc.html" class="nav-dropdown-link"><span class="dept-pill-dot aexs"></span>AEXS — Electronics & Telecom</a></li>
+              <li><a href="aids.html" class="nav-dropdown-link"><span class="dept-pill-dot aiesa"></span>AIESA — AI & Data Science</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#events" class="nav-link">Events</a></li>
+          <li><a href="#community" class="nav-link">💬 Community</a></li>
+          <li><a href="verify.html" class="nav-link" style="color: #19D68C; font-weight: 600;">📱 Verify Pass</a></li>
+          <li><a href="#gallery" class="nav-link">Showcase</a></li>
+          <li><a href="#faq" class="nav-link">FAQs</a></li>
+          <li><a href="cep-about us.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-action">
+        <button type="button" class="btn-secondary" onclick="openSpotlightSearch()" style="padding: 0.45rem 0.85rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;" title="Spotlight Quick Search (Ctrl + K)">
+          <span>🔍</span>
+          <span style="font-size: 0.72rem; background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; font-family: var(--font-mono);">Ctrl K</span>
+        </button>
+
+        <a href="verify.html" class="btn-secondary" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; border-color: rgba(25, 214, 140, 0.4); color: #19D68C; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span>📱 Verify</span>
+        </a>
+
+        <button type="button" class="btn-secondary" onclick="openAdminModal()" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; border-color: rgba(229, 169, 60, 0.4); color: #E5A93C; display: inline-flex; align-items: center; gap: 0.4rem;" title="Manage Members">
+          <span>⚙️ Admin</span>
+        </button>
+
+        <button type="button" class="btn-primary" onclick="openStudentRegisterModal()" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem; background: linear-gradient(135deg, #19D68C, #00A86B); border-color: #19D68C; color: #080A0F; font-weight: 700;">
+          <span>🎓 Student Register</span>
+        </button>
+
+        <button type="button" class="btn-nav-accent" onclick="openMembershipModal()">
+          <span>Join a Club</span>
+          <span>📝</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="mobile-drawer" aria-label="Mobile Navigation">
+    <div>
+      <div class="brand-text" style="margin-bottom: 2rem;">
+        <span class="brand-title" style="font-size: 1.4rem;">Association<span>Hub</span></span>
+        <span class="brand-subtitle">Student Portal • NKOCET</span>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+        <li style="padding: 0.5rem 0; font-size: 0.75rem; text-transform: uppercase; color: var(--brand-gold); letter-spacing: 0.05em; font-weight: 700;">Department Chapters:</li>
+        <li><a href="cep-cesa.html" class="mobile-nav-link">💻 CSESA (Computer Science)</a></li>
+        <li><a href="cep-mesa.html" class="mobile-nav-link">⚙️ MESA (Mechanical)</a></li>
+        <li><a href="esa.html" class="mobile-nav-link">⚡ EESA (Electrical)</a></li>
+        <li><a href="civil.html" class="mobile-nav-link">🏗️ CESA (Civil)</a></li>
+        <li><a href="entc.html" class="mobile-nav-link">📡 AEXS (Electronics & Telecom)</a></li>
+        <li><a href="aids.html" class="mobile-nav-link">🧠 AIESA (AI & Data Science)</a></li>
+        <li style="border-top: 1px solid var(--color-border-subtle); margin-top: 0.5rem; padding-top: 0.5rem;"><a href="#events" class="mobile-nav-link">📅 Events</a></li>
+        <li><a href="#community" class="mobile-nav-link">💬 Campus Pulse & Community</a></li>
+        <li><a href="verify.html" class="mobile-nav-link" style="color: #19D68C; font-weight: 700;">📱 QR Gate Check-In & Verification</a></li>
+        <li><a href="javascript:void(0)" class="mobile-nav-link" onclick="openAdminModal(); document.querySelector('.mobile-toggle').click();" style="color: #E5A93C; font-weight: 700;">⚙️ Admin Member Portal</a></li>
+        <li><a href="#gallery" class="mobile-nav-link">🏛️ Showcase</a></li>
+        <li><a href="#faq" class="mobile-nav-link">❓ Freshers FAQ</a></li>
+        <li><a href="cep-about us.html" class="mobile-nav-link">👥 About Us & Team</a></li>
+        <li style="margin-top: 0.75rem;"><button class="btn-primary" style="width: 100%; justify-content: center;" onclick="openMembershipModal()"><span>Apply for Membership</span><span>📝</span></button></li>
+      </ul>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+      © 2026 NKOCET • 2nd Year B.Tech CEP
+    </div>
+  </aside>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       2. CINEMATIC HERO SECTION
+       ========================================================================= -->
+  <section class="hero-cinema" id="home">
+    <div class="container hero-content">
+      <div class="hero-college-badge">
+        <span class="dot" style="width:7px; height:7px; border-radius:50%; background:var(--brand-gold); display:inline-block; box-shadow:0 0 8px var(--brand-gold);"></span>
+        <span>NK Orchid College of Engineering & Technology</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line-break">ONE CAMPUS.</span>
+        <span class="line-break highlight">SIX IDENTITIES.</span>
+        <span class="line-break">INFINITE POSSIBILITIES.</span>
+      </h1>
+
+      <p class="hero-desc">
+        Discover the student associations that turn engineering knowledge, creativity, and collaboration into meaningful campus experiences.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#associations" class="btn-primary">
+          <span>EXPLORE ASSOCIATIONS</span>
+          <span>→</span>
+        </a>
+        <a href="verify.html" class="btn-secondary" style="border-color: rgba(25, 214, 140, 0.6); color: #19D68C;">
+          <span>📱 VERIFY QR PASS</span>
+        </a>
+        <a href="#about-preview" class="btn-secondary">
+          <span>DISCOVER OUR COMMUNITY</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" style="color: var(--brand-gold);">06</span>
+          <span class="stat-label">Department Associations</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="live-members-counter" style="color: #19D68C;">07+</span>
+          <span class="stat-label">Active Members (Live)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" style="color: var(--accent-csesa);">100%</span>
+          <span class="stat-label">Student-Led</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" style="color: var(--accent-eesa);">30+</span>
+          <span class="stat-label">Workshops & Events</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" style="color: var(--accent-aiesa);">01</span>
+          <span class="stat-label">Unified Platform</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       2.5 FRESHERS' 60-SECOND ASSOCIATION FINDER QUIZ
+       ========================================================================= -->
+  <section class="quiz-section" id="fresher-quiz">
+    <div class="container">
+      <div id="association-quiz-container">
+        <!-- Rendered dynamically by initAssociationQuiz() in main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. ASSOCIATION DIRECTORY WITH INTERACTIVE SEARCH & FILTERS
+       ========================================================================= -->
+  <section class="section" id="associations">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Department Directory</span>
+        </div>
+        <h2 class="section-title">Explore Department Associations</h2>
+        <p class="section-subtitle">
+          Each engineering department features a specialized association driving hands-on skills, competitive participation, and technical innovation.
+        </p>
+      </div>
+
+      <!-- Interactive Filtering & Search Controls -->
+      <div class="filter-wrapper">
+        <div class="filter-controls">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input 
+              type="text" 
+              id="association-search" 
+              class="search-input" 
+              placeholder="Search associations by acronym, department, or keywords..."
+              aria-label="Search associations"
+            >
+          </div>
+
+          <div class="filter-pills" role="tablist" aria-label="Department Categories">
+            <button class="filter-pill active" data-filter="all">All Departments</button>
+            <button class="filter-pill" data-filter="cse">Computer Science</button>
+            <button class="filter-pill" data-filter="mech">Mechanical</button>
+            <button class="filter-pill" data-filter="elec">Electrical</button>
+            <button class="filter-pill" data-filter="civil">Civil</button>
+            <button class="filter-pill" data-filter="entc">Electronics & Telecom</button>
+            <button class="filter-pill" data-filter="aids">AI & Data Science</button>
+          </div>
+
+          <div class="filter-meta">
+            <span id="results-count">Showing 6 of 6 associations</span>
+            <button id="clear-filters-btn" class="btn-clear-filters">Reset Filters</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- The 6 Association Cards Grid -->
+      <div class="associations-grid" id="associations-grid">
+
+        <!-- 1. CSESA (Computer Science & Engineering) -->
+        <article class="association-card card-csesa" data-dept-category="cse">
+          <div class="card-top">
+            <div class="card-emblem" aria-hidden="true">💻</div>
+            <span class="card-badge">CSE Department</span>
+          </div>
+          <div class="card-title-group">
+            <h3 class="card-acronym">CSESA</h3>
+            <p class="card-dept">Computer Science & Engineering Students Association</p>
+          </div>
+          <p class="card-body">
+            Fosters competitive coding, open-source development, cybersecurity, and full-stack software innovation through workshops, hackathons, and peer-to-peer programming circles.
+          </p>
+          <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">Coord: Prof. P.D. Jawalkar</span>
+            <div style="display: flex; gap: 0.4rem; align-items: center;">
+              <button type="button" class="btn-secondary" onclick="openMembershipModal('CSESA')" style="padding: 0.38rem 0.8rem; font-size: 0.8rem; color: var(--brand-gold); border-color: rgba(255,184,0,0.4); font-weight: 600;" title="Join CSESA & Get Digi-Pass">
+                <span>⚡ Join CSESA</span>
+              </button>
+              <a href="cep-cesa.html" class="btn-card-explore">
+                <span>Explore</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. MESA (Mechanical Engineering) -->
+        <article class="association-card card-mesa" data-dept-category="mech">
+          <div class="card-top">
+            <div class="card-emblem" aria-hidden="true">⚙️</div>
+            <span class="card-badge">Mechanical Dept</span>
+          </div>
+          <div class="card-title-group">
+            <h3 class="card-acronym">MESA</h3>
+            <p class="card-dept">Mechanical Engineering Students Association</p>
+          </div>
+          <p class="card-body">
+            Pioneers precision design, CAD/CAM prototyping, thermal systems, robotics, and competitive vehicle building including BAJA SAE and national manufacturing challenges.
+          </p>
+          <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">HOD: Prof. S. S. Kale</span>
+            <div style="display: flex; gap: 0.4rem; align-items: center;">
+              <button type="button" class="btn-secondary" onclick="openMembershipModal('MESA')" style="padding: 0.38rem 0.8rem; font-size: 0.8rem; color: var(--brand-gold); border-color: rgba(255,184,0,0.4); font-weight: 600;" title="Join MESA & Get Digi-Pass">
+                <span>⚡ Join MESA</span>
+              </button>
+              <a href="cep-mesa.html" class="btn-card-explore">
+                <span>Explore</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. EESA (Electrical Engineering) -->
+        <article class="association-card card-eesa" data-dept-category="elec">
+          <div class="card-top">
+            <div class="card-emblem" aria-hidden="true">⚡</div>
+            <span class="card-badge">Electrical Dept</span>
+          </div>
+          <div class="card-title-group">
+            <h3 class="card-acronym">EESA</h3>
+            <p class="card-dept">Electrical Engineering Students Association</p>
+          </div>
+          <p class="card-body">
+            Empowers students in smart grids, electric vehicles, renewable solar power, power systems, PLC automation, and high-voltage circuit design.
+          </p>
+          <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">HOD: Dr. P. R. Padghan</span>
+            <div style="display: flex; gap: 0.4rem; align-items: center;">
+              <button type="button" class="btn-secondary" onclick="openMembershipModal('EESA')" style="padding: 0.38rem 0.8rem; font-size: 0.8rem; color: var(--brand-gold); border-color: rgba(255,184,0,0.4); font-weight: 600;" title="Join EESA & Get Digi-Pass">
+                <span>⚡ Join EESA</span>
+              </button>
+              <a href="esa.html" class="btn-card-explore">
+                <span>Explore</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. CESA (Civil Engineering) -->
+        <article class="association-card card-cesa" data-dept-category="civil">
+          <div class="card-top">
+            <div class="card-emblem" aria-hidden="true">🏗️</div>
+            <span class="card-badge">Civil Dept</span>
+          </div>
+          <div class="card-title-group">
+            <h3 class="card-acronym">CESA</h3>
+            <p class="card-dept">Civil Engineering Students Association</p>
+          </div>
+          <p class="card-body">
+            Builds foundational and modern architectural expertise spanning structural design, green building infrastructure, geotechnical engineering, and smart city planning.
+          </p>
+          <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">HOD: Dr. S. S. Jahagirdar</span>
+            <div style="display: flex; gap: 0.4rem; align-items: center;">
+              <button type="button" class="btn-secondary" onclick="openMembershipModal('CESA')" style="padding: 0.38rem 0.8rem; font-size: 0.8rem; color: var(--brand-gold); border-color: rgba(255,184,0,0.4); font-weight: 600;" title="Join CESA & Get Digi-Pass">
+                <span>⚡ Join CESA</span>
+              </button>
+              <a href="civil.html" class="btn-card-explore">
+                <span>Explore</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. AEXS (Electronics & Telecommunication) -->
+        <article class="association-card card-aexs" data-dept-category="entc">
+          <div class="card-top">
+            <div class="card-emblem" aria-hidden="true">📡</div>
+            <span class="card-badge">ENTC Dept</span>
+          </div>
+          <div class="card-title-group">
+            <h3 class="card-acronym">AEXS</h3>
+            <p class="card-dept">Electronics & Telecommunication Engineering Association</p>
+          </div>
+          <p class="card-body">
+            Connects devices through RF communication, embedded systems, VLSI microelectronics, Internet of Things (IoT) sensors, and wireless signal networks.
+          </p>
+          <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">HOD: Dr. P. D. Bahirgonde</span>
+            <div style="display: flex; gap: 0.4rem; align-items: center;">
+              <button type="button" class="btn-secondary" onclick="openMembershipModal('AEXS')" style="padding: 0.38rem 0.8rem; font-size: 0.8rem; color: var(--brand-gold); border-color: rgba(255,184,0,0.4); font-weight: 600;" title="Join AEXS & Get Digi-Pass">
+                <span>⚡ Join AEXS</span>
+              </button>
+              <a href="entc.html" class="btn-card-explore">
+                <span>Explore</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. AIESA (AI & Data Science) -->
+        <article class="association-card card-aiesa" data-dept-category="aids">
+          <div class="card-top">
+            <div class="card-emblem" aria-hidden="true">🧠</div>
+            <span class="card-badge">AIDS Dept</span>
+          </div>
+          <div class="card-title-group">
+            <h3 class="card-acronym">AIESA</h3>
+            <p class="card-dept">Artificial Intelligence & Data Science Association</p>
+          </div>
+          <p class="card-body">
+            Drives intelligent innovation in neural networks, computer vision, natural language processing, large data analytics, and autonomous cognitive systems.
+          </p>
+          <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-muted);">HOD: Prof. M. S. Otari</span>
+            <div style="display: flex; gap: 0.4rem; align-items: center;">
+              <button type="button" class="btn-secondary" onclick="openMembershipModal('AIESA')" style="padding: 0.38rem 0.8rem; font-size: 0.8rem; color: var(--brand-gold); border-color: rgba(255,184,0,0.4); font-weight: 600;" title="Join AIESA & Get Digi-Pass">
+                <span>⚡ Join AIESA</span>
+              </button>
+              <a href="aids.html" class="btn-card-explore">
+                <span>Explore</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Empty State Container -->
+        <div id="association-empty-state" class="empty-state" style="display: none;">
+          <div class="empty-state-icon">🔍</div>
+          <h3 style="color: var(--color-text-primary); margin-bottom: 0.5rem;">No Matching Associations Found</h3>
+          <p style="margin-bottom: 1.5rem;">Try modifying your keyword search or select a different department filter.</p>
+          <button onclick="document.getElementById('clear-filters-btn').click();" class="btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;">Reset All Filters</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. CAMPUS EVENTS PREVIEW (VERIFIED HISTORICAL & UPCOMING)
+       ========================================================================= -->
+  <section class="section" id="events" style="background: rgba(13, 18, 32, 0.4); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Campus Activities</span>
+        </div>
+        <h2 class="section-title">Events & Technical Competitions</h2>
+        <p class="section-subtitle">
+          Verified annual hackathons, technical conferences, and hands-on workshops across all associations.
+        </p>
+      </div>
+
+      <!-- Events Filter Tabs -->
+      <div class="events-filter-bar">
+        <button class="events-tab active" data-event-filter="all">All Events</button>
+        <button class="events-tab" data-event-filter="upcoming">Upcoming Sessions</button>
+        <button class="events-tab" data-event-filter="past">Historical Archive</button>
+      </div>
+
+      <div class="events-grid">
+
+        <!-- Event 1: CSESA CodeFest -->
+        <article class="event-card" data-event-type="upcoming">
+          <div>
+            <span class="event-status-badge status-upcoming">Upcoming Announcement</span>
+            <h3 class="event-title">CodeFest Technical Marathon</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>November 15–17, 2026 • 09:00 AM</span>
+            </div>
+            <p class="event-details">
+              48-hour coding marathon organized by CSESA featuring web engineering, algorithmic problem solving, and machine intelligence tracks.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Host: CSESA</span>
+              <span class="event-tag">Venue: Main Auditorium</span>
+              <span class="event-tag">Team: 2-4 Members</span>
+            </div>
+            <div class="event-calendar-actions">
+              <button type="button" class="btn-calendar" onclick="addToGoogleCalendar('CodeFest 2026 Marathon', '48-hour coding marathon organized by CSESA at NKOCET Solapur', 'NKOCET Main Auditorium', '20261115T090000Z', '20261117T170000Z')">
+                <span>📅 Google Cal</span>
+              </button>
+              <button type="button" class="btn-calendar" onclick="downloadIcsFile('CodeFest 2026 Marathon', '48-hour coding marathon organized by CSESA at NKOCET Solapur', 'NKOCET Main Auditorium', '20261115T090000Z', '20261117T170000Z')">
+                <span>📥 .iCal / Outlook</span>
+              </button>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-size:0.8rem; color:var(--accent-csesa); font-family:var(--font-mono);">Session 2026</span>
+            <button class="btn-secondary" style="padding: 0.5rem 1.25rem; font-size:0.85rem;" onclick="showInteractiveModal('CodeFest 2026', 'Official registration schedules will be published by CSESA student coordinators upon semester inauguration.')">Event Details</button>
+          </div>
+        </article>
+
+        <!-- Event 2: MESA MechFest -->
+        <article class="event-card" data-event-type="past">
+          <div>
+            <span class="event-status-badge status-past">Annual Archive</span>
+            <h3 class="event-title">MechFest Annual Symposium</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>Held in December • Annual Archive</span>
+            </div>
+            <p class="event-details">
+              Annual technical festival featuring CAD modeling competitions, machine design challenges, and innovative project exhibitions with over 8+ technical competitions.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Host: MESA</span>
+              <span class="event-tag">Venue: Mechanical Workshop</span>
+              <span class="event-tag">Prize Pool: ₹75,000</span>
+            </div>
+            <div class="event-calendar-actions">
+              <button type="button" class="btn-calendar" onclick="addToGoogleCalendar('MechFest Annual Symposium 2026', 'CAD modeling competitions and machine design challenges by MESA NKOCET', 'Mechanical Workshop Block B', '20261201T090000Z', '20261203T170000Z')">
+                <span>📅 Remind Next Session</span>
+              </button>
+              <button type="button" class="btn-calendar" onclick="downloadIcsFile('MechFest Annual Symposium 2026', 'CAD modeling competitions and machine design challenges by MESA NKOCET', 'Mechanical Workshop Block B', '20261201T090000Z', '20261203T170000Z')">
+                <span>📥 Download .iCal</span>
+              </button>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-size:0.8rem; color:var(--accent-mesa); font-family:var(--font-mono);">Annual Symposium</span>
+            <a href="cep-mesa.html#events" class="btn-secondary" style="padding: 0.5rem 1.25rem; font-size:0.85rem;">View Archive</a>
+          </div>
+        </article>
+
+        <!-- Event 3: CESA CivilCon -->
+        <article class="event-card" data-event-type="past">
+          <div>
+            <span class="event-status-badge status-past">Annual Archive</span>
+            <h3 class="event-title">CivilCon Infrastructure Fest</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>Held in November • Annual Archive</span>
+            </div>
+            <p class="event-details">
+              Annual civil engineering festival featuring bridge load competitions, CAD drafting showdown, earthquake-resistant structure design, and technical quizzes.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Host: CESA</span>
+              <span class="event-tag">Venue: Civil Block</span>
+              <span class="event-tag">7+ Competitions</span>
+            </div>
+            <div class="event-calendar-actions">
+              <button type="button" class="btn-calendar" onclick="addToGoogleCalendar('CivilCon Infrastructure Fest 2026', 'Bridge load competitions and earthquake structural design by CESA NKOCET', 'Civil Block', '20261125T090000Z', '20261127T170000Z')">
+                <span>📅 Remind Next Session</span>
+              </button>
+              <button type="button" class="btn-calendar" onclick="downloadIcsFile('CivilCon Infrastructure Fest 2026', 'Bridge load competitions and earthquake structural design by CESA NKOCET', 'Civil Block', '20261125T090000Z', '20261127T170000Z')">
+                <span>📥 Download .iCal</span>
+              </button>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-size:0.8rem; color:var(--accent-cesa); font-family:var(--font-mono);">Infrastructure Fest</span>
+            <a href="civil.html#events" class="btn-secondary" style="padding: 0.5rem 1.25rem; font-size:0.85rem;">View Archive</a>
+          </div>
+        </article>
+
+        <!-- Event 4: Upcoming Tech Talk Series -->
+        <article class="event-card" data-event-type="upcoming">
+          <div>
+            <span class="event-status-badge status-upcoming">Upcoming Announcement</span>
+            <h3 class="event-title">Inter-Discipline Tech Summit</h3>
+            <div class="event-date-row">
+              <span>📅</span>
+              <span>December 10, 2026 • 10:00 AM</span>
+            </div>
+            <p class="event-details">
+              Joint symposium between AI&DS, ENTC, and Electrical associations focusing on smart embedded AI devices and clean energy systems.
+            </p>
+            <div class="event-meta-tags">
+              <span class="event-tag">Host: Multi-Dept</span>
+              <span class="event-tag">Venue: Seminar Hall B</span>
+              <span class="event-tag">Open to All Years</span>
+            </div>
+            <div class="event-calendar-actions">
+              <button type="button" class="btn-calendar" onclick="addToGoogleCalendar('Inter-Discipline Tech Summit', 'Joint symposium between AI&DS, ENTC and Electrical associations at NKOCET Solapur', 'Seminar Hall B', '20261210T100000Z', '20261210T170000Z')">
+                <span>📅 Google Cal</span>
+              </button>
+              <button type="button" class="btn-calendar" onclick="downloadIcsFile('Inter-Discipline Tech Summit', 'Joint symposium between AI&DS, ENTC and Electrical associations at NKOCET Solapur', 'Seminar Hall B', '20261210T100000Z', '20261210T170000Z')">
+                <span>📥 .iCal / Outlook</span>
+              </button>
+            </div>
+          </div>
+          <div class="event-footer">
+            <span style="font-size:0.8rem; color:var(--accent-aiesa); font-family:var(--font-mono);">Session 2026</span>
+            <button class="btn-secondary" style="padding: 0.5rem 1.25rem; font-size:0.85rem;" onclick="showInteractiveModal('Inter-Discipline Tech Summit', 'Speaker confirmations and schedule notifications will be released via the department noticeboards.')">Event Details</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. CAMPUS & ASSOCIATION HIGHLIGHTS SHOWCASE
+       ========================================================================= -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Campus Life & Innovation</span>
+        </div>
+        <h2 class="section-title">Association & Tech Showcase</h2>
+        <p class="section-subtitle">
+          Explore signature student engineering initiatives, collegiate competitions, and specialized laboratories across NKOCET departments. Click any showcase for full event criteria.
+        </p>
+      </div>
+
+      <div class="showcase-grid">
+
+        <!-- Showcase 1 -->
+        <article class="showcase-card" onclick="showInteractiveModal('HackOrchid 24-Hour Codefest', 'Annual competitive software marathon hosted by CSESA. Teams of 2–4 build full-stack web platforms, mobile apps, and machine learning models within 24 hours. Evaluated by senior industry engineers.')">
+          <div class="showcase-visual" style="border-bottom: 2px solid var(--accent-csesa);">
+            <div class="showcase-visual-pattern"></div>
+            <div class="showcase-icon-badge" style="border-color: var(--accent-csesa); color: var(--accent-csesa);">
+              💻
+            </div>
+          </div>
+          <div class="showcase-content">
+            <span class="showcase-tag" style="color: var(--accent-csesa);">CSESA • 24H Hackathon</span>
+            <h3 class="showcase-title">HackOrchid Codefest Marathon</h3>
+            <p class="showcase-desc">
+              All-night collaborative development marathon where computer science innovators build scalable open-source tools, API backends, and algorithmic problem solvers.
+            </p>
+            <div class="showcase-footer">
+              <span class="showcase-dept-label">Computer Science Dept</span>
+              <span class="showcase-action-link">Explore Details →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Showcase 2 -->
+        <article class="showcase-card" onclick="showInteractiveModal('SAE BAJA Racing Arena', 'Flagship vehicle engineering competition driven by MESA. Student teams design, model in SolidWorks/ANSYS, fabricate in the workshop, and race single-seater off-road buggies nationally.')">
+          <div class="showcase-visual" style="border-bottom: 2px solid var(--accent-mesa);">
+            <div class="showcase-visual-pattern"></div>
+            <div class="showcase-icon-badge" style="border-color: var(--accent-mesa); color: var(--accent-mesa);">
+              🏎️
+            </div>
+          </div>
+          <div class="showcase-content">
+            <span class="showcase-tag" style="color: var(--accent-mesa);">MESA • National Series</span>
+            <h3 class="showcase-title">SAE BAJA All-Terrain Vehicle Arena</h3>
+            <p class="showcase-desc">
+              Precision chassis welding, CAD suspension simulations, and power transmission fabrication for collegiate off-road automotive endurance races.
+            </p>
+            <div class="showcase-footer">
+              <span class="showcase-dept-label">Mechanical Dept</span>
+              <span class="showcase-action-link">Explore Details →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Showcase 3 -->
+        <article class="showcase-card" onclick="showInteractiveModal('Clean Energy & Smart Grid Station', 'Power experimentation spearheaded by EESA. Covers solar inverter testing, battery storage telemetry, microgrid synchronization, and EV charging motor drives.')">
+          <div class="showcase-visual" style="border-bottom: 2px solid var(--accent-eesa);">
+            <div class="showcase-visual-pattern"></div>
+            <div class="showcase-icon-badge" style="border-color: var(--accent-eesa); color: var(--accent-eesa);">
+              ⚡
+            </div>
+          </div>
+          <div class="showcase-content">
+            <span class="showcase-tag" style="color: var(--accent-eesa);">EESA • Clean Tech</span>
+            <h3 class="showcase-title">Smart Grid & Solar Energy Lab</h3>
+            <p class="showcase-desc">
+              High-voltage circuit protection, renewable solar generation arrays, power electronics testing benches, and industrial automation drives.
+            </p>
+            <div class="showcase-footer">
+              <span class="showcase-dept-label">Electrical Dept</span>
+              <span class="showcase-action-link">Explore Details →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Showcase 4 -->
+        <article class="showcase-card" onclick="showInteractiveModal('Bridge-Craft Structural Load Showdown', 'Structural engineering competition by CESA. Evaluates model trusses, concrete beam stress points, and seismic resistance using hydraulic load machines.')">
+          <div class="showcase-visual" style="border-bottom: 2px solid var(--accent-cesa);">
+            <div class="showcase-visual-pattern"></div>
+            <div class="showcase-icon-badge" style="border-color: var(--accent-cesa); color: var(--accent-cesa);">
+              🌉
+            </div>
+          </div>
+          <div class="showcase-content">
+            <span class="showcase-tag" style="color: var(--accent-cesa);">CESA • Structural Expo</span>
+            <h3 class="showcase-title">Bridge-Craft & Concrete Load Showdown</h3>
+            <p class="showcase-desc">
+              Precision truss drafting, CAD load distributions, sustainable concrete mix testing, and smart city infrastructure scale models.
+            </p>
+            <div class="showcase-footer">
+              <span class="showcase-dept-label">Civil Dept</span>
+              <span class="showcase-action-link">Explore Details →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Showcase 5 -->
+        <article class="showcase-card" onclick="showInteractiveModal('Embedded IoT & Telemetry Hub', 'Hardware prototyping by AEXS. Features microcontrollers, STM32, ESP32 mesh networks, LoRa long-range wireless sensing, and automated quadcopters.')">
+          <div class="showcase-visual" style="border-bottom: 2px solid var(--accent-aexs);">
+            <div class="showcase-visual-pattern"></div>
+            <div class="showcase-icon-badge" style="border-color: var(--accent-aexs); color: var(--accent-aexs);">
+              📡
+            </div>
+          </div>
+          <div class="showcase-content">
+            <span class="showcase-tag" style="color: var(--accent-aexs);">AEXS • IoT & Robotics</span>
+            <h3 class="showcase-title">Embedded IoT & Robotics Arena</h3>
+            <p class="showcase-desc">
+              Microcontroller firmware programming, PCB etching, RF wireless signal processing, and autonomous robot obstacle navigation.
+            </p>
+            <div class="showcase-footer">
+              <span class="showcase-dept-label">ENTC Dept</span>
+              <span class="showcase-action-link">Explore Details →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Showcase 6 -->
+        <article class="showcase-card" onclick="showInteractiveModal('Neural Intelligence & Vision Hub', 'Cutting-edge AI research organized by AIESA. Showcases convolutional neural networks, predictive analytics, natural language transformers, and intelligent edge cameras.')">
+          <div class="showcase-visual" style="border-bottom: 2px solid var(--accent-aiesa);">
+            <div class="showcase-visual-pattern"></div>
+            <div class="showcase-icon-badge" style="border-color: var(--accent-aiesa); color: var(--accent-aiesa);">
+              🧠
+            </div>
+          </div>
+          <div class="showcase-content">
+            <span class="showcase-tag" style="color: var(--accent-aiesa);">AIESA • Deep Learning</span>
+            <h3 class="showcase-title">AI & Neural Computing Expo</h3>
+            <p class="showcase-desc">
+              Deep neural networks for image classification, industrial anomaly detection, real-time object tracking, and generative AI research sprints.
+            </p>
+            <div class="showcase-footer">
+              <span class="showcase-dept-label">AI & Data Science Dept</span>
+              <span class="showcase-action-link">Explore Details →</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5.25 CAMPUS PULSE: STUDENT EXPERIENCE & DISCUSSION HUB
+       ========================================================================= -->
+  <section class="section community-section" id="community">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot" style="background: var(--brand-gold);"></span>
+          <span>Peer Knowledge Network</span>
+        </div>
+        <h2 class="section-title">Campus Pulse: Student Experiences</h2>
+        <p class="section-subtitle">
+          Real placement interview insights, hackathon survival tips, club life reviews, and technical project advice shared by NKOCET engineering students.
+        </p>
+      </div>
+
+      <!-- STATE 1: COMMUNITY JOIN SCREEN -->
+      <div id="chat-gateway-locked" style="background: radial-gradient(circle at 50% 0%, rgba(229, 169, 60, 0.08) 0%, rgba(8, 10, 15, 0.95) 75%); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: 2.25rem 1.75rem; max-width: 650px; margin: 0 auto; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6); text-align: center;">
+        <div style="width: 56px; height: 56px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(229, 169, 60, 0.12); border: 1px solid var(--brand-gold); display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+          💬
+        </div>
+        <h3 style="color: #FFFFFF; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.01em;">
+          NKOCET Student Community Gateway
+        </h3>
+        <p style="color: var(--color-text-muted); font-size: 0.88rem; line-height: 1.55; margin-bottom: 1.5rem; max-width: 520px; margin-left: auto; margin-right: auto;">
+          Enter your student identity to join Campus Pulse community discussions across all 6 engineering departments.
+        </p>
+
+        <form id="chat-gateway-form" onsubmit="event.preventDefault(); enterChatGateway();" style="text-align: left;">
+          <div class="form-group-grid" style="margin-bottom: 0.85rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="gate-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Roll No / PRN *</label>
+              <input type="text" id="gate-roll" class="form-input" placeholder="e.g. C-62" required>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0.85rem;">
+            <label class="form-label">Engineering Branch *</label>
+            <select id="gate-dept" class="form-select" required>
+              <option value="Computer Science & Engineering">Computer Science & Engineering (CSESA)</option>
+              <option value="Mechanical Engineering">Mechanical Engineering (MESA)</option>
+              <option value="Civil Engineering">Civil Engineering (CESA)</option>
+              <option value="Electrical Engineering">Electrical Engineering (EESA)</option>
+              <option value="Electronics & Telecommunication">Electronics & Telecom (AEXS)</option>
+              <option value="AI & Data Science">AI & Data Science (AIESA)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" style="display: flex; justify-content: space-between;">
+              <span>Official Student Gmail *</span>
+              <span style="font-size: 0.72rem; color: var(--brand-gold);">(Admin Authority Confidential)</span>
+            </label>
+            <input type="email" id="gate-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
+          </div>
+
+          <button type="submit" id="gate-btn-enter" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; font-weight: 700;">
+            <span>Enter Community Chat 🚀</span>
+          </button>
+          <div id="gate-error-msg" style="display: none; color: #ff5252; font-size: 0.82rem; margin-top: 0.5rem; text-align: center;"></div>
+        </form>
+      </div>
+
+      <!-- STATE 2: UNLOCKED REAL-TIME CHAT (Shown once verified) -->
+      <div id="chat-gateway-unlocked" style="display: none;">
+        <!-- Authenticated Student Header Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(13, 18, 32, 0.8); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.65rem 1rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+            <span style="display: inline-block; width: 9px; height: 9px; background: #00e676; border-radius: 50%; box-shadow: 0 0 8px #00e676;"></span>
+            <span style="font-size: 0.85rem; color: #FFFFFF; font-weight: 700;">
+              Logged In: <span id="chat-user-name" style="color: var(--brand-gold);">Student</span>
+            </span>
+            <span id="chat-user-roll" style="font-size: 0.75rem; font-family: var(--font-mono); background: rgba(255, 255, 255, 0.08); padding: 0.15rem 0.5rem; border-radius: 4px; color: var(--color-text-secondary);">C-62</span>
+            <span id="chat-user-dept" style="font-size: 0.75rem; color: var(--accent-csesa);">CSESA</span>
+            <span id="chat-user-status" class="admin-badge admin-badge-status-active" style="font-size: 0.68rem;">ACTIVE</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span id="realtime-stream-counter" style="font-size: 0.76rem; color: var(--brand-gold); font-family: var(--font-mono);">
+              Connected • Auto-Syncing
+            </span>
+            <button type="button" class="btn-outline-small" onclick="signOutChatGateway()" style="padding: 0.25rem 0.65rem; font-size: 0.75rem;">
+              <span>Sign Out 🚪</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Action & Filter Bar -->
+        <div class="community-filter-bar">
+          <div class="community-pills-wrap">
+            <button type="button" class="community-pill active" data-category="ALL" onclick="filterCommunityPosts('ALL')">🌟 All Topics</button>
+            <button type="button" class="community-pill" data-category="INTERVIEW" onclick="filterCommunityPosts('INTERVIEW')">🎓 Interviews & Placements</button>
+            <button type="button" class="community-pill" data-category="HACKATHON" onclick="filterCommunityPosts('HACKATHON')">🏆 Hackathons & Fests</button>
+            <button type="button" class="community-pill" data-category="PROJECT_ADVICE" onclick="filterCommunityPosts('PROJECT_ADVICE')">💡 Project Advice</button>
+            <button type="button" class="community-pill" data-category="CLUB_LIFE" onclick="filterCommunityPosts('CLUB_LIFE')">⚡ Club Life</button>
+          </div>
+
+          <button type="button" class="btn-primary" onclick="openCommunityModal()" style="padding: 0.65rem 1.4rem;">
+            <span>SHARE EXPERIENCE</span>
+            <span>✍️</span>
+          </button>
+        </div>
+
+        <!-- Community Feed Grid -->
+        <div id="community-posts-grid" class="community-grid">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-text-muted);">
+            <span>Loading campus experiences...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5.5 FRESHERS' FAQS ACCORDION
+       ========================================================================= -->
+  <section class="section" id="faq" style="background: rgba(13, 18, 32, 0.45); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Fresher Guidance</span>
+        </div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Everything first-year and new students need to know about joining department associations, participating in workshops, and earning collegiate credentials.
+        </p>
+      </div>
+
+      <div class="faq-accordion" id="faq-accordion">
+        <!-- Q1 -->
+        <div class="faq-item active">
+          <button type="button" class="faq-question" aria-expanded="true">
+            <span>Can 1st-Year (FY) students join departmental associations or is it only for higher semesters?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes, absolutely! All departmental associations conduct open introductory workshops, beginner bootcamps, and technical symposiums specifically tailored for first-year and second-year students. No prior technical experience is required to attend.
+            </p>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>Can students participate in events organized by a different department (e.g. Civil in CodeFest)?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes! Flagship events like CSESA CodeFest, MESA MechFest, and the Inter-Discipline Tech Summit explicitly encourage inter-departmental participation. Multi-disciplinary teams often win the top honors.
+            </p>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>Are verified certificates awarded for participating in workshops and hackathons?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes. Official certificates of participation and merit are awarded under the aegis of NK Orchid College of Engineering & Technology (NKOCET) and the respective student chapter, adding verified value to your professional resume and DBATU activity points.
+            </p>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>How do I become an executive student coordinator or committee lead?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Each association holds annual student coordinator nominations and faculty interviews at the beginning of each academic semester. Active involvement in workshops and volunteering puts you on the fast track for council positions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>How do students gain access to specialized research labs (e.g., BAJA Workshop or AI GPU cluster)?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Extracurricular lab access is coordinated through the respective Department Faculty In-Charge and student technical leads. Registered association members receive scheduled slots for personal projects, competitions, and peer mentorship sessions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. ABOUT PREVIEW SECTION
+       ========================================================================= -->
+  <section class="section" id="about-preview" style="background: rgba(21, 25, 35, 0.4); border-top: 1px solid var(--color-border-subtle);">
+    <div class="container">
+      <div class="cta-box">
+        <span class="section-badge" style="margin-bottom: 1.5rem;">
+          <span class="dot"></span>
+          <span>Our Purpose</span>
+        </span>
+        <h2>Bridging Freshers & Department Associations</h2>
+        <p>
+          AssociationHub is a Student Association and Club Awareness Portal created by 2nd-Year B.Tech students to make it effortless for newcomers to discover clubs, connect with faculty coordinators, and participate in campus technical life.
+        </p>
+        <div class="cta-buttons">
+          <a href="cep-about us.html" class="btn-primary">
+            <span>MEET OUR TEAM & MISSION</span>
+            <span>→</span>
+          </a>
+          <a href="#associations" class="btn-secondary">
+            <span>VIEW DEPARTMENTS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. LIGHTBOX MODAL & INTERACTIVE MODAL OVERLAYS (3D / 4D INTERACTIVE)
+       ========================================================================= -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#10094;</button>
+
+      <div class="lightbox-3d-hint">
+        <span class="hint-pulse"></span>
+        <span>✨ 3D / 4D INTERACTIVE VIEW • MOVE CURSOR TO TILT &amp; SHIFT HOLOGRAPHIC LIGHT</span>
+      </div>
+
+      <div class="lightbox-3d-stage">
+        <div class="lightbox-3d-card" id="lightbox-3d-card">
+          <div class="lightbox-hologram-badge"><span>ASSOCIATIONHUB 3D</span></div>
+          <img src="" alt="" class="lightbox-img" id="lightbox-img">
+          <div class="lightbox-glare" id="lightbox-glare"></div>
+          <div class="lightbox-depth-border"></div>
+        </div>
+      </div>
+
+      <button class="lightbox-nav lightbox-next" aria-label="Next image">&#10095;</button>
+
+      <div class="lightbox-toolbar">
+        <button id="lightbox-orbit-toggle" class="lightbox-tool-btn active" title="Toggle Auto 3D Float">
+          <span class="tool-icon">🌀</span>
+          <span class="tool-text">Auto 3D Float: ON</span>
+        </button>
+        <button id="lightbox-zoom-toggle" class="lightbox-tool-btn" title="Toggle Max Size">
+          <span class="tool-icon">🔍</span>
+          <span class="tool-text">Full Scale</span>
+        </button>
+      </div>
+
+      <div class="lightbox-caption-text"></div>
+    </div>
+  </div>
+
+  <div id="interactive-modal-overlay" class="interactive-modal-overlay" role="dialog" aria-modal="true">
+    <div class="interactive-modal">
+      <h3 id="modal-title">Notification</h3>
+      <p id="modal-desc">Information details will appear here.</p>
+      <button id="modal-close-btn" class="interactive-modal-close">Understood</button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       7.5 FUNCTIONAL MEMBERSHIP REGISTRATION MODAL & ACKNOWLEDGMENT PASS
+       ========================================================================= -->
+  <div id="membership-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="membership-title">
+    <div class="membership-modal">
+      <button class="membership-modal-close" aria-label="Close modal">✕</button>
+
+      <div id="membership-form-wrap">
+        <span class="quiz-badge" style="margin-bottom: 0.75rem;">Official Membership Intake 2026</span>
+        <h2 id="membership-title" class="membership-modal-title">Join a Department Club</h2>
+        <p class="membership-modal-subtitle">
+          Submit your details to register interest in NKOCET departmental associations. Your inquiry will be registered and an official membership pass generated instantly.
+        </p>
+
+        <!-- Quick Digi-Pass Retrieval -->
+        <div style="background: rgba(255, 184, 0, 0.08); border: 1px solid rgba(255, 184, 0, 0.3); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; margin-bottom: 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--brand-gold);">🔍 Already Joined?</span>
+            <span style="font-size: 0.76rem; color: var(--color-text-secondary); margin-left: 0.3rem;">Retrieve your saved Digi-Pass & QR:</span>
+          </div>
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex: 1; min-width: 220px; justify-content: flex-end;">
+            <input type="text" id="quick-pass-lookup" placeholder="Enter PRN / Roll (e.g. C-62)" style="padding: 0.32rem 0.6rem; font-size: 0.78rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; width: 150px;">
+            <button type="button" class="btn-secondary" onclick="lookupStudentPass()" style="padding: 0.32rem 0.75rem; font-size: 0.78rem; white-space: nowrap;">
+              <span>View Pass 🎫</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="membership-form">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-name" class="form-label">Full Name *</label>
+              <input type="text" id="member-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="member-roll" class="form-label">Roll No / PRN *</label>
+              <input type="text" id="member-roll" class="form-input" placeholder="e.g. C-62 or EN2024..." required>
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="member-dept" class="form-label">Your Branch *</label>
+              <select id="member-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+                <option value="First Year Engineering">First Year (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="member-year" class="form-label">Academic Year *</label>
+              <select id="member-year" class="form-select" required>
+                <option value="First Year (FY)">First Year (FY)</option>
+                <option value="Second Year (SY)" selected>Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="member-association" class="form-label">Target Association *</label>
+            <select id="member-association" class="form-select" required>
+              <option value="CSESA">CSESA — Computer Science & Engineering</option>
+              <option value="MESA">MESA — Mechanical Engineering</option>
+              <option value="EESA">EESA — Electrical Engineering</option>
+              <option value="CESA">CESA — Civil Engineering</option>
+              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
+              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
+            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
+            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="membership-pass-container" style="display: none;">
+        <!-- Rendered dynamically by main.js upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDENT REGISTRATION -->
+  <div id="student-register-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="student-reg-modal-title">
+    <div class="membership-modal" style="max-width: 580px;">
+      <button type="button" class="membership-modal-close" onclick="closeStudentRegisterModal()" aria-label="Close modal">✕</button>
+
+      <!-- STEP 1: STUDENT REGISTRATION FORM -->
+      <div id="student-reg-step-1">
+        <span class="quiz-badge" style="margin-bottom: 0.75rem; background: rgba(25, 214, 140, 0.15); color: #19D68C; border-color: rgba(25, 214, 140, 0.3);">Official Student Registration</span>
+        <h2 id="student-reg-modal-title" class="membership-modal-title">New Student Registration</h2>
+        <p class="membership-modal-subtitle">
+          Create your NKOCET student account using your email address.
+        </p>
+
+        <div id="student-reg-alert-1" style="display: none; padding: 0.65rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.88rem;"></div>
+
+        <form id="student-registration-form" onsubmit="handleStudentRegistration(event)">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="student-reg-name" class="form-label">Full Name *</label>
+              <input type="text" id="student-reg-name" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="student-reg-roll" class="form-label">College Roll No / PRN *</label>
+              <input type="text" id="student-reg-roll" class="form-input" placeholder="e.g. C-62 or EN2024..." required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="student-reg-email" class="form-label">Official Gmail Address *</label>
+            <input type="email" id="student-reg-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="student-reg-dept" class="form-label">Engineering Department *</label>
+            <select id="student-reg-dept" class="form-select" required>
+              <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Electronics & Telecommunication">Electronics & Telecommunication</option>
+              <option value="AI & Data Science">AI & Data Science</option>
+              <option value="First Year Engineering">First Year (General Engineering)</option>
+            </select>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="student-reg-password" class="form-label">Account Password *</label>
+              <input type="password" id="student-reg-password" class="form-input" placeholder="Min. 6 characters" minlength="6" required>
+            </div>
+            <div class="form-group">
+              <label for="student-reg-confirm-password" class="form-label">Confirm Password *</label>
+              <input type="password" id="student-reg-confirm-password" class="form-input" placeholder="Re-enter password" minlength="6" required>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-student-register" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem; font-size: 0.95rem; font-weight: 700;">
+            <span>Create Student Account</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- STEP 3: REGISTRATION SUCCESS SCREEN -->
+      <div id="student-reg-step-3" style="display: none; text-align: center; padding: 0.5rem 0;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(25, 214, 140, 0.15); border: 2px solid #19D68C; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; color: #19D68C; margin-bottom: 1rem;">✓</div>
+        <h2 class="membership-modal-title" style="color: #19D68C; margin-bottom: 0.35rem;">Account Successfully Registered!</h2>
+        <p class="membership-modal-subtitle" style="margin-bottom: 1.2rem;">
+          Your official student profile has been recorded in the database.
+        </p>
+
+        <div style="background: rgba(13, 18, 32, 0.75); border: 1px solid rgba(25, 214, 140, 0.3); border-radius: var(--radius-sm); padding: 1.25rem; text-align: left; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+            <span style="color: var(--color-text-secondary);">Student ID:</span>
+            <strong id="success-student-id" style="color: #19D68C; font-family: var(--font-mono);"></strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+            <span style="color: var(--color-text-secondary);">Full Name:</span>
+            <strong id="success-student-name"></strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+            <span style="color: var(--color-text-secondary);">Email Address:</span>
+            <strong id="success-student-email" style="color: #19D68C;"></strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+            <span style="color: var(--color-text-secondary);">College Roll No:</span>
+            <strong id="success-student-roll"></strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+            <span style="color: var(--color-text-secondary);">Department:</span>
+            <strong id="success-student-dept"></strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+            <span style="color: var(--color-text-secondary);">Account Created:</span>
+            <span id="success-student-created-at" style="font-family: var(--font-mono); font-size: 0.8rem; color: #cbd5e1;"></span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" onclick="closeStudentRegisterModal()" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.95rem; font-weight: 700;">
+          <span>Start Exploring AssociationHub →</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       7.6 MASTER ADMIN CONTROL SUITE (PROTECTED BY COORDINATOR PIN)
+       ========================================================================= -->
+  <div id="admin-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+    <div class="membership-modal admin-modal">
+      <button class="membership-modal-close" onclick="closeAdminModal()" aria-label="Close admin modal">✕</button>
+
+      <!-- Screen A: Security PIN Gate (Displayed if not authenticated) -->
+      <div id="admin-pin-screen" style="text-align: center; padding: 2rem 1rem;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔐</div>
+        <span class="quiz-badge" style="background: rgba(229,169,60,0.15); color: var(--brand-gold); border: 1px solid rgba(229,169,60,0.3);">Administrative Security Gate</span>
+        <h2 class="membership-modal-title" style="margin-top: 0.5rem;">Coordinator Master PIN Required</h2>
+        <p class="membership-modal-subtitle" style="max-width: 450px; margin: 0 auto 1.5rem auto;">
+          This console contains privileged institutional controls. Please enter your coordinator security PIN to continue.
+        </p>
+
+        <div style="max-width: 320px; margin: 0 auto;">
+          <input type="password" id="admin-pin-input" class="form-input" placeholder="Enter the configured administrator PIN" style="text-align: center; font-family: var(--font-mono); font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 1rem;">
+          <button type="button" class="btn-primary" onclick="submitAdminPin()" style="width: 100%; justify-content: center; padding: 0.75rem;">
+            <span>UNLOCK ADMIN SUITE</span>
+            <span>🔓</span>
+          </button>
+          <div id="admin-pin-error" style="color: #ff5252; font-size: 0.85rem; margin-top: 0.75rem; display: none;"></div>
+        </div>
+      </div>
+
+      <!-- Screen B: Master Control Dashboard (Unlocked with PIN) -->
+      <div id="admin-suite-screen" style="display: none;">
+        <div class="admin-header-row">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="quiz-badge" style="background: rgba(25, 214, 140, 0.15); color: #19D68C; border: 1px solid rgba(25, 214, 140, 0.3);">Coordinator Clearance Active</span>
+              <span id="admin-session-badge" style="font-family: var(--font-mono); font-size: 0.72rem; background: rgba(229, 169, 60, 0.15); color: var(--brand-gold); padding: 0.2rem 0.55rem; border-radius: 4px; border: 1px solid rgba(229, 169, 60, 0.3);">🔑 HMAC Token Active</span>
+            </div>
+            <h2 id="admin-title" class="membership-modal-title" style="margin-top: 0.35rem;">Master Admin Command Center</h2>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" class="btn-success" onclick="exportMembersCsv()" title="Download RFC-4180 CSV for HOD / NAAC">
+              <span>📥 Export CSV for HOD</span>
+            </button>
+            <button type="button" class="btn-outline-small" onclick="lockAdminSuite()">
+              <span>🔒 Lock Console</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="admin-tab-nav">
+          <button type="button" id="tab-btn-members" class="admin-tab-btn active" onclick="switchAdminTab('members')">👥 Member Management</button>
+          <button type="button" id="tab-btn-broadcast" class="admin-tab-btn" onclick="switchAdminTab('broadcast')">📢 Live Campus Broadcast</button>
+          <button type="button" id="tab-btn-moderation" class="admin-tab-btn" onclick="switchAdminTab('moderation')">🛡️ Community Moderation</button>
+          <button type="button" id="tab-btn-analytics" class="admin-tab-btn" onclick="switchAdminTab('analytics')">📊 Executive Analytics</button>
+          <button type="button" id="tab-btn-audit" class="admin-tab-btn" onclick="switchAdminTab('audit')">🔐 Security Audit Logs</button>
+          <button type="button" id="tab-btn-smtp" class="admin-tab-btn" onclick="switchAdminTab('smtp')">📧 Real SMTP Mailer</button>
+          <button type="button" id="tab-btn-students" class="admin-tab-btn" onclick="switchAdminTab('students')">🎓 Registered Students</button>
+          <button type="button" id="tab-btn-rejoin" class="admin-tab-btn" onclick="switchAdminTab('rejoin')">🛡️ Rejoin Approvals <span id="admin-rejoin-count-badge" style="display:none; background:#ff5252; color:#fff; font-size:0.7rem; padding:0.1rem 0.4rem; border-radius:10px; margin-left:0.25rem;">0</span></button>
+          <button type="button" id="tab-btn-events" class="admin-tab-btn" onclick="switchAdminTab('events')">📅 Campus Events</button>
+        </div>
+
+        <div id="admin-status-msg" style="display: none; padding: 0.65rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.88rem;"></div>
+
+        <!-- Tab 1: Member Directory -->
+        <div id="admin-tab-members" class="admin-tab-pane active">
+          <div class="admin-search-bar">
+            <input type="text" id="admin-search-input" class="admin-search-input" placeholder="Search by name, roll no, or pass ID..." oninput="filterAdminMembers()">
+            <select id="admin-dept-filter" class="admin-dept-filter" onchange="filterAdminMembers()">
+              <option value="ALL">All Associations</option>
+              <option value="CSESA">CSESA</option>
+              <option value="MESA">MESA</option>
+              <option value="EESA">EESA</option>
+              <option value="CESA">CESA</option>
+              <option value="AEXS">AEXS</option>
+              <option value="AIESA">AIESA</option>
+            </select>
+          </div>
+
+          <div class="admin-table-container">
+            <div id="admin-members-list">
+              <div style="padding: 2.5rem; text-align: center; color: var(--color-text-muted);">
+                <span>Loading members directory...</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <span id="admin-member-count" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-muted);">
+              Total: 0 members
+            </span>
+          </div>
+        </div>
+
+        <!-- Tab 2: Live Campus Broadcast -->
+        <div id="admin-tab-broadcast" class="admin-tab-pane">
+          <div style="background: rgba(8, 10, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem;">
+            <h4 style="color: #FFFFFF; font-size: 1.05rem; margin-bottom: 0.5rem;">Broadcast Top Ribbon Notice</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">
+              Changes here update the scrolling campus ribbon banner at the very top of the portal in real time.
+            </p>
+
+            <form id="admin-broadcast-form" onsubmit="publishBroadcastAnnouncement(event)">
+              <div class="form-group-grid">
+                <div class="form-group">
+                  <label class="form-label">Notice Tag</label>
+                  <input type="text" id="broadcast-tag" class="form-input" placeholder="e.g. 📢 Campus Notice" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Button Text</label>
+                  <input type="text" id="broadcast-btn-text" class="form-input" placeholder="e.g. Apply Now →" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Broadcast Message</label>
+                <textarea id="broadcast-msg" class="form-input" rows="2" placeholder="e.g. Academic Session 2026 Student Association Membership Registrations Open for All Batches." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="padding: 0.65rem 1.5rem;">
+                <span>🚀 PUBLISH BROADCAST TO WEBSITE</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 3: Community Moderation & Verified Chat Users -->
+        <div id="admin-tab-moderation" class="admin-tab-pane">
+          <!-- Sub-Section A: Verified Chat Users Roster & Mute/Ban Controls -->
+          <div style="background: rgba(8, 10, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div>
+                <h4 style="color: #FFFFFF; font-size: 1.05rem; margin-bottom: 0.2rem;">Verified Chat Users &amp; Disciplinary Authorities</h4>
+                <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">
+                  Manage verified students, mute disruptive accounts, or ban violators from entering the chat.
+                </p>
+              </div>
+              <button type="button" class="btn-outline-small" onclick="loadAdminChatUsers()">
+                <span>Refresh Users 🔄</span>
+              </button>
+            </div>
+
+            <div id="admin-chat-users-list">
+              <div style="padding: 1.5rem; text-align: center; color: var(--color-text-muted); font-size: 0.85rem;">
+                Loading registered chat users...
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-Section B: Post Moderation & Unmasking -->
+          <div style="margin-bottom: 0.75rem; color: var(--color-text-muted); font-size: 0.85rem;">
+            <strong>Discussion Thread Moderation:</strong> Inspect posts, unmask anonymous authors, or purge threads.
+          </div>
+          <div class="admin-table-container">
+            <div id="admin-posts-list">
+              <div style="padding: 2.5rem; text-align: center; color: var(--color-text-muted);">
+                <span>Loading discussion posts for moderation...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Executive Analytics -->
+        <div id="admin-tab-analytics" class="admin-tab-pane">
+          <div class="analytics-grid">
+            <div class="analytics-kpi-card">
+              <div class="analytics-kpi-num" id="kpi-total-members">0</div>
+              <div class="analytics-kpi-label">Registered Members</div>
+            </div>
+            <div class="analytics-kpi-card">
+              <div class="analytics-kpi-num" id="kpi-total-checkins" style="color: #19D68C;">0</div>
+              <div class="analytics-kpi-label">Gate Check-Ins Logged</div>
+            </div>
+            <div class="analytics-kpi-card">
+              <div class="analytics-kpi-num" id="kpi-total-posts">0</div>
+              <div class="analytics-kpi-label">Campus Discussions</div>
+            </div>
+            <div class="analytics-kpi-card">
+              <div class="analytics-kpi-num" id="kpi-total-events" style="color: var(--brand-gold);">5</div>
+              <div class="analytics-kpi-label">Active Campus Events</div>
+            </div>
+            <div class="analytics-kpi-card">
+              <div class="analytics-kpi-num" id="kpi-health-status" style="color: #19D68C;">100%</div>
+              <div class="analytics-kpi-label">SQLite Ledger Health</div>
+            </div>
+          </div>
+
+          <div style="background: rgba(8, 10, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem;">
+            <h4 style="color: #FFFFFF; font-size: 1.05rem; margin-bottom: 1rem;">Department Membership Enrollment Breakdown</h4>
+            <div id="admin-chart-bars">
+              <!-- Dynamically populated by main.js -->
+              <div style="color: var(--color-text-muted); font-size: 0.88rem; text-align: center; padding: 1rem;">Loading analytics data...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Security Audit Logs -->
+        <div id="admin-tab-audit" class="admin-tab-pane">
+          <div style="margin-bottom: 1rem; color: var(--color-text-muted); font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span>Tamper-evident SQLite audit ledger tracking administrative logins, member status alterations, CSV compliance exports, and gate entries.</span>
+            <button type="button" class="btn-outline-small" onclick="loadSecurityAuditLogs()"><span>Refresh Audit Logs 🔄</span></button>
+          </div>
+          <div class="admin-table-container">
+            <div id="admin-audit-logs-list">
+              <div style="padding: 2.5rem; text-align: center; color: var(--color-text-muted);">
+                <span>Loading security audit logs...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 6: Real Gmail SMTP Mailer Settings -->
+        <div id="admin-tab-smtp" class="admin-tab-pane">
+          <!-- Active Status Banner -->
+          <div id="admin-smtp-status-card" style="padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; background: rgba(229, 169, 60, 0.08); border: 1px solid var(--color-border-subtle); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span id="smtp-status-indicator" style="width: 12px; height: 12px; border-radius: 50%; background: #ff9800; display: inline-block;"></span>
+              <div>
+                <strong id="smtp-status-title" style="color: #ffffff; font-size: 0.95rem;">Checking SMTP Mailer Status...</strong>
+                <div id="smtp-status-subtitle" style="font-size: 0.8rem; color: var(--color-text-muted);">Loading server environment status...</div>
+              </div>
+            </div>
+            <button type="button" class="btn-outline-small" onclick="loadAdminSmtpConfig()">
+              <span>Refresh Status 🔄</span>
+            </button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+            <!-- Column 1: Server-side SMTP configuration instructions -->
+            <div style="background: rgba(8, 10, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); padding: 1.5rem;">
+              <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 0.4rem;">⚙️ Server-side Gmail SMTP</h4>
+              <p style="color: var(--color-text-muted); font-size: 0.82rem; margin-bottom: 1rem; line-height: 1.5;">
+                SMTP credentials are read only from the backend environment. They are never sent to or stored by this browser.
+              </p>
+              <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.82rem; color: var(--color-text-secondary); line-height: 1.7;">
+                <li>Set <code>SMTP_USER</code> and <code>SMTP_PASSWORD</code> in the server's ignored <code>.env</code> file.</li>
+                <li>Use a Google App Password, not your account password.</li>
+                <li>Restart the backend and refresh this status panel.</li>
+              </ol>
+              <p style="margin: 1rem 0 0; font-size: 0.78rem; color: var(--color-text-muted);">
+                SMTP credentials cannot be saved from this admin console.
+              </p>
+            </div>
+
+            <!-- Column 2: Live Test & 30-Second Setup Guide -->
+            <div>
+              <!-- Live Delivery Test -->
+              <div style="background: rgba(8, 10, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 0.4rem;">🚀 Instant Real-Time Delivery Test</h4>
+                <p style="color: var(--color-text-muted); font-size: 0.82rem; margin-bottom: 1rem;">
+                  Verify that your Gmail credentials work by sending an actual OTP email to any Gmail address right now:
+                </p>
+
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                  <input type="email" id="smtp-test-email" class="form-input" placeholder="Enter recipient email (e.g. your_email@gmail.com)" style="flex: 1;">
+                  <button type="button" id="btn-test-smtp" class="btn-secondary" onclick="testAdminSmtpEmail()" style="white-space: nowrap;">
+                    <span>Send Test Email ✉️</span>
+                  </button>
+                </div>
+                <div id="smtp-test-msg" style="display: none; font-size: 0.82rem; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;"></div>
+              </div>
+
+              <!-- Quick Step Guide -->
+              <div style="background: rgba(22, 135, 255, 0.06); border: 1px solid rgba(22, 135, 255, 0.2); border-radius: var(--radius-md); padding: 1.25rem;">
+                <h5 style="color: #60a5fa; font-size: 0.92rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>📖</span> How to get a Google App Password (30 Seconds)
+                </h5>
+                <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6;">
+                  <li>Open <a href="https://myaccount.google.com/" target="_blank" style="color: var(--brand-gold);">Google Account Settings</a>.</li>
+                  <li>Click <strong>Security</strong> and confirm <strong>2-Step Verification</strong> is ON.</li>
+                  <li>Go to <a href="https://myaccount.google.com/apppasswords" target="_blank" style="color: var(--brand-gold);">Google App Passwords</a>.</li>
+                  <li>Enter App Name: <code style="color:#ffffff;">NKOCET Website</code> and click <strong>Create</strong>.</li>
+                  <li>Set the code in the server's ignored <code>.env</code> file and restart the backend.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 7: Registered Students Directory -->
+        <div id="admin-tab-students" class="admin-tab-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.25rem;">Verified Registered Students Directory</h3>
+              <p style="font-size: 0.8rem; color: var(--color-text-secondary); margin: 0;">Official directory with confidential Gmail addresses, verification audit logs, and account privilege controls.</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn-secondary" onclick="exportStudentsCsv()" style="padding: 0.45rem 0.95rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.4rem; border-color: rgba(25, 214, 140, 0.4); color: #19D68C;" title="Download complete student registry for HOD & NAAC compliance">
+                <span>📥 Export Registry (CSV)</span>
+              </button>
+              <button type="button" class="btn-secondary" onclick="loadAdminStudents()" style="padding: 0.45rem 0.95rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                <span>🔄 Refresh</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Full Name</th>
+                  <th>Roll / PRN</th>
+                  <th>Department</th>
+                  <th>Official Gmail (Confidential)</th>
+                  <th>Email Status</th>
+                  <th>Account Status</th>
+                  <th>Verified At</th>
+                  <th>Authority Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-students-tbody">
+                <tr>
+                  <td colspan="9" style="text-align: center; padding: 2rem; color: var(--color-text-secondary);">Loading registered students...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 8: Rejoin Approvals Queue -->
+        <div id="admin-tab-rejoin" class="admin-tab-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.25rem;">Student Rejoining Approvals Queue</h3>
+              <p style="font-size: 0.8rem; color: var(--color-text-secondary); margin: 0;">Students who were previously blocked or removed cannot rejoin automatically. Review and authorize rejoining requests here.</p>
+            </div>
+            <button type="button" class="btn-secondary" onclick="loadAdminRejoinRequests()" style="padding: 0.45rem 0.95rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span>🔄 Refresh Queue</span>
+            </button>
+          </div>
+
+          <div id="admin-rejoin-alert" style="display: none; padding: 0.65rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.88rem;"></div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Roll / PRN</th>
+                  <th>Gmail Address</th>
+                  <th>Restriction Reason</th>
+                  <th>Restricted Date</th>
+                  <th>Rejoin Status</th>
+                  <th>Rejoin Requested</th>
+                  <th>Admin Decision</th>
+                </tr>
+              </thead>
+              <tbody id="admin-rejoin-tbody">
+                <tr>
+                  <td colspan="8" style="text-align: center; padding: 2rem; color: var(--color-text-secondary);">Loading rejoining approval queue...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 9: Campus Events Management -->
+        <div id="admin-tab-events" class="admin-tab-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.25rem;">Collegiate Events & Hackathons Schedule</h3>
+              <p style="font-size: 0.8rem; color: var(--color-text-secondary); margin: 0;">Publish and manage collegiate hackathons, robotics arenas, conferences, and technical workshops across all 6 departments.</p>
+            </div>
+            <button type="button" class="btn-secondary" onclick="loadAdminEvents()" style="padding: 0.45rem 0.95rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span>🔄 Refresh Events</span>
+            </button>
+          </div>
+
+          <div id="admin-events-alert" style="display: none; padding: 0.65rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.88rem;"></div>
+
+          <!-- Add New Event Form -->
+          <div style="background: rgba(22, 135, 255, 0.05); border: 1px solid rgba(22, 135, 255, 0.25); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+            <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>➕ Schedule New Department Event</span>
+            </h4>
+            <form onsubmit="handleCreateAdminEvent(event)">
+              <div class="form-group-grid" style="margin-bottom: 0.75rem;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">Event Title *</label>
+                  <input type="text" id="admin-event-title" class="form-input" placeholder="e.g. CodeStorm 2026 Hackathon" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">Host Association *</label>
+                  <select id="admin-event-assoc" class="form-select" required>
+                    <option value="CSESA">CSESA (Computer Science)</option>
+                    <option value="MESA">MESA (Mechanical)</option>
+                    <option value="CESA">CESA (Civil)</option>
+                    <option value="EESA">EESA (Electrical)</option>
+                    <option value="AEXS">AEXS (Electronics & Telecom)</option>
+                    <option value="AIESA">AIESA (AI & Data Science)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group-grid" style="margin-bottom: 0.75rem;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">Date / Schedule *</label>
+                  <input type="text" id="admin-event-date" class="form-input" placeholder="e.g. December 18-20, 2026" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">Category *</label>
+                  <input type="text" id="admin-event-cat" class="form-input" placeholder="e.g. Hackathon, Robotics, Workshop" required>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0.85rem;">
+                <label class="form-label">Event Description *</label>
+                <textarea id="admin-event-desc" class="form-textarea" rows="2" placeholder="Describe the competition, cash prize pool, or eligibility..." required></textarea>
+              </div>
+
+              <button type="submit" id="btn-admin-add-event" class="btn-primary" style="padding: 0.55rem 1.35rem; font-size: 0.85rem;">
+                <span>Publish Event to Campus Calendar 🚀</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Existing Events List -->
+          <div id="admin-events-list">
+            <div style="padding: 2rem; text-align: center; color: var(--color-text-secondary);">Loading events...</div>
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       7.7 COMMUNITY EXPERIENCE POSTING MODAL
+       ========================================================================= -->
+  <div id="community-modal-overlay" class="membership-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="comm-modal-title">
+    <div class="membership-modal" style="max-width: 620px;">
+      <button class="membership-modal-close" onclick="closeCommunityModal()" aria-label="Close modal">✕</button>
+
+      <div>
+        <span class="quiz-badge" style="margin-bottom: 0.75rem;">Verified Peer Discussion</span>
+        <h2 id="comm-modal-title" class="membership-modal-title">Share Your Experience</h2>
+        <p class="membership-modal-subtitle">
+          Help your fellow NKOCET engineers by sharing placement interview tips, hackathon experiences, or technical project insights.
+        </p>
+
+        <div id="community-modal-alert" style="display: none; padding: 0.65rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.88rem;"></div>
+
+        <form id="community-post-form" onsubmit="submitCommunityPost(event)">
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="post-author" class="form-label">Your Name *</label>
+              <input type="text" id="post-author" class="form-input" placeholder="e.g. Rahul Patil" required>
+            </div>
+            <div class="form-group">
+              <label for="post-roll" class="form-label">Roll No / PRN * (Verification Gate)</label>
+              <input type="text" id="post-roll" class="form-input" placeholder="e.g. C-62" required>
+              <span style="font-size: 0.72rem; color: var(--color-text-muted);">Must match your active association membership.</span>
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-group">
+              <label for="post-dept" class="form-label">Branch *</label>
+              <select id="post-dept" class="form-select" required>
+                <option value="Computer Science & Engineering">Computer Science & Engg</option>
+                <option value="Mechanical Engineering">Mechanical Engg</option>
+                <option value="Electrical Engineering">Electrical Engg</option>
+                <option value="Civil Engineering">Civil Engg</option>
+                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
+                <option value="AI & Data Science">AI & Data Science</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="post-year" class="form-label">Academic Year *</label>
+              <select id="post-year" class="form-select" required>
+                <option value="Second Year (SY)">Second Year (SY)</option>
+                <option value="Third Year (TY)">Third Year (TY)</option>
+                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
+                <option value="First Year (FY)">First Year (FY)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="post-category" class="form-label">Topic Category *</label>
+            <select id="post-category" class="form-select" required>
+              <option value="INTERVIEW">🎓 Placement & Internship Experience</option>
+              <option value="HACKATHON">🏆 Hackathons & Symposiums</option>
+              <option value="PROJECT_ADVICE">💡 Technical Project Advice (CEP / Capstone)</option>
+              <option value="CLUB_LIFE">⚡ Club Life & Workshop Reviews</option>
+              <option value="GENERAL">📢 General Campus Guidance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="post-title" class="form-label">Catchy Title *</label>
+            <input type="text" id="post-title" class="form-input" placeholder="e.g. How our team prepared for the 36-hr CodeFest hackathon" required>
+          </div>
+
+          <div class="form-group">
+            <label for="post-content" class="form-label">Your Story & Insights *</label>
+            <textarea id="post-content" class="form-input" rows="5" placeholder="Share what questions were asked, key mistakes to avoid, and what tools helped you succeed..." style="resize: vertical;" required></textarea>
+          </div>
+
+          <div style="margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+            <input type="checkbox" id="post-anonymous" style="width: 18px; height: 18px; accent-color: var(--brand-gold); cursor: pointer;">
+            <label for="post-anonymous" style="font-size: 0.85rem; color: var(--color-text-secondary); cursor: pointer;">
+              Post Anonymously as <em>"Anonymous Orchidite"</em> (Hides your name from peers)
+            </label>
+          </div>
+
+          <button type="submit" id="post-submit-btn" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+            <span>PUBLISH TO CAMPUS PULSE</span>
+            <span>🚀</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="btn-back-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- =========================================================================
+       8. FOOTER (2026 EDITION)
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 1.4rem;">Association<span>Hub</span></span>
+            <span class="brand-subtitle">NKOCET Solapur • 2026 Portal</span>
+          </div>
+          <p>
+            An official student engagement and club awareness initiative for N.K. Orchid College of Engineering & Technology, Solapur. Empowering engineers through collaborative excellence.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Associations</h4>
+          <ul class="footer-links">
+            <li><a href="cep-cesa.html">CSESA (Computer Science)</a></li>
+            <li><a href="cep-mesa.html">MESA (Mechanical)</a></li>
+            <li><a href="esa.html">EESA (Electrical)</a></li>
+            <li><a href="civil.html">CESA (Civil)</a></li>
+            <li><a href="entc.html">AEXS (Electronics & Telecom)</a></li>
+            <li><a href="aids.html">AIESA (AI & Data Science)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#associations">Associations Directory</a></li>
+            <li><a href="#events">Events Schedule</a></li>
+            <li><a href="#community">💬 Campus Pulse (Discussions)</a></li>
+            <li><a href="verify.html" style="color: #19D68C; font-weight: 600;">📱 QR Gate Check-In</a></li>
+            <li><a href="javascript:void(0)" onclick="openAdminModal()" style="color: #E5A93C; font-weight: 600;">⚙️ Admin Master Console</a></li>
+            <li><a href="#gallery">Campus Showcase</a></li>
+            <li><a href="#faq">Freshers FAQ</a></li>
+            <li><a href="cep-about us.html">About Project & Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Institution</h4>
+          <p style="font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            Nagesh Karajgi Orchid College of Engineering & Technology<br>
+            Tale-Hipparaga, Solapur, Maharashtra, India.
+          </p>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--brand-gold);">Approved by AICTE • Affiliated to DBATU</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 AssociationHub — N.K. Orchid College of Engineering & Technology. All rights reserved.
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.8rem;">
+          2nd Year B.Tech • 3rd Semester CEP Initiative
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       8.5 SPOTLIGHT QUICK COMMAND SEARCH OVERLAY (CTRL + K)
+       ========================================================================= -->
+  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
+    <div class="spotlight-modal">
+      <div class="spotlight-header">
+        <span style="font-size: 1.25rem;">🔍</span>
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
+        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
+      </div>
+
+      <div id="spotlight-results" class="spotlight-results">
+        <!-- Dynamically populated by main.js -->
+      </div>
+
+      <div class="spotlight-footer">
+        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
+        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification Center -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- Core JavaScript -->
+  <script src="api-config.js"></script>
+  <script src="main.js?v=20261101_v5"></script>
+</body>
+</html>
