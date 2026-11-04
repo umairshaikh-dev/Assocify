@@ -405,126 +405,13 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <label for="member-email" class="form-label">Student Gmail / College Email (Optional)</label>
+            <input type="email" id="member-email" class="form-input" placeholder="e.g. yourname@gmail.com">
+          </div>
+
+
           <div class="form-group-grid">
-            <div class="form-group">
-              <label for="member-dept" class="form-label">Your Branch *</label>
-              <select id="member-dept" class="form-select" required>
-                <option value="Computer Science & Engineering">Computer Science & Engg</option>
-                <option value="Mechanical Engineering">Mechanical Engg</option>
-                <option value="Electrical Engineering">Electrical Engg</option>
-                <option value="Civil Engineering">Civil Engg</option>
-                <option value="Electronics & Telecommunication">Electronics & Telecom</option>
-                <option value="AI & Data Science">AI & Data Science</option>
-                <option value="First Year Engineering">First Year (General)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="member-year" class="form-label">Academic Year *</label>
-              <select id="member-year" class="form-select" required>
-                <option value="First Year (FY)">First Year (FY)</option>
-                <option value="Second Year (SY)" selected>Second Year (SY)</option>
-                <option value="Third Year (TY)">Third Year (TY)</option>
-                <option value="Final Year (B.Tech)">Final Year (B.Tech)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="member-association" class="form-label">Target Association *</label>
-            <select id="member-association" class="form-select" required>
-              <option value="CSESA">CSESA — Computer Science & Engineering</option>
-              <option value="MESA">MESA — Mechanical Engineering</option>
-              <option value="EESA">EESA — Electrical Engineering</option>
-              <option value="CESA">CESA — Civil Engineering</option>
-              <option value="AEXS">AEXS — Electronics & Telecommunication</option>
-              <option value="AIESA">AIESA — Artificial Intelligence & Data Science</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="member-interest" class="form-label">Technical Interests & Skills (Optional)</label>
-            <input type="text" id="member-interest" class="form-input" placeholder="e.g. Python, Web Design, CAD, Robotics, Event Hosting...">
-          </div>
-
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 0.85rem;">
-            <span>GENERATE DIGITAL MEMBERSHIP PASS</span>
-            <span>→</span>
-          </button>
-        </form>
-      </div>
-
-      <div id="membership-pass-container" style="display: none;">
-        <!-- Rendered dynamically by main.js upon submission -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox Modal for Photo Preview with 3D/4D Interactive Tilt -->
-  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Team Photo Preview">
-    <div class="lightbox-content">
-      <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
-      <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#10094;</button>
-
-      <div class="lightbox-3d-hint">
-        <span class="hint-pulse"></span>
-        <span>✨ 3D / 4D INTERACTIVE VIEW • MOVE CURSOR TO TILT &amp; SHIFT HOLOGRAPHIC LIGHT</span>
-      </div>
-
-      <div class="lightbox-3d-stage">
-        <div class="lightbox-3d-card" id="lightbox-3d-card">
-          <div class="lightbox-hologram-badge"><span>ASSOCIATIONHUB 3D</span></div>
-          <img src="" alt="Team Photo Preview" class="lightbox-img" id="lightbox-img">
-          <div class="lightbox-glare" id="lightbox-glare"></div>
-          <div class="lightbox-depth-border"></div>
-        </div>
-      </div>
-
-      <button class="lightbox-nav lightbox-next" aria-label="Next image">&#10095;</button>
-
-      <div class="lightbox-toolbar">
-        <button id="lightbox-orbit-toggle" class="lightbox-tool-btn active" title="Toggle Auto 3D Float">
-          <span class="tool-icon">🌀</span>
-          <span class="tool-text">Auto 3D Float: ON</span>
-        </button>
-        <button id="lightbox-zoom-toggle" class="lightbox-tool-btn" title="Toggle Max Size">
-          <span class="tool-icon">🔍</span>
-          <span class="tool-text">Full Scale</span>
-        </button>
-      </div>
-
-      <div class="lightbox-caption-text"></div>
-    </div>
-  </div>
-
-  <!-- Core JavaScript -->
-  <script src="api-config.js"></script>
-  <script src="main.js?v=20261101_v5"></script>
-  <!-- Spotlight Quick Command Search Overlay (Ctrl + K) -->
-  <div id="spotlight-overlay" class="spotlight-overlay" role="dialog" aria-modal="true" aria-label="Spotlight Search">
-    <div class="spotlight-modal">
-      <div class="spotlight-header">
-        <span style="font-size: 1.25rem;">🔍</span>
-        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Search departments, events, discussions, actions... (Esc to close)" autocomplete="off">
-        <span style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); color: var(--color-text-muted);">ESC</span>
-      </div>
-      <div id="spotlight-results" class="spotlight-results"></div>
-      <div class="spotlight-footer">
-        <span>Navigation: <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↑</kbd> <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↓</kbd> to navigate, <kbd style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">↵</kbd> to select</span>
-        <span style="color: var(--brand-gold);">NKOCET AssociationHub 2026</span>
-      </div>
-    </div>
-  </div>
-  <div id="toast-container" aria-live="polite"></div>
-
-</body>
-</html>
-          <!-- Official Student Gmail -->
-          <div class="form-group" style="background: rgba(13, 18, 32, 0.45); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 1rem;">
-            <label for="member-email" class="form-label">Official Student Gmail *</label>
-            <input type="email" id="member-email" class="form-input" placeholder="e.g. yourname@gmail.com" required>
-          </div>
-
-<div class="form-group-grid">
             <div class="form-group">
               <label for="member-dept" class="form-label">Your Branch *</label>
               <select id="member-dept" class="form-select" required>

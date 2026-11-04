@@ -509,6 +509,7 @@
                 <td>Roll Number / PRN</td>
                 <td>${m.roll_no}</td>
               </tr>
+              ${m.email ? `<tr><td>Verified Email</td><td style="font-family:var(--font-mono);">${m.email}</td></tr>` : ''}
               <tr>
                 <td>Academic Standing</td>
                 <td>${m.year}</td>

@@ -2019,10 +2019,13 @@ async def create_membership(data: MembershipCreate, request: Request):
     session_id = data.session_id
     interest = data.interest.strip() if data.interest else "General Technical Participation & Workshops"
 
+    # If email not provided, fall back to official institutional student email
+    if not email:
+        clean_roll = re.sub(r'[^a-zA-Z0-9]', '', roll).lower() or 'student'
+        email = f"{clean_roll}@orchidengg.ac.in"
+
     # Enforce Rejoin Approval Gate: Blocked or removed students require Admin approval to rejoin
     check_account_restriction(email, roll, name)
-    if not email:
-        raise HTTPException(status_code=403, detail="A valid student email address is required.")
 
     with get_db() as conn:
         cursor = conn.cursor()
@@ -2062,6 +2065,7 @@ async def create_membership(data: MembershipCreate, request: Request):
                 "student_id": verified_stu_id,
                 "name": existing["name"],
                 "roll_no": existing["roll_no"],
+                "email": existing["email"],
                 "dept": existing["dept"],
                 "year": existing["year"],
                 "association": existing["association"],
@@ -2250,7 +2254,7 @@ async def verify_membership(pass_id: str, request: Request, sig: Optional[str] =
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
-        SELECT pass_id, name, roll_no, dept, year, association, interest, qr_code_base64, status, crypto_signature, created_at
+        SELECT pass_id, name, roll_no, email, dept, year, association, interest, qr_code_base64, status, crypto_signature, created_at
         FROM memberships WHERE pass_id = ?;
         """, (clean_id,))
         row = cursor.fetchone()
@@ -2322,6 +2326,7 @@ async def verify_membership(pass_id: str, request: Request, sig: Optional[str] =
                 "pass_id": row["pass_id"],
                 "name": row["name"],
                 "roll_no": row["roll_no"],
+                "email": row["email"] if "email" in row.keys() and row["email"] else "",
                 "dept": row["dept"],
                 "year": row["year"],
                 "association": row["association"],
@@ -3755,10 +3760,13 @@ async def create_membership(data: MembershipCreate, request: Request):
     session_id = data.session_id
     interest = data.interest.strip() if data.interest else "General Technical Participation & Workshops"
 
+    # If email not provided, fall back to official institutional student email
+    if not email:
+        clean_roll = re.sub(r'[^a-zA-Z0-9]', '', roll).lower() or 'student'
+        email = f"{clean_roll}@orchidengg.ac.in"
+
     # Enforce Rejoin Approval Gate: Blocked or removed students require Admin approval to rejoin
     check_account_restriction(email, roll, name)
-    if not email:
-        raise HTTPException(status_code=403, detail="A valid student email address is required.")
 
     with get_db() as conn:
         cursor = conn.cursor()
@@ -3985,7 +3993,7 @@ async def verify_membership(pass_id: str, request: Request, sig: Optional[str] =
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
-        SELECT pass_id, name, roll_no, dept, year, association, interest, qr_code_base64, status, crypto_signature, created_at
+        SELECT pass_id, name, roll_no, email, dept, year, association, interest, qr_code_base64, status, crypto_signature, created_at
         FROM memberships WHERE pass_id = ?;
         """, (clean_id,))
         row = cursor.fetchone()
@@ -4057,6 +4065,7 @@ async def verify_membership(pass_id: str, request: Request, sig: Optional[str] =
                 "pass_id": row["pass_id"],
                 "name": row["name"],
                 "roll_no": row["roll_no"],
+                "email": row["email"] if "email" in row.keys() and row["email"] else "",
                 "dept": row["dept"],
                 "year": row["year"],
                 "association": row["association"],
