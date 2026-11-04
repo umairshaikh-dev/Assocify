@@ -1,10 +1,16 @@
 (function (window) {
-  // Set this to the deployed Render service URL before publishing GitHub Pages.
-  window.ASSOCIATIONHUB_API_BASE_URL = 'https://associationhub2.onrender.com';
+  // Set this to the deployed backend service URL before publishing GitHub Pages.
+  window.ASSOCIATIONHUB_API_BASE_URL = '';
   const configuredBase = (window.ASSOCIATIONHUB_API_BASE_URL || '').trim();
   let apiBase = configuredBase.replace(/\/+$/, '');
 
-  if (apiBase) {
+  const isLocal =
+    window.location.protocol === 'file:' ||
+    ['localhost', '127.0.0.1'].includes(window.location.hostname);
+
+  if (isLocal) {
+    apiBase = window.location.port === '8080' ? window.location.origin : 'http://127.0.0.1:8080';
+  } else if (apiBase) {
     let parsed;
     try {
       parsed = new URL(apiBase);
@@ -14,11 +20,6 @@
     if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password) {
       throw new Error('ASSOCIATIONHUB_API_BASE_URL must be an HTTP(S) URL without embedded credentials.');
     }
-  } else if (
-    window.location.protocol === 'file:' ||
-    (['localhost', '127.0.0.1'].includes(window.location.hostname) && window.location.port !== '8080')
-  ) {
-    apiBase = 'http://127.0.0.1:8080';
   } else if (!window.location.hostname.endsWith('.github.io')) {
     apiBase = window.location.origin;
   }

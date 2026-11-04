@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -189,12 +189,12 @@
     <!-- Quick Demo Pass Pills -->
     <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
       <span style="font-size: 0.8rem; color: var(--color-text-muted); align-self: center; margin-right: 0.25rem;">Quick Verified Passes:</span>
-      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CSESA-7EB769')">Affan (CSESA)</button>
-      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CSESA-A2B4C6')">Suyash (CSESA)</button>
-      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-AIESA-D3E5F7')">Umair (AIESA)</button>
-      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-MESA-B8C9D0')">Moin (MESA)</button>
-      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-EESA-F1G2H3')">Sushil (EESA)</button>
-      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CESA-K4L5M6')">Siddeshwar (CESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CSESA-7EB769', '7FCE3EC8F0D2EA01')">Affan (CSESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CSESA-A2B4C6', '87DC0943220C3F6C')">Suyash (CSESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-AIESA-D3E5F7', 'A9095D2C8FF2F220')">Umair (AIESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-MESA-B8C9D0', 'E1F039A5BEFA15DD')">Moin (MESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-EESA-F1G2H3', '852477C62DF04439')">Sushil (EESA)</button>
+      <button type="button" class="cert-pill" onclick="verifyPass('NKOCET-2026-CESA-K4L5M6', '01F5CC906AB61A7E')">Siddeshwar (CESA)</button>
     </div>
 
     <!-- Verification Card Output -->
@@ -216,6 +216,7 @@
   </footer>
 
   <script src="api-config.js"></script>
+  <script src="jsqr.min.js"></script>
   <script>
     const outputContainer = document.getElementById('verify-output');
     const inputField = document.getElementById('manual-pass-input');
@@ -267,6 +268,19 @@
       playTone(1318, 0.22, 'sine', 0.16);
     }
 
+    function scanCanvasWithJsQR(canvas, ctx) {
+      if (typeof jsQR !== 'function') return null;
+      try {
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imgData.data, imgData.width, imgData.height, {
+          inversionAttempts: 'attemptBoth'
+        });
+        return code ? code.data : null;
+      } catch(e) {
+        return null;
+      }
+    }
+
     function extractPassIdFromRaw(raw) {
       if (!raw) return { passId: '', sig: null };
       raw = raw.trim();
@@ -278,7 +292,8 @@
           if (pid) return { passId: pid, sig: sig };
         } catch (e) {
           const match = raw.match(/pass_id=([a-zA-Z0-9_\-]+)/);
-          if (match) return { passId: match[1], sig: null };
+          const sigMatch = raw.match(/sig=([a-zA-Z0-9_\-]+)/);
+          if (match) return { passId: match[1], sig: sigMatch ? sigMatch[1] : null };
         }
       }
       return { passId: raw, sig: null };
@@ -326,28 +341,33 @@
         btnIcon.textContent = '⏹️';
         if (alertEl) alertEl.style.display = 'none';
 
-        if ('BarcodeDetector' in window) {
-          const detector = new BarcodeDetector({ formats: ['qr_code'] });
-          scanningInterval = setInterval(async () => {
-            if (!activeScannerStream) return;
+        const detector = ('BarcodeDetector' in window) ? new BarcodeDetector({ formats: ['qr_code'] }) : null;
+        const qrCanvas = document.getElementById('qr-canvas');
+        scanningInterval = setInterval(async () => {
+          if (!activeScannerStream) return;
+          // Try BarcodeDetector first (Chrome/Edge)
+          if (detector) {
             try {
               const barcodes = await detector.detect(video);
               if (barcodes.length > 0) {
-                const rawVal = barcodes[0].rawValue;
-                const parsed = extractPassIdFromRaw(rawVal);
-                if (parsed.passId) {
-                  toggleCameraScanner();
-                  verifyPass(parsed.passId, parsed.sig);
-                }
+                const parsed = extractPassIdFromRaw(barcodes[0].rawValue);
+                if (parsed.passId) { toggleCameraScanner(); verifyPass(parsed.passId, parsed.sig); return; }
               }
             } catch (e) {}
-          }, 250);
-        } else {
-          const overlay = document.getElementById('camera-status-overlay');
-          if (overlay) {
-            overlay.textContent = 'Camera active. Point at QR code or use Upload QR Image for instant auto-decode.';
           }
-        }
+          // Fallback: jsQR canvas scan (Firefox, Safari, etc.)
+          if (qrCanvas && video.videoWidth > 0 && typeof jsQR === 'function') {
+            qrCanvas.width = video.videoWidth;
+            qrCanvas.height = video.videoHeight;
+            const ctx = qrCanvas.getContext('2d', { willReadFrequently: true });
+            ctx.drawImage(video, 0, 0, qrCanvas.width, qrCanvas.height);
+            const decoded = scanCanvasWithJsQR(qrCanvas, ctx);
+            if (decoded) {
+              const parsed = extractPassIdFromRaw(decoded);
+              if (parsed.passId) { toggleCameraScanner(); verifyPass(parsed.passId, parsed.sig); return; }
+            }
+          }
+        }, 200);
       } catch (err) {
         if (alertEl) {
           alertEl.style.display = 'block';
@@ -366,9 +386,10 @@
       try {
         const img = new Image();
         img.onload = async () => {
-          if ('BarcodeDetector' in window) {
+          const detector = ('BarcodeDetector' in window) ? new BarcodeDetector({ formats: ['qr_code'] }) : null;
+          // Try BarcodeDetector first (Chrome/Edge)
+          if (detector) {
             try {
-              const detector = new BarcodeDetector({ formats: ['qr_code'] });
               const barcodes = await detector.detect(img);
               if (barcodes.length > 0) {
                 const parsed = extractPassIdFromRaw(barcodes[0].rawValue);
@@ -377,13 +398,35 @@
                     alertEl.style.display = 'block';
                     alertEl.style.background = 'rgba(25, 214, 140, 0.15)';
                     alertEl.style.color = '#19D68C';
-                    alertEl.textContent = `✓ Decoded Pass: ${parsed.passId}`;
+                    alertEl.textContent = `\u2713 Decoded Pass: ${parsed.passId}`;
                   }
                   verifyPass(parsed.passId, parsed.sig);
                   return;
                 }
               }
             } catch (e) {}
+          }
+          // Fallback: jsQR canvas scan
+          if (typeof jsQR === 'function') {
+            const cvs = document.createElement('canvas');
+            cvs.width = img.naturalWidth;
+            cvs.height = img.naturalHeight;
+            const ctx = cvs.getContext('2d', { willReadFrequently: true });
+            ctx.drawImage(img, 0, 0);
+            const decoded = scanCanvasWithJsQR(cvs, ctx);
+            if (decoded) {
+              const parsed = extractPassIdFromRaw(decoded);
+              if (parsed.passId) {
+                if (alertEl) {
+                  alertEl.style.display = 'block';
+                  alertEl.style.background = 'rgba(25, 214, 140, 0.15)';
+                  alertEl.style.color = '#19D68C';
+                  alertEl.textContent = `\u2713 Decoded Pass: ${parsed.passId}`;
+                }
+                verifyPass(parsed.passId, parsed.sig);
+                return;
+              }
+            }
           }
 
           const nameMatch = file.name.match(/NKOCET-2026-[A-Z]+-[A-F0-9]+/i);
@@ -435,9 +478,12 @@
           playScanSuccess();
           const m = data.member;
           const safeName = (m.name || '').replace(/'/g, "\\'");
-          const sigBadge = data.signature_verified 
-            ? `<span style="font-size:0.75rem; background:rgba(25,214,140,0.15); color:#19D68C; border:1px solid rgba(25,214,140,0.4); padding:0.25rem 0.65rem; border-radius:4px; font-family:var(--font-mono);">✓ HMAC-SHA256 SIGNED: ${data.crypto_signature || 'VERIFIED'}</span>`
-            : `<span style="font-size:0.75rem; background:rgba(255,65,108,0.15); color:#FF416C; border:1px solid #FF416C; padding:0.25rem 0.65rem; border-radius:4px;">⚠️ TAMPERED SIGNATURE</span>`;
+          const passedSigParam = passedSig || (new URLSearchParams(window.location.search).get('sig') || '');
+          const sigBadge = data.signature_verified
+            ? `<span style="font-size:0.75rem; background:rgba(25,214,140,0.15); color:#19D68C; border:1px solid rgba(25,214,140,0.4); padding:0.25rem 0.65rem; border-radius:4px; font-family:var(--font-mono);">&#10003; HMAC-SHA256 SIGNED: ${data.crypto_signature || 'VERIFIED'}</span>`
+            : (passedSigParam
+                ? `<span style="font-size:0.75rem; background:rgba(255,65,108,0.15); color:#FF416C; border:1px solid #FF416C; padding:0.25rem 0.65rem; border-radius:4px;">&#9888; TAMPERED SIGNATURE</span>`
+                : `<span style="font-size:0.75rem; background:rgba(229,169,60,0.15); color:#E5A93C; border:1px solid rgba(229,169,60,0.4); padding:0.25rem 0.65rem; border-radius:4px; font-family:var(--font-mono);">&#128270; MANUAL LOOKUP &#8212; ID Unverified</span>`);
 
           outputContainer.innerHTML = `
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">

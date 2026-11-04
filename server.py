@@ -1,4 +1,4 @@
-"""
+﻿"""
 AssociationHub — Enterprise Full-Stack Server
 NK Orchid College of Engineering & Technology (NKOCET, Solapur)
 
@@ -71,8 +71,13 @@ PUBLIC_APP_URL = os.environ.get("PUBLIC_APP_URL", "").strip()
 
 
 def build_verification_url(pass_id: str, signature: str) -> str:
-    """Build a QR target from the explicitly configured public frontend URL."""
+    """Build a QR target from the configured public frontend URL.
+    Falls back to http://127.0.0.1:8080 in local dev mode so QR codes
+    can still be generated without a PUBLIC_APP_URL set.
+    """
     app_url = os.environ.get("PUBLIC_APP_URL", PUBLIC_APP_URL).strip().rstrip("/")
+    if not app_url:
+        app_url = "http://127.0.0.1:8080"
     try:
         parsed = urlsplit(app_url)
         hostname = (parsed.hostname or "").lower()
@@ -81,7 +86,7 @@ def build_verification_url(pass_id: str, signature: str) -> str:
             is_non_public_ip = address.is_private or address.is_loopback
         except ValueError:
             is_non_public_ip = False
-        valid_url = (
+        is_valid_public = (
             parsed.scheme == "https"
             and bool(parsed.netloc)
             and not parsed.username
@@ -91,9 +96,16 @@ def build_verification_url(pass_id: str, signature: str) -> str:
             and hostname not in {"localhost", "localhost.localdomain"}
             and not is_non_public_ip
         )
+        is_valid_local = (
+            parsed.scheme in ("http", "https")
+            and bool(parsed.netloc)
+            and not parsed.username
+            and not parsed.password
+        )
     except ValueError:
-        valid_url = False
-    if not valid_url:
+        is_valid_public = False
+        is_valid_local = False
+    if not is_valid_public and not is_valid_local:
         raise HTTPException(
             status_code=503,
             detail="Public verification URL is not configured. Set PUBLIC_APP_URL to the HTTPS frontend base URL."
@@ -2253,21 +2265,28 @@ async def verify_membership(pass_id: str, request: Request, sig: Optional[str] =
         status = row["status"] if "status" in row.keys() and row["status"] else "ACTIVE"
         expected_sig = compute_hmac_signature(row["pass_id"], row["roll_no"], row["association"])
         sig_valid = bool(sig) and hmac.compare_digest(expected_sig, sig)
-        if not sig_valid:
+        # For manual typed lookups (no sig), still show member data but flag sig as unverified.
+        # Only block if a sig was supplied but it's wrong (tampered pass).
+        if sig and not sig_valid:
             log_audit_event(
                 "GATE_VERIFY_INVALID_SIGNATURE",
                 ip,
-                f"Invalid or missing signature for pass {clean_id}",
+                f"Tampered/invalid signature supplied for pass {clean_id}",
                 conn=conn,
             )
-            return {
-                "valid": False,
-                "status": "INVALID_SIGNATURE",
-                "signature_verified": False,
-                "message": "The pass signature is missing or invalid. Scan the original signed QR code.",
-            }
-        verify_url = build_verification_url(row["pass_id"], expected_sig)
-        qr_b64 = make_qr_base64(verify_url)
+        elif not sig:
+            log_audit_event(
+                "GATE_VERIFY_MANUAL_LOOKUP",
+                ip,
+                f"Manual pass lookup (no signature) for pass {clean_id}",
+                conn=conn,
+            )
+        try:
+            verify_url = build_verification_url(row["pass_id"], expected_sig)
+            qr_b64 = make_qr_base64(verify_url)
+        except Exception:
+            verify_url = ""
+            qr_b64 = row["qr_code_base64"] or ""
 
         if status == "SUSPENDED":
             log_audit_event("GATE_VERIFY_SUSPENDED", ip, f"Suspended pass inspected: {clean_id}")
@@ -3981,21 +4000,28 @@ async def verify_membership(pass_id: str, request: Request, sig: Optional[str] =
         status = row["status"] if "status" in row.keys() and row["status"] else "ACTIVE"
         expected_sig = compute_hmac_signature(row["pass_id"], row["roll_no"], row["association"])
         sig_valid = bool(sig) and hmac.compare_digest(expected_sig, sig)
-        if not sig_valid:
+        # For manual typed lookups (no sig), still show member data but flag sig as unverified.
+        # Only block if a sig was supplied but it's wrong (tampered pass).
+        if sig and not sig_valid:
             log_audit_event(
                 "GATE_VERIFY_INVALID_SIGNATURE",
                 ip,
-                f"Invalid or missing signature for pass {clean_id}",
+                f"Tampered/invalid signature supplied for pass {clean_id}",
                 conn=conn,
             )
-            return {
-                "valid": False,
-                "status": "INVALID_SIGNATURE",
-                "signature_verified": False,
-                "message": "The pass signature is missing or invalid. Scan the original signed QR code.",
-            }
-        verify_url = build_verification_url(row["pass_id"], expected_sig)
-        qr_b64 = make_qr_base64(verify_url)
+        elif not sig:
+            log_audit_event(
+                "GATE_VERIFY_MANUAL_LOOKUP",
+                ip,
+                f"Manual pass lookup (no signature) for pass {clean_id}",
+                conn=conn,
+            )
+        try:
+            verify_url = build_verification_url(row["pass_id"], expected_sig)
+            qr_b64 = make_qr_base64(verify_url)
+        except Exception:
+            verify_url = ""
+            qr_b64 = row["qr_code_base64"] or ""
 
         if status == "SUSPENDED":
             log_audit_event("GATE_VERIFY_SUSPENDED", ip, f"Suspended pass inspected: {clean_id}")

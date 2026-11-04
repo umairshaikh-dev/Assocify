@@ -1198,8 +1198,8 @@ function initMembershipModal() {
           <button type="button" class="btn-success" onclick="sharePassWhatsApp('${safeName}', '${safeAssoc}', '${data.verify_url}', '${data.pass_id}')" style="padding: 0.65rem 1.15rem; cursor: pointer;">
             <span>📱 SHARE ON WHATSAPP</span>
           </button>
-          <a href="${data.verify_url}" target="_blank" class="btn-secondary" style="padding: 0.65rem 1.15rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span>🔍 GATE PASS ↗</span>
+          <a href="${(function(){try{const u=new URL(data.verify_url);return 'verify.html?pass_id='+encodeURIComponent(u.searchParams.get('pass_id') || data.pass_id)+'&sig='+encodeURIComponent(u.searchParams.get('sig') || data.crypto_signature||'')}catch(e){return 'verify.html?pass_id='+encodeURIComponent(data.pass_id)+'&sig='+encodeURIComponent(data.crypto_signature||'')}}())}" target="_blank" class="btn-secondary" style="padding: 0.65rem 1.15rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+            <span>🔍 VERIFY PASS ↗</span>
           </a>
           <button type="button" class="btn-secondary" onclick="resetToMembershipForm()" style="padding: 0.65rem 1.15rem; cursor: pointer;" title="Register for another departmental association">
             <span>➕ JOIN ANOTHER CLUB</span>
